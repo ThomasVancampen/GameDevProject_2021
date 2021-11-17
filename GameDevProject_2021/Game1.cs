@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using GameDevProject_2021.Hero;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -8,6 +9,8 @@ namespace GameDevProject_2021
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private Texture2D texture;
+        Marcus hero;
 
         public Game1()
         {
@@ -20,14 +23,25 @@ namespace GameDevProject_2021
         {
             // TODO: Add your initialization logic here
 
+
             base.Initialize();
+
+            InitializeGameObject();
         }
+
+
 
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            texture = Content.Load<Texture2D>("HeroDeer");
+        }
+
+        private void InitializeGameObject()
+        {
+            hero = new Marcus(texture);
         }
 
         protected override void Update(GameTime gameTime)
@@ -36,6 +50,7 @@ namespace GameDevProject_2021
                 Exit();
 
             // TODO: Add your update logic here
+            hero.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -43,8 +58,11 @@ namespace GameDevProject_2021
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            _spriteBatch.Begin();
 
-            // TODO: Add your drawing code here
+            hero.Draw(_spriteBatch);
+
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }
