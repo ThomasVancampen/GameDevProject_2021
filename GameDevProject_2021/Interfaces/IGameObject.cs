@@ -6,7 +6,7 @@ using System.Text;
 
 namespace GameDevProject_2021.Interfaces
 {
-    interface IGameObjects
+    interface IGameObject
     {
         void Update(GameTime gameTime);
 

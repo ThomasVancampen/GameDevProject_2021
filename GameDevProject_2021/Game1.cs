@@ -1,4 +1,5 @@
-﻿using GameDevProject_2021.Hero;
+﻿using GameDevProject_2021.Heroes;
+using GameDevProject_2021.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -10,7 +11,8 @@ namespace GameDevProject_2021
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private Texture2D texture;
-        Marcus hero;
+
+        private Hero deer;
 
         public Game1()
         {
@@ -25,8 +27,7 @@ namespace GameDevProject_2021
 
 
             base.Initialize();
-
-            InitializeGameObject();
+            InitializeGameObject(); //hier of in loadcontent zoals in video?
         }
 
 
@@ -41,7 +42,7 @@ namespace GameDevProject_2021
 
         private void InitializeGameObject()
         {
-            hero = new Marcus(texture);
+            deer = new Hero(texture, new KeyBoardReader());
         }
 
         protected override void Update(GameTime gameTime)
@@ -50,7 +51,7 @@ namespace GameDevProject_2021
                 Exit();
 
             // TODO: Add your update logic here
-            hero.Update(gameTime);
+            deer.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -60,7 +61,7 @@ namespace GameDevProject_2021
             GraphicsDevice.Clear(Color.CornflowerBlue);
             _spriteBatch.Begin();
 
-            hero.Draw(_spriteBatch);
+            deer.Draw(_spriteBatch);
 
             _spriteBatch.End();
 
