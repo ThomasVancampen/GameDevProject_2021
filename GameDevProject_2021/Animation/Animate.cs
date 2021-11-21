@@ -14,34 +14,34 @@ namespace GameDevProject_2021.Animation
         private int counter;
 
         private double secondCounter;
+        private int fps = 15;//hier gezet in de plaats van in update
 
         public Animate()
         {
-            frames = new List<AnimationFrame>();
+            this.frames = new List<AnimationFrame>();
         }
 
         public void AddFrame(AnimationFrame animationFrame)
         {
-            frames.Add(animationFrame);
-            CurrentFrame = frames[0];
+            this.frames.Add(animationFrame);
+            this.CurrentFrame = this.frames[0];
         }
 
         public void Update(GameTime gameTime)
         {
-            CurrentFrame = frames[counter];
+            this.CurrentFrame = this.frames[this.counter];
 
-            secondCounter += gameTime.ElapsedGameTime.TotalSeconds;
-            int fps = 15;
+            this.secondCounter += gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (secondCounter >= 1d / fps)
+            if (this.secondCounter >= 1d / fps)
             {
-                counter++;
-                secondCounter = 0;
+                this.counter++;
+                this.secondCounter = 0;
             }
 
 
-            if (counter >= frames.Count)
-                counter = 0;
+            if (this.counter >= this.frames.Count)
+                this.counter = 0;
         }
     }
 }

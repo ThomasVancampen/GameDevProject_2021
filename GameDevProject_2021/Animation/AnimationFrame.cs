@@ -11,7 +11,7 @@ namespace GameDevProject_2021.Animation
 
         public AnimationFrame(Rectangle rectangle)
         {
-            RectangleSource = rectangle;
+            this.RectangleSource = rectangle;
         }
     }
 }
