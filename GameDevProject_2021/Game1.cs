@@ -1,5 +1,6 @@
 ﻿using GameDevProject_2021.Heroes;
 using GameDevProject_2021.Input;
+using GameDevProject_2021.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -67,5 +68,10 @@ namespace GameDevProject_2021
 
             base.Draw(gameTime);
         }
+        //public void ChangeInput(IInputReader inputReader)
+        //{
+        //    inputReader = inputReader;
+        //}
+        //Om input te veranderen in options bvb
     }
 }
