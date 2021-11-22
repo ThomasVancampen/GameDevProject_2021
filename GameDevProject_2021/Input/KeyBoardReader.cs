@@ -9,7 +9,7 @@ namespace GameDevProject_2021.Input
 {
     class KeyBoardReader : IInputReader
     {
-        public Vector2 ReadInput()
+        public Vector2 ReadInput(IMoveable obj)
         {
             KeyboardState state = Keyboard.GetState();
             Vector2 movement = Vector2.Zero;
@@ -23,7 +23,7 @@ namespace GameDevProject_2021.Input
             }
             if (state.IsKeyDown(Keys.Space))
             {
-                movement.Y -= 1;
+                //jump
             }
             return movement;
         }

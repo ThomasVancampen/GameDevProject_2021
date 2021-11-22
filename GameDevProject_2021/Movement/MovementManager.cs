@@ -11,8 +11,9 @@ namespace GameDevProject_2021.Movement
     {
         public void Move(IMoveable obj)//obj niet de perfecte naam
         {
-            Vector2 movement = obj.InputReader.ReadInput();
-            var newPosition = obj.Position + (movement *= obj.Speed);
+            Vector2 movement = obj.InputReader.ReadInput(obj);
+            var newPosition = obj.Position + (movement *= obj.Speed); 
+
 
             if (newPosition.X > obj.Position.X)
             {
@@ -24,9 +25,9 @@ namespace GameDevProject_2021.Movement
             }
 
             if (newPosition.X <= (800 - 30) && newPosition.X >= 0
-                && newPosition.Y <= (480 - 30) && newPosition.Y >= 0)//30 veranderen in variabele normaalgezien animati.sourcerect.width/heigth uitlezen
+            && newPosition.Y <= (480 - 30) && newPosition.Y >= 0)//30 veranderen in variabele normaalgezien animati.sourcerect.width/heigth uitlezen
             {
-                obj.Position = newPosition;
+                    obj.Position = newPosition;
             }
         }
     }

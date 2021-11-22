@@ -7,6 +7,6 @@ namespace GameDevProject_2021.Interfaces
 {
     interface IInputReader
     {
-        Vector2 ReadInput();
+        Vector2 ReadInput(IMoveable obj);
     }
 }

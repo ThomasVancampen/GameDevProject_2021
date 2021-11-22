@@ -43,6 +43,10 @@ namespace GameDevProject_2021
         }
         protected override void LoadContent()
         {
+            _graphics.PreferredBackBufferWidth = GraphicsDevice.Adapter.CurrentDisplayMode.Width;
+            _graphics.PreferredBackBufferHeight = GraphicsDevice.Adapter.CurrentDisplayMode.Height;
+            _graphics.ApplyChanges();//Niet zeker waar dit moet
+
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             texture = Content.Load<Texture2D>("HeroSquirrel");
             blokTexture = new Texture2D(GraphicsDevice, 1, 1);

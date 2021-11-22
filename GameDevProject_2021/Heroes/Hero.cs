@@ -20,9 +20,11 @@ namespace GameDevProject_2021.Heroes
         public SpriteEffects TextureDirection { get { return this.textureDirection; } set { this.textureDirection = value; } }
         private SpriteEffects textureDirection;
         public Vector2 Speed { get; set; }
-        public Vector2 Position { get; set; }
+        public Vector2 Position { get {return position; } set {position = value; } }
+        private Vector2 position;
         public IInputReader InputReader { get; set; }
         public Rectangle CollisionRectangle { get { return this.collisionRectangle; } set {this.collisionRectangle = value; } }
+
         private Rectangle collisionRectangle;
         #endregion
         #region Constructor
@@ -37,14 +39,14 @@ namespace GameDevProject_2021.Heroes
             this.collisionRectangle = new Rectangle((int)Position.X, (int)Position.Y, 30, 30);
             this.textureDirection = 0;
             
-            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(0, 64, 30, 30)));
-            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(32, 64, 30, 30)));
-            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(64, 64, 30, 30)));
-            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(96, 64, 30, 30)));
-            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(128,64, 30, 30)));
-            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(160,64, 30, 30)));
-            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(192, 64, 30, 30)));
-            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(224, 64, 30, 30)));
+            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(0, 65, 32, 30)));//aparte methode voor maken
+            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(32, 65, 32, 30)));
+            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(64, 65, 32, 30)));
+            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(96, 65, 32, 30)));
+            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(128,65, 32, 30)));
+            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(160,65, 32, 30)));
+            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(192, 65, 32, 30)));
+            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(224, 65, 32, 30)));
 
             this.jumpAnimation.AddFrame(new AnimationFrame(new Rectangle(0, 160, 30, 30)));
             this.jumpAnimation.AddFrame(new AnimationFrame(new Rectangle(32, 160, 30, 30)));
@@ -68,7 +70,7 @@ namespace GameDevProject_2021.Heroes
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(this.heroTexture, this.Position, this.jumpAnimation.CurrentFrame.RectangleSource, Color.White,0, Vector2.Zero, 1, this.TextureDirection, 0);//hier kunnen we scalen en flippen
+            spriteBatch.Draw(this.heroTexture, this.Position, this.runAnimation.CurrentFrame.RectangleSource, Color.White,0, Vector2.Zero, 2, this.TextureDirection, 0);//hier kunnen we scalen en flippen
         }
         public void Move()
         {
