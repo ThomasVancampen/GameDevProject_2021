@@ -21,6 +21,10 @@ namespace GameDevProject_2021.Input
             {
                 movement.X += 1;
             }
+            if (state.IsKeyDown(Keys.Space))
+            {
+                movement.Y -= 1;
+            }
             return movement;
         }
     }

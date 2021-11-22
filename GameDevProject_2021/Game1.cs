@@ -44,7 +44,7 @@ namespace GameDevProject_2021
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            texture = Content.Load<Texture2D>("HeroDeer");
+            texture = Content.Load<Texture2D>("HeroSquirrel");
             blokTexture = new Texture2D(GraphicsDevice, 1, 1);
             blokTexture.SetData(new[] { Color.White });
         }

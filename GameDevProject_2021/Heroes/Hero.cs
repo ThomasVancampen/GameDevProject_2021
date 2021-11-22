@@ -30,17 +30,26 @@ namespace GameDevProject_2021.Heroes
         {
             this.heroTexture = texture;
             this.runAnimation = new Animate();
+            this.jumpAnimation = new Animate();
             this.Speed = new Vector2(2, 2);
             this.movementManager = new MovementManager();
             this.InputReader = inputReader;
             this.collisionRectangle = new Rectangle((int)Position.X, (int)Position.Y, 30, 30);
             this.textureDirection = 0;
             
-            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(0, 65, 30, 30)));
-            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(35, 65, 30, 30)));
-            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(65, 65, 30, 30)));
-            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(95, 65, 30, 30)));
-            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(125, 65, 30, 30)));
+            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(0, 64, 30, 30)));
+            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(32, 64, 30, 30)));
+            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(64, 64, 30, 30)));
+            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(96, 64, 30, 30)));
+            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(128,64, 30, 30)));
+            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(160,64, 30, 30)));
+            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(192, 64, 30, 30)));
+            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(224, 64, 30, 30)));
+
+            this.jumpAnimation.AddFrame(new AnimationFrame(new Rectangle(0, 160, 30, 30)));
+            this.jumpAnimation.AddFrame(new AnimationFrame(new Rectangle(32, 160, 30, 30)));
+            this.jumpAnimation.AddFrame(new AnimationFrame(new Rectangle(64, 160, 30, 30)));
+            this.jumpAnimation.AddFrame(new AnimationFrame(new Rectangle(96, 160, 30, 30)));
 
             this.Position = new Vector2(10, 480 - runAnimation.CurrentFrame.RectangleSource.Height);//startpositie
         }
@@ -51,6 +60,7 @@ namespace GameDevProject_2021.Heroes
         {
             Move();
             runAnimation.Update(gameTime);
+            jumpAnimation.Update(gameTime);
 
             collisionRectangle.X = (int)Position.X;
             collisionRectangle.Y = (int)Position.Y;
@@ -58,7 +68,7 @@ namespace GameDevProject_2021.Heroes
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(this.heroTexture, this.Position, this.runAnimation.CurrentFrame.RectangleSource, Color.White,0, Vector2.Zero, 1, this.TextureDirection, 0);//hier kunnen we scalen en flippen
+            spriteBatch.Draw(this.heroTexture, this.Position, this.jumpAnimation.CurrentFrame.RectangleSource, Color.White,0, Vector2.Zero, 1, this.TextureDirection, 0);//hier kunnen we scalen en flippen
         }
         public void Move()
         {
