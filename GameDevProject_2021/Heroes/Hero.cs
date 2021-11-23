@@ -26,6 +26,16 @@ namespace GameDevProject_2021.Heroes
         public Rectangle CollisionRectangle { get { return this.collisionRectangle; } set {this.collisionRectangle = value; } }
 
         private Rectangle collisionRectangle;
+
+
+        public int JumpSpeed { get; set; } = 1;
+        public int JumpHeight { get; set; }
+        public bool Jump { get; set; } = false;
+        public float StartY { get; set; }
+        public int MaxJumpHeight { get; set; } = -14;
+
+
+
         #endregion
         #region Constructor
         public Hero(Texture2D texture, IInputReader inputReader)

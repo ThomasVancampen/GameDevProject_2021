@@ -23,7 +23,7 @@ namespace GameDevProject_2021.Input
             }
             if (state.IsKeyDown(Keys.Space))
             {
-                //jump
+                obj.Jump = true;
             }
             return movement;
         }

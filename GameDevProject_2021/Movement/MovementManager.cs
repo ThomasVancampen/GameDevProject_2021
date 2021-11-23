@@ -9,10 +9,29 @@ namespace GameDevProject_2021.Movement
 {
     class MovementManager
     {
-        public void Move(IMoveable obj)//obj niet de perfecte naam
+        public void Move(IMoveable obj)
         {
             Vector2 movement = obj.InputReader.ReadInput(obj);
-            var newPosition = obj.Position + (movement *= obj.Speed); 
+            var newPosition = obj.Position + (movement *= obj.Speed);
+
+
+            if (obj.Jump)
+            {
+                newPosition.Y += obj.JumpHeight;
+                obj.JumpHeight += obj.JumpSpeed;
+                if (!(obj.StartY >= newPosition.Y))
+                {
+                    obj.Jump = false;
+                }
+            }
+            else
+            {
+                obj.StartY = obj.Position.Y;
+                obj.JumpHeight = obj.MaxJumpHeight;
+            }
+
+
+
 
 
             if (newPosition.X > obj.Position.X)
