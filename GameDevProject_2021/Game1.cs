@@ -48,7 +48,7 @@ namespace GameDevProject_2021
             _graphics.ApplyChanges();//Niet zeker waar dit moet
 
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            texture = Content.Load<Texture2D>("HeroSquirrel");
+            texture = Content.Load<Texture2D>("Squirrel/SquirrelRun");
             blokTexture = new Texture2D(GraphicsDevice, 1, 1);
             blokTexture.SetData(new[] { Color.White });
         }
