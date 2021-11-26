@@ -9,14 +9,13 @@ using System.Text;
 
 namespace GameDevProject_2021.GameObjects.Actors
 {
-    class Hero : Actor, IGameObject, ICollide, IJumpable
+    class Hero : Actor, IGameObject, IJumpable
     {
         #region Var and Prop
 
         private Texture2D heroTexture;
         private Animation runAnimation;
         private Animation jumpAnimation;//voor spring mechanisme
-        private MovementManager movementManager;
 
 
         public int JumpSpeed { get; set; } = 1;
@@ -55,7 +54,7 @@ namespace GameDevProject_2021.GameObjects.Actors
         #endregion
         #region Methods
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             Move();
             runAnimation.Update(gameTime);
@@ -64,7 +63,7 @@ namespace GameDevProject_2021.GameObjects.Actors
             CollisionRectangle = new Rectangle((int)Position.X, (int)Position.Y, 30, 30);//waarde veranderen voor size van collisionbox
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(this.heroTexture, this.Position, this.runAnimation.CurrentFrame.RectangleSource, Color.White,0, Vector2.Zero, 2, this.TextureDirection, 0);//hier kunnen we scalen en flippen
         }
