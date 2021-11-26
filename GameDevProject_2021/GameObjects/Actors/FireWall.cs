@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GameDevProject_2021.Objects
+namespace GameDevProject_2021.GameObjects.Actors
 {
     class FireWall
     {

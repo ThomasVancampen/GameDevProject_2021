@@ -1,6 +1,6 @@
-﻿using GameDevProject_2021.Heroes;
+﻿using GameDevProject_2021.GameObjects.Actors;
 using GameDevProject_2021.Collision;
-using GameDevProject_2021.Input;
+using GameDevProject_2021.Model.Input;
 using GameDevProject_2021.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -48,7 +48,7 @@ namespace GameDevProject_2021
             _graphics.ApplyChanges();//Niet zeker waar dit moet
 
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            texture = Content.Load<Texture2D>("Squirrel/SquirrelRun");
+            texture = Content.Load<Texture2D>("HeroSquirrel");
             blokTexture = new Texture2D(GraphicsDevice, 1, 1);
             blokTexture.SetData(new[] { Color.White });
         }

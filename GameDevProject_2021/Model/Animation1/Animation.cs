@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace GameDevProject_2021.Animation
+namespace GameDevProject_2021.Model.Animation1
 {
-    public class Animate
+    public class Animation
     {
         public AnimationFrame CurrentFrame { get; set; }
 
@@ -16,7 +16,7 @@ namespace GameDevProject_2021.Animation
         private double secondCounter;
         private int fps = 15;//hier gezet in de plaats van in update
 
-        public Animate()
+        public Animation()
         {
             this.frames = new List<AnimationFrame>();
         }

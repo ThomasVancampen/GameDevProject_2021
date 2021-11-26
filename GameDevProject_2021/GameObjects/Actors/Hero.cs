@@ -1,4 +1,4 @@
-﻿using GameDevProject_2021.Animation;
+﻿using GameDevProject_2021.Model.Animation1;
 using GameDevProject_2021.Interfaces;
 using GameDevProject_2021.Movement;
 using Microsoft.Xna.Framework;
@@ -7,25 +7,16 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace GameDevProject_2021.Heroes
+namespace GameDevProject_2021.GameObjects.Actors
 {
-    class Hero : IGameObject, IMoveable, ICollide
+    class Hero : Actor, IGameObject, ICollide, IJumpable
     {
         #region Var and Prop
 
         private Texture2D heroTexture;
-        private Animate runAnimation;
-        private Animate jumpAnimation;//voor spring mechanisme
+        private Animation runAnimation;
+        private Animation jumpAnimation;//voor spring mechanisme
         private MovementManager movementManager;
-        public SpriteEffects TextureDirection { get { return this.textureDirection; } set { this.textureDirection = value; } }
-        private SpriteEffects textureDirection;
-        public Vector2 Speed { get; set; }
-        public Vector2 Position { get {return position; } set {position = value; } }
-        private Vector2 position;
-        public IInputReader InputReader { get; set; }
-        public Rectangle CollisionRectangle { get { return this.collisionRectangle; } set {this.collisionRectangle = value; } }
-
-        private Rectangle collisionRectangle;
 
 
         public int JumpSpeed { get; set; } = 1;
@@ -33,6 +24,7 @@ namespace GameDevProject_2021.Heroes
         public bool Jump { get; set; } = false;
         public float StartY { get; set; }
         public int MaxJumpHeight { get; set; } = -14;
+        public IInputReader InputReader { get; set; }
 
 
 
@@ -41,13 +33,10 @@ namespace GameDevProject_2021.Heroes
         public Hero(Texture2D texture, IInputReader inputReader)
         {
             this.heroTexture = texture;
-            this.runAnimation = new Animate();
-            this.jumpAnimation = new Animate();
-            this.Speed = new Vector2(2, 2);
+            this.runAnimation = new Animation();
+            this.jumpAnimation = new Animation();
             this.movementManager = new MovementManager();
             this.InputReader = inputReader;
-            this.collisionRectangle = new Rectangle((int)Position.X, (int)Position.Y, 30, 30);
-            this.textureDirection = 0;
             
             this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(0, 65, 32, 30)));//aparte methode voor maken
             this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(32, 65, 32, 30)));
@@ -62,8 +51,6 @@ namespace GameDevProject_2021.Heroes
             this.jumpAnimation.AddFrame(new AnimationFrame(new Rectangle(32, 160, 30, 30)));
             this.jumpAnimation.AddFrame(new AnimationFrame(new Rectangle(64, 160, 30, 30)));
             this.jumpAnimation.AddFrame(new AnimationFrame(new Rectangle(96, 160, 30, 30)));
-
-            this.Position = new Vector2(10, 480 - runAnimation.CurrentFrame.RectangleSource.Height);//startpositie
         }
         #endregion
         #region Methods
@@ -74,8 +61,7 @@ namespace GameDevProject_2021.Heroes
             runAnimation.Update(gameTime);
             jumpAnimation.Update(gameTime);
 
-            collisionRectangle.X = (int)Position.X;
-            collisionRectangle.Y = (int)Position.Y;
+            CollisionRectangle = new Rectangle((int)Position.X, (int)Position.Y, 30, 30);//waarde veranderen voor size van collisionbox
         }
 
         public void Draw(SpriteBatch spriteBatch)
