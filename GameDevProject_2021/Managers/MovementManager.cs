@@ -13,24 +13,23 @@ namespace GameDevProject_2021.Movement
         public void Move(Enemy obj)
         {
             obj.Movement = obj.InputReader.ReadInput(obj);
-            var newPosition = obj.Position + (obj.Movement);
-            
+            var futurePosition = obj.Position + obj.Movement;
 
-            if (newPosition.X > obj.Position.X)
+            if (futurePosition.X > obj.Position.X)
             {
                 obj.TextureDirection = SpriteEffects.None;
             }
-            if (newPosition.X<obj.Position.X)
+            if (futurePosition.X < obj.Position.X)
             {
                 obj.TextureDirection = SpriteEffects.FlipHorizontally;
             }
 
-            if (newPosition.X <= (800 - 30) && newPosition.X >= 0
-            && newPosition.Y <= (480 - 30) && newPosition.Y >= 0)//30 veranderen in variabele normaalgezien animati.sourcerect.width/heigth uitlezen
-            {
-                    obj.Position = newPosition;
-                    obj.Movement = Vector2.Zero;
-            }
+            //if (futurePosition.X <= (800 - 30) && futurePosition.X >= 0
+            //&& futurePosition.Y <= (480 - 30) && futurePosition.Y >= 0)//30 veranderen in variabele normaalgezien animati.sourcerect.width/heigth uitlezen
+            //{
+            //        obj.Position = futurePosition;
+            //        obj.Movement = Vector2.Zero;
+            //}
         }
         public void Move(Hero obj)
         {

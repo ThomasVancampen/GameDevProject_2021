@@ -80,12 +80,7 @@ namespace GameDevProject_2021.GameObjects.Actors
                     this.Jump = false;
                 }
             }
-            //if ((this.Position+this.Movement).X <= (800 - 30) && (this.Position + this.Movement).X >= 0
-            //&& (this.Position + this.Movement).Y <= (480 - 30) && (this.Position + this.Movement).Y >= 0)//30 veranderen in variabele normaalgezien animati.sourcerect.width/heigth uitlezen
-            //{
-            //    this.Position += this.Movement;
-            //    this.Movement = Vector2.Zero;
-            //}
+            //Geen border check meer
             this.Position += this.Movement;
             this.Movement = Vector2.Zero;
         }

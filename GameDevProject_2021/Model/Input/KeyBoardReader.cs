@@ -16,11 +16,11 @@ namespace GameDevProject_2021.Model.Input
             Vector2 movement = Vector2.Zero;
             if (state.IsKeyDown(obj.InputKeys.Left))
             {
-                movement.X -= 1;
+                movement.X -= obj.Speed;
             }
             if (state.IsKeyDown(obj.InputKeys.Right))
             {
-                movement.X += 1;
+                movement.X += obj.Speed;
             }
             return movement;
         }
