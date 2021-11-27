@@ -12,7 +12,6 @@ namespace GameDevProject_2021.Interfaces
         public Vector2 Position { get; set; }
         public Vector2 Movement { get; set; }
         public int Speed { get; set; }
-        public SpriteEffects TextureDirection { get; set; }
         public IInputReader InputReader { get; set; }
         public int JumpSpeed { get; set; }
         public int JumpHeight { get; set; }

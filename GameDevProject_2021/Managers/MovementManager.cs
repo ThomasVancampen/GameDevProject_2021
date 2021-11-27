@@ -17,11 +17,11 @@ namespace GameDevProject_2021.Movement
 
             if (futurePosition.X > obj.Position.X)
             {
-                obj.TextureDirection = SpriteEffects.None;
+                obj.AnimationManager.TextureDirection = SpriteEffects.None;
             }
             if (futurePosition.X < obj.Position.X)
             {
-                obj.TextureDirection = SpriteEffects.FlipHorizontally;
+                obj.AnimationManager.TextureDirection = SpriteEffects.FlipHorizontally;
             }
 
             //if (futurePosition.X <= (800 - 30) && futurePosition.X >= 0
@@ -57,11 +57,11 @@ namespace GameDevProject_2021.Movement
 
             if (futurePosition.X > obj.Position.X)
             {
-                obj.TextureDirection = SpriteEffects.None;
+                obj.AnimationManager.TextureDirection = SpriteEffects.None;
             }
             if (futurePosition.X < obj.Position.X)
             {
-                obj.TextureDirection = SpriteEffects.FlipHorizontally;
+                obj.AnimationManager.TextureDirection = SpriteEffects.FlipHorizontally;
             }
             obj.Movement = temp;
         }

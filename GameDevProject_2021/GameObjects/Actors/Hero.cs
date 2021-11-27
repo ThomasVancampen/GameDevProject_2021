@@ -59,13 +59,13 @@ namespace GameDevProject_2021.GameObjects.Actors
             {
                 AnimationManager.Play(Animations["Idle"]);
             }
-            else if (Movement.X != 0)
-            {
-                AnimationManager.Play(Animations["Walk"]);
-            }
             else if (Movement.Y != 0)
             {
                 AnimationManager.Play(Animations["Jump"]);
+            }
+            else if (Movement.X != 0)
+            {
+                AnimationManager.Play(Animations["Walk"]);
             }
             AnimationManager.Update(gameTime);
 
