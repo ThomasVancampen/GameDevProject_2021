@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Diagnostics;
+using GameDevProject_2021.Model;
 
 namespace GameDevProject_2021
 {
@@ -19,8 +20,6 @@ namespace GameDevProject_2021
 
         private Texture2D blokTexture;
         private Rectangle blok;//klasse van maken en hier gewoon texture van maken en in klasse collideRectangle
-
-        private CollisionManager collisionManager;
 
         private Hero deer;
 
@@ -36,7 +35,6 @@ namespace GameDevProject_2021
         #region Methods
         protected override void Initialize()
         {
-            collisionManager = new CollisionManager();
 
             base.Initialize();
             InitializeGameObject(); //hier of in loadcontent zoals in video?
@@ -55,7 +53,9 @@ namespace GameDevProject_2021
 
         private void InitializeGameObject()
         {
-            deer = new Hero(texture, new KeyBoardReader());
+            deer = new Hero(texture, new KeyBoardReader()) { InputKeys = new InputKeys() { Left = Keys.Left, Right = Keys.Right, Up = Keys.Space, Down = Keys.None } };
+            
+            
             blok = new Rectangle(150, 450, 30, 30);
         }
 
@@ -64,11 +64,6 @@ namespace GameDevProject_2021
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            //test collision
-            if (!collisionManager.CollisionCheck(blok, deer.CollisionRectangle))
-            {
-                Debug.WriteLine("aaaaaaa");
-            }
 
             deer.Update(gameTime);
             base.Update(gameTime);

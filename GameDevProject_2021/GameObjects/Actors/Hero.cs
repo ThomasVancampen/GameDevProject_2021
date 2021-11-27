@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using GameDevProject_2021.Model;
 
 namespace GameDevProject_2021.GameObjects.Actors
 {
@@ -16,6 +17,7 @@ namespace GameDevProject_2021.GameObjects.Actors
         private Texture2D heroTexture;
         private Animation runAnimation;
         private Animation jumpAnimation;//voor spring mechanisme
+        public InputKeys InputKeys { get; set; }
 
 
         public int JumpSpeed { get; set; } = 1;

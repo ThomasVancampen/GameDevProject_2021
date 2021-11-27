@@ -9,7 +9,7 @@ using GameDevProject_2021.Movement;
 
 namespace GameDevProject_2021.GameObjects.Actors
 {
-    class Actor : GameObject
+    abstract class Actor : GameObject
     {
         public Vector2 Speed { get; set; }
         protected MovementManager movementManager;

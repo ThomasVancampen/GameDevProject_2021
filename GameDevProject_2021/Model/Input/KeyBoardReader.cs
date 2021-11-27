@@ -14,11 +14,11 @@ namespace GameDevProject_2021.Model.Input
         {
             KeyboardState state = Keyboard.GetState();
             Vector2 movement = Vector2.Zero;
-            if (state.IsKeyDown(Keys.Left))
+            if (state.IsKeyDown(obj.InputKeys.Left))
             {
                 movement.X -= 1;
             }
-            if (state.IsKeyDown(Keys.Right))
+            if (state.IsKeyDown(obj.InputKeys.Right))
             {
                 movement.X += 1;
             }
@@ -28,15 +28,15 @@ namespace GameDevProject_2021.Model.Input
         {
             KeyboardState state = Keyboard.GetState();
             Vector2 movement = Vector2.Zero;
-            if (state.IsKeyDown(Keys.Left))
+            if (state.IsKeyDown(obj.InputKeys.Left))
             {
                 movement.X -= 1;
             }
-            if (state.IsKeyDown(Keys.Right))
+            if (state.IsKeyDown(obj.InputKeys.Right))
             {
                 movement.X += 1;
             }
-            if (state.IsKeyDown(Keys.Space))
+            if (state.IsKeyDown(obj.InputKeys.Up))
             {
                 obj.Jump = true;
             }

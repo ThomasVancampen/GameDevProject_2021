@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using GameDevProject_2021.Model;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -17,5 +18,6 @@ namespace GameDevProject_2021.Interfaces
         public bool Jump { get; set; }
         public float StartY { get; set; }
         public int MaxJumpHeight { get; set; }
+        public InputKeys InputKeys { get; set; }
     }
 }

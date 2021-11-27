@@ -23,7 +23,7 @@ namespace GameDevProject_2021.GameObjects
             this.collisionRectangle = new Rectangle((int)Position.X, (int)Position.Y, 30, 30);
         }
 
-        public virtual void Update(GameTime gameTime)
+        public virtual void Update(GameTime gameTime) // abstract maken om ervoor te zorgen dat alle kinderen moeten implementere. is implicitet hetzelfde als virutal
         {
             throw new NotImplementedException();
         }

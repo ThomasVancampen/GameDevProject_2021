@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using GameDevProject_2021.Model;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -12,5 +13,6 @@ namespace GameDevProject_2021.Interfaces
         public Vector2 Speed { get; set; }
         public SpriteEffects TextureDirection { get; set; }
         public IInputReader InputReader { get; set; }
+        public InputKeys InputKeys { get; set; }
     }
 }
