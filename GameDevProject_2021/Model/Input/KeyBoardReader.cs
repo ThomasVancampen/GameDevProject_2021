@@ -38,10 +38,7 @@ namespace GameDevProject_2021.Model.Input
             }
             if (state.IsKeyDown(obj.InputKeys.Up))
             {
-                if (!obj.Jump)
-                {
-                    obj.Jump = true;
-                }
+                obj.Jump = true;
             }
             return movement;
         }

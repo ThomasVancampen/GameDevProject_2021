@@ -19,6 +19,7 @@ namespace GameDevProject_2021
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private Texture2D heroTexture;
+        private Texture2D groundTexture;
         private Texture2D tempTexture;
 
         private Texture2D blokTexture;

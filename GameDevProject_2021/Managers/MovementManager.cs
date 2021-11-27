@@ -44,7 +44,7 @@ namespace GameDevProject_2021.Movement
                     obj.StartY = obj.Position.Y;
                 temp.Y += obj.JumpHeight;
                 obj.JumpHeight += obj.JumpSpeed;
-                if (!(obj.StartY >= futurePosition.Y))
+                if (((obj.Position + temp).Y >= obj.StartY))
                 {
                     obj.Jump = false;
                     obj.StartY = -1;
