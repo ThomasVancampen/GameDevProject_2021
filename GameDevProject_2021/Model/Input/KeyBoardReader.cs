@@ -10,6 +10,10 @@ namespace GameDevProject_2021.Model.Input
 {
     class KeyBoardReader : IInputReader
     {
+        #region Var and Prop
+        private bool _jumpButtonIsUp;
+        #endregion
+
         #region Methods
         public Vector2 ReadInput(IMoveable obj)
         {
@@ -37,9 +41,14 @@ namespace GameDevProject_2021.Model.Input
             {
                 movement.X += obj.Speed;
             }
-            if (state.IsKeyDown(obj.InputKeys.Up))
+            if (state.IsKeyDown(obj.InputKeys.Up) && !obj.Jump && _jumpButtonIsUp)
             {
+                _jumpButtonIsUp = false;
                 obj.Jump = true;
+            }
+            if (state.IsKeyUp(obj.InputKeys.Up))
+            {
+                _jumpButtonIsUp = true;
             }
             return movement;
         }
