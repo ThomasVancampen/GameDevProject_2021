@@ -9,6 +9,7 @@ using System.Diagnostics;
 using GameDevProject_2021.Model;
 using System.Collections.Generic;
 using GameDevProject_2021.GameObjects;
+using GameDevProject_2021.Model.Animation1;
 
 namespace GameDevProject_2021
 {
@@ -53,16 +54,19 @@ namespace GameDevProject_2021
 
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             heroTexture = Content.Load<Texture2D>("HeroSquirrel");
-            tempTexture = Content.Load<Texture2D>("Groot");
-            blokTexture = new Texture2D(GraphicsDevice, 1, 1);
-            blokTexture.SetData(new[] { Color.White });
         }
 
         private void InitializeGameObject()
         {
+            var heroAnimations = new Dictionary<string, Animation>()
+            {
+                {"Idle", new Animation(Content.Load<Texture2D>("Squirrel/SquirrelIdle"), 6) },
+                {"Walk", new Animation(Content.Load<Texture2D>("Squirrel/SquirrelRun"), 8) },
+                {"Jump", new Animation(Content.Load<Texture2D>("Squirrel/SquirrelJump"), 4) },
+            };
             _gameObjects = new List<GameObject>()
             {
-                new Hero(heroTexture, new KeyBoardReader())
+                new Hero(heroAnimations, new KeyBoardReader())
                 {
                     InputKeys = new InputKeys()
                     {
@@ -71,16 +75,6 @@ namespace GameDevProject_2021
                         Up = Keys.Space,
                         Down = Keys.Down
                     }
-                },
-                new Hero(tempTexture, new KeyBoardReader())
-                {
-                    InputKeys = new InputKeys()
-                    {
-                        Left = Keys.Q,
-                        Right = Keys.D,
-                        Up = Keys.Z,
-                        Down = Keys.Down
-                    },
                 }
             };
         }
@@ -102,11 +96,6 @@ namespace GameDevProject_2021
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             _spriteBatch.Begin();
-
-            
-
-            //tijdelijke blok
-            _spriteBatch.Draw(blokTexture, blok, Color.Red);
             foreach (var go in _gameObjects)
             {
                 go.Draw(_spriteBatch);

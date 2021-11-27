@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,41 +8,20 @@ namespace GameDevProject_2021.Model.Animation1
 {
     public class Animation
     {
-        public AnimationFrame CurrentFrame { get; set; }
+        public int CurrentFrame { get; set; }
 
-        private List<AnimationFrame> frames;
+        public int FrameCount { get; set; }
+        public int CurrentFrameCount { get; set; }
+        public int FrameHeight { get {return Texture.Height; } }
+        public float FrameSpeed { get; set; }
+        public int FrameWidth { get { return Texture.Width / FrameCount; } }
+        public Texture2D Texture { get; set; }
 
-        private int counter;
-
-        private double secondCounter;
-        private int fps = 15;//hier gezet in de plaats van in update
-
-        public Animation()
+        public Animation(Texture2D texture, int frameCount)
         {
-            this.frames = new List<AnimationFrame>();
-        }
-
-        public void AddFrame(AnimationFrame animationFrame)
-        {
-            this.frames.Add(animationFrame);
-            this.CurrentFrame = this.frames[0];
-        }
-
-        public void Update(GameTime gameTime)
-        {
-            this.CurrentFrame = this.frames[this.counter];
-
-            this.secondCounter += gameTime.ElapsedGameTime.TotalSeconds;
-
-            if (this.secondCounter >= 1d / fps)
-            {
-                this.counter++;
-                this.secondCounter = 0;
-            }
-
-
-            if (this.counter >= this.frames.Count)
-                this.counter = 0;
+            this.Texture = texture;
+            this.FrameCount = frameCount;
+            this.FrameSpeed = 0.1f;
         }
     }
 }

@@ -7,16 +7,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using GameDevProject_2021.Model;
+using System.Linq;
 
 namespace GameDevProject_2021.GameObjects.Actors
 {
     class Hero : Actor, IGameObject, IJumpable
     {
         #region Var and Prop
-
-        private Texture2D heroTexture;
-        private Animation runAnimation;
-        private Animation jumpAnimation;//voor spring mechanisme
         public InputKeys InputKeys { get; set; }
 
 
@@ -33,28 +30,22 @@ namespace GameDevProject_2021.GameObjects.Actors
         #region Constructor
         public Hero(Texture2D texture, IInputReader inputReader)
         {
-            this.heroTexture = texture;
-            this.runAnimation = new Animation();
-            this.jumpAnimation = new Animation();
+            this.Texture = texture;
             this.movementManager = new MovementManager();
             this.InputReader = inputReader;
             this.Speed = 4;
             this.StartY = -1;
             this.MaxJumpHeight = -14;
-            
-            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(0, 65, 32, 30)));//aparte methode voor maken
-            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(32, 65, 32, 30)));
-            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(64, 65, 32, 30)));
-            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(96, 65, 32, 30)));
-            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(128,65, 32, 30)));
-            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(160,65, 32, 30)));
-            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(192, 65, 32, 30)));
-            this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(224, 65, 32, 30)));
-
-            this.jumpAnimation.AddFrame(new AnimationFrame(new Rectangle(0, 160, 30, 30)));
-            this.jumpAnimation.AddFrame(new AnimationFrame(new Rectangle(32, 160, 30, 30)));
-            this.jumpAnimation.AddFrame(new AnimationFrame(new Rectangle(64, 160, 30, 30)));
-            this.jumpAnimation.AddFrame(new AnimationFrame(new Rectangle(96, 160, 30, 30)));
+        }
+        public Hero(Dictionary<string, Animation> animations, IInputReader inputReader)
+        {
+            this.Animations = animations;
+            this.AnimationManager = new AnimationManager(Animations.First().Value);
+            this.movementManager = new MovementManager();
+            this.InputReader = inputReader;
+            this.Speed = 4;
+            this.StartY = -1;
+            this.MaxJumpHeight = -14;
         }
         #endregion
         #region Methods
@@ -62,9 +53,21 @@ namespace GameDevProject_2021.GameObjects.Actors
         public override void Update(GameTime gameTime, List<GameObject> gameObjects)
         {
             Move();
-            runAnimation.Update(gameTime);
-            jumpAnimation.Update(gameTime);
             CollisionRectangle = new Rectangle((int)Position.X, (int)Position.Y, 30, 30);//waarde veranderen voor size van collisionbox
+
+            if(Movement.X == 0 && Movement.Y == 0)
+            {
+                AnimationManager.Play(Animations["Idle"]);
+            }
+            else if (Movement.X != 0)
+            {
+                AnimationManager.Play(Animations["Walk"]);
+            }
+            else if (Movement.Y != 0)
+            {
+                AnimationManager.Play(Animations["Jump"]);
+            }
+            AnimationManager.Update(gameTime);
 
             foreach (var go in gameObjects)
             {
@@ -85,10 +88,10 @@ namespace GameDevProject_2021.GameObjects.Actors
             this.Movement = Vector2.Zero;
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            spriteBatch.Draw(this.heroTexture, this.Position, this.runAnimation.CurrentFrame.RectangleSource, Color.White,0, Vector2.Zero, 2, this.TextureDirection, 0);//hier kunnen we scalen en flippen
-        }
+        //public override void Draw(SpriteBatch spriteBatch)
+        //{
+        //    spriteBatch.Draw(this.heroTexture, this.Position, null, Color.White,0, Vector2.Zero, 2, this.TextureDirection, 0);
+        //}
         public void Move()
         {
             movementManager.Move(this);

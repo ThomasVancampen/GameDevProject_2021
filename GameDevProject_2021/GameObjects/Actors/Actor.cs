@@ -13,13 +13,10 @@ namespace GameDevProject_2021.GameObjects.Actors
     {
         public int Speed { get; set; }
         protected MovementManager movementManager;
-        public SpriteEffects TextureDirection { get { return this.textureDirection; } set { this.textureDirection = value; } }
-        private SpriteEffects textureDirection;
 
         public Actor()
         {
             this.Movement = new Vector2(2, 2);
-            this.textureDirection = 0;
         }
     }
 }
