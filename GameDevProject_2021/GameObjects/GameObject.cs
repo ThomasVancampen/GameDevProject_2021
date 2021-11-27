@@ -14,6 +14,7 @@ namespace GameDevProject_2021.GameObjects
         protected CollisionManager collsionManager;
         protected AnimationManager animatieManager;
         public Vector2 Position { get; set; }
+        public Vector2 Movement { get; set; }
         public Animation Animation { get; set; }
         public Rectangle CollisionRectangle { get { return this.collisionRectangle; } set { this.collisionRectangle = value; } }
         private Rectangle collisionRectangle;
@@ -21,6 +22,7 @@ namespace GameDevProject_2021.GameObjects
         {
             this.Position = new Vector2(10, 480 - 32);
             this.collisionRectangle = new Rectangle((int)Position.X, (int)Position.Y, 30, 30);
+            this.Movement = Vector2.Zero;
         }
 
         public virtual void Update(GameTime gameTime) // abstract maken om ervoor te zorgen dat alle kinderen moeten implementere. is implicitet hetzelfde als virutal

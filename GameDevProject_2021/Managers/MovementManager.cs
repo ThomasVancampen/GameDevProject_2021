@@ -10,10 +10,10 @@ namespace GameDevProject_2021.Movement
 {
     class MovementManager
     {
-        public void Move(IMoveable obj)
+        public void Move(Enemy obj)
         {
-            Vector2 movement = obj.InputReader.ReadInput(obj);
-            var newPosition = obj.Position + (movement *= obj.Speed);
+            obj.Movement = obj.InputReader.ReadInput(obj);
+            var newPosition = obj.Position + (obj.Movement *= obj.Speed);
             
 
             if (newPosition.X > obj.Position.X)
@@ -29,12 +29,13 @@ namespace GameDevProject_2021.Movement
             && newPosition.Y <= (480 - 30) && newPosition.Y >= 0)//30 veranderen in variabele normaalgezien animati.sourcerect.width/heigth uitlezen
             {
                     obj.Position = newPosition;
+                    obj.Movement = Vector2.Zero;
             }
         }
-        public void Move(IJumpable obj)
+        public void Move(Hero obj)
         {
-            Vector2 movement = obj.InputReader.ReadInput(obj);
-            var newPosition = obj.Position + (movement *= obj.Speed);
+            obj.Movement = obj.InputReader.ReadInput(obj);
+            var newPosition = obj.Position + (obj.Movement *= obj.Speed);
             if (obj.Jump)
             {
                 newPosition.Y += obj.JumpHeight;
@@ -63,6 +64,7 @@ namespace GameDevProject_2021.Movement
             && newPosition.Y <= (480 - 30) && newPosition.Y >= 0)//30 veranderen in variabele normaalgezien animati.sourcerect.width/heigth uitlezen
             {
                 obj.Position = newPosition;
+                obj.Movement = Vector2.Zero;
             } 
         }
     }

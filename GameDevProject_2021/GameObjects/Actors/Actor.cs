@@ -18,7 +18,7 @@ namespace GameDevProject_2021.GameObjects.Actors
 
         public Actor()
         {
-            this.Speed = new Vector2(2, 2);
+            this.Movement = new Vector2(2, 2);
             this.textureDirection = 0;
         }
     }

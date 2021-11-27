@@ -38,6 +38,7 @@ namespace GameDevProject_2021.GameObjects.Actors
             this.jumpAnimation = new Animation();
             this.movementManager = new MovementManager();
             this.InputReader = inputReader;
+            this.Speed = new Vector2(4, 4);
             
             this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(0, 65, 32, 30)));//aparte methode voor maken
             this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(32, 65, 32, 30)));
