@@ -19,19 +19,12 @@ namespace GameDevProject_2021
 
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private Texture2D heroTexture;
-        private Texture2D groundTexture;
-        private Texture2D tempTexture;
-
-        private Texture2D blokTexture;
-        private Rectangle blok;//klasse van maken en hier gewoon texture van maken en in klasse collideRectangle
-
-        private Hero deer;
 
         private List<GameObject> _gameObjects;
 
         #endregion
-        #region Constructor
+
+        #region Constructors
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -39,6 +32,7 @@ namespace GameDevProject_2021
             IsMouseVisible = true;
         }
         #endregion
+
         #region Methods
         protected override void Initialize()
         {
@@ -53,7 +47,6 @@ namespace GameDevProject_2021
             _graphics.ApplyChanges();//Niet zeker waar dit moet
 
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            heroTexture = Content.Load<Texture2D>("HeroSquirrel");
         }
 
         private void InitializeGameObject()
@@ -96,6 +89,7 @@ namespace GameDevProject_2021
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             _spriteBatch.Begin();
+
             foreach (var go in _gameObjects)
             {
                 go.Draw(_spriteBatch);

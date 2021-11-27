@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GameDevProject_2021.Model.Animation1
 {
-    public class AnimationFrame
+    public class AnimationFrame//Deze klasse mag verwijderd worden
     {
         public Rectangle RectangleSource { get; set; }
 

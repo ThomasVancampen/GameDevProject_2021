@@ -9,6 +9,7 @@ namespace GameDevProject_2021.Collision
 {
     class CollisionManager
     {
+        #region Methods
         public bool CollisionCheck(Rectangle r1, Rectangle r2)
         {
             if (r1.Intersects(r2))
@@ -45,5 +46,6 @@ namespace GameDevProject_2021.Collision
                     obj1.CollisionRectangle.Right > obj2.CollisionRectangle.Left &&
                     obj1.CollisionRectangle.Left < obj2.CollisionRectangle.Right;
         }
+        #endregion
     }
 }

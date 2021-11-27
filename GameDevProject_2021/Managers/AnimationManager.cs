@@ -9,16 +9,23 @@ namespace GameDevProject_2021
 {
     class AnimationManager
     {
+        #region Var and Prop
         private Animation _animation;
         private float _timer;
         public Vector2 Position { get; set; }
-        public SpriteEffects TextureDirection { get { return this.textureDirection; } set { this.textureDirection = value; } }
-        private SpriteEffects textureDirection;
+        public SpriteEffects TextureDirection { get { return this._textureDirection; } set { this._textureDirection = value; } }
+        private SpriteEffects _textureDirection;
+        #endregion
+
+        #region Consturctors
         public AnimationManager(Animation animation)
         {
             _animation = animation;
-            this.textureDirection = 0;
+            this._textureDirection = 0;
         }
+        #endregion
+
+        #region Methods
         public void Play(Animation animation)
         {
             if (_animation == animation)
@@ -50,6 +57,7 @@ namespace GameDevProject_2021
             }
             
         }
+        #endregion
 
     }
 }

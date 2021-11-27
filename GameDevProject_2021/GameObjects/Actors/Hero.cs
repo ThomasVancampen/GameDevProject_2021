@@ -15,23 +15,19 @@ namespace GameDevProject_2021.GameObjects.Actors
     {
         #region Var and Prop
         public InputKeys InputKeys { get; set; }
-
-
         public int JumpSpeed { get; set; } = 1;
         public int JumpHeight { get; set; }
         public bool Jump { get; set; } = false;
         public float StartY { get; set; }
         public int MaxJumpHeight { get; set; }
         public IInputReader InputReader { get; set; }
-
-
-
         #endregion
-        #region Constructor
+
+        #region Constructors
         public Hero(Texture2D texture, IInputReader inputReader)
         {
             this.Texture = texture;
-            this.movementManager = new MovementManager();
+            this._movementManager = new MovementManager();
             this.InputReader = inputReader;
             this.Speed = 4;
             this.StartY = -1;
@@ -41,13 +37,14 @@ namespace GameDevProject_2021.GameObjects.Actors
         {
             this.Animations = animations;
             this.AnimationManager = new AnimationManager(Animations.First().Value);
-            this.movementManager = new MovementManager();
+            this._movementManager = new MovementManager();
             this.InputReader = inputReader;
             this.Speed = 4;
             this.StartY = -1;
             this.MaxJumpHeight = -14;
         }
         #endregion
+
         #region Methods
 
         public override void Update(GameTime gameTime, List<GameObject> gameObjects)
@@ -94,7 +91,7 @@ namespace GameDevProject_2021.GameObjects.Actors
         //}
         public void Move()
         {
-            movementManager.Move(this);
+            _movementManager.Move(this);
         }
         #endregion
     }

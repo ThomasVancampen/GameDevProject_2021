@@ -8,6 +8,7 @@ namespace GameDevProject_2021.Model.Animation1
 {
     public class Animation
     {
+        #region Var and Prop
         public int CurrentFrame { get; set; }
 
         public int FrameCount { get; set; }
@@ -16,6 +17,9 @@ namespace GameDevProject_2021.Model.Animation1
         public float FrameSpeed { get; set; }
         public int FrameWidth { get { return Texture.Width / FrameCount; } }
         public Texture2D Texture { get; set; }
+        #endregion
+
+        #region Constuctors
 
         public Animation(Texture2D texture, int frameCount)
         {
@@ -23,5 +27,6 @@ namespace GameDevProject_2021.Model.Animation1
             this.FrameCount = frameCount;
             this.FrameSpeed = 0.1f;
         }
+        #endregion
     }
 }

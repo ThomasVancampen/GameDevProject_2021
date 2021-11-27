@@ -10,6 +10,7 @@ namespace GameDevProject_2021.Model.Input
 {
     class KeyBoardReader : IInputReader
     {
+        #region Methods
         public Vector2 ReadInput(IMoveable obj)
         {
             KeyboardState state = Keyboard.GetState();
@@ -42,5 +43,6 @@ namespace GameDevProject_2021.Model.Input
             }
             return movement;
         }
+        #endregion
     }
 }

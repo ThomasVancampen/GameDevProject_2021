@@ -10,6 +10,7 @@ namespace GameDevProject_2021.Movement
 {
     class MovementManager
     {
+        #region Methods
         public void Move(Enemy obj)
         {
             obj.Movement = obj.InputReader.ReadInput(obj);
@@ -65,5 +66,6 @@ namespace GameDevProject_2021.Movement
             }
             obj.Movement = temp;
         }
+        #endregion
     }
 }
