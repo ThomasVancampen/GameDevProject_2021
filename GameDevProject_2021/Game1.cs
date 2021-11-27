@@ -7,6 +7,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Diagnostics;
 using GameDevProject_2021.Model;
+using System.Collections.Generic;
+using GameDevProject_2021.GameObjects;
 
 namespace GameDevProject_2021
 {
@@ -16,12 +18,15 @@ namespace GameDevProject_2021
 
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private Texture2D texture;
+        private Texture2D heroTexture;
+        private Texture2D tempTexture;
 
         private Texture2D blokTexture;
         private Rectangle blok;//klasse van maken en hier gewoon texture van maken en in klasse collideRectangle
 
         private Hero deer;
+
+        private List<GameObject> _gameObjects;
 
         #endregion
         #region Constructor
@@ -46,17 +51,37 @@ namespace GameDevProject_2021
             _graphics.ApplyChanges();//Niet zeker waar dit moet
 
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            texture = Content.Load<Texture2D>("HeroSquirrel");
+            heroTexture = Content.Load<Texture2D>("HeroSquirrel");
+            tempTexture = Content.Load<Texture2D>("Groot");
             blokTexture = new Texture2D(GraphicsDevice, 1, 1);
             blokTexture.SetData(new[] { Color.White });
         }
 
         private void InitializeGameObject()
         {
-            deer = new Hero(texture, new KeyBoardReader()) { InputKeys = new InputKeys() { Left = Keys.Left, Right = Keys.Right, Up = Keys.Space, Down = Keys.None } };
-            
-            
-            blok = new Rectangle(150, 450, 30, 30);
+            _gameObjects = new List<GameObject>()
+            {
+                new Hero(heroTexture, new KeyBoardReader())
+                {
+                    InputKeys = new InputKeys()
+                    {
+                        Left = Keys.Left,
+                        Right = Keys.Right,
+                        Up = Keys.Space,
+                        Down = Keys.Down
+                    }
+                },
+                new Hero(tempTexture, new KeyBoardReader())
+                {
+                    InputKeys = new InputKeys()
+                    {
+                        Left = Keys.Q,
+                        Right = Keys.D,
+                        Up = Keys.Z,
+                        Down = Keys.Down
+                    },
+                }
+            };
         }
 
         protected override void Update(GameTime gameTime)
@@ -65,7 +90,10 @@ namespace GameDevProject_2021
                 Exit();
 
 
-            deer.Update(gameTime);
+            foreach (var go in _gameObjects)
+            {
+                go.Update(gameTime, _gameObjects);
+            }
             base.Update(gameTime);
         }
 
@@ -74,11 +102,14 @@ namespace GameDevProject_2021
             GraphicsDevice.Clear(Color.CornflowerBlue);
             _spriteBatch.Begin();
 
-            deer.Draw(_spriteBatch);
+            
 
             //tijdelijke blok
             _spriteBatch.Draw(blokTexture, blok, Color.Red);
-
+            foreach (var go in _gameObjects)
+            {
+                go.Draw(_spriteBatch);
+            }
             _spriteBatch.End();
 
             base.Draw(gameTime);

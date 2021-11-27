@@ -11,7 +11,7 @@ namespace GameDevProject_2021.GameObjects.Actors
 {
     abstract class Actor : GameObject
     {
-        public Vector2 Speed { get; set; }
+        public int Speed { get; set; }
         protected MovementManager movementManager;
         public SpriteEffects TextureDirection { get { return this.textureDirection; } set { this.textureDirection = value; } }
         private SpriteEffects textureDirection;

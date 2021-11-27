@@ -13,7 +13,7 @@ namespace GameDevProject_2021.Movement
         public void Move(Enemy obj)
         {
             obj.Movement = obj.InputReader.ReadInput(obj);
-            var newPosition = obj.Position + (obj.Movement *= obj.Speed);
+            var newPosition = obj.Position + (obj.Movement);
             
 
             if (newPosition.X > obj.Position.X)
@@ -35,14 +35,19 @@ namespace GameDevProject_2021.Movement
         public void Move(Hero obj)
         {
             obj.Movement = obj.InputReader.ReadInput(obj);
-            var newPosition = obj.Position + (obj.Movement *= obj.Speed);
+            var futurePosition = obj.Position + obj.Movement;
+            var temp = obj.Movement;
+
             if (obj.Jump)
             {
-                newPosition.Y += obj.JumpHeight;
+                if (obj.StartY < 0)
+                    obj.StartY = obj.Position.Y;
+                temp.Y += obj.JumpHeight;
                 obj.JumpHeight += obj.JumpSpeed;
-                if (!(obj.StartY >= newPosition.Y))
+                if (!(obj.StartY >= futurePosition.Y))
                 {
                     obj.Jump = false;
+                    obj.StartY = -1;
                 }
             }
             else
@@ -51,21 +56,15 @@ namespace GameDevProject_2021.Movement
                 obj.JumpHeight = obj.MaxJumpHeight;
             }
 
-            if (newPosition.X > obj.Position.X)
+            if (futurePosition.X > obj.Position.X)
             {
                 obj.TextureDirection = SpriteEffects.None;
             }
-            if (newPosition.X < obj.Position.X)
+            if (futurePosition.X < obj.Position.X)
             {
                 obj.TextureDirection = SpriteEffects.FlipHorizontally;
             }
-
-            if (newPosition.X <= (800 - 30) && newPosition.X >= 0
-            && newPosition.Y <= (480 - 30) && newPosition.Y >= 0)//30 veranderen in variabele normaalgezien animati.sourcerect.width/heigth uitlezen
-            {
-                obj.Position = newPosition;
-                obj.Movement = Vector2.Zero;
-            } 
+            obj.Movement = temp;
         }
     }
 }

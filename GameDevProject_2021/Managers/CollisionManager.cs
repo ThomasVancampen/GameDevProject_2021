@@ -20,7 +20,7 @@ namespace GameDevProject_2021.Collision
         public bool CollisionLeft(GameObject obj1, GameObject obj2)
         {
             return obj1.CollisionRectangle.Right + obj1.Movement.X > obj2.CollisionRectangle.Left &&
-                    obj1.CollisionRectangle.Left < obj2.CollisionRectangle .Left && 
+                    obj1.CollisionRectangle.Left < obj2.CollisionRectangle.Left && 
                     obj1.CollisionRectangle.Bottom > obj2.CollisionRectangle.Top &&
                     obj1.CollisionRectangle.Top < obj2.CollisionRectangle.Bottom; 
         }

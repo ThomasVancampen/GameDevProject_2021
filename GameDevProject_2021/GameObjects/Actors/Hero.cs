@@ -24,7 +24,7 @@ namespace GameDevProject_2021.GameObjects.Actors
         public int JumpHeight { get; set; }
         public bool Jump { get; set; } = false;
         public float StartY { get; set; }
-        public int MaxJumpHeight { get; set; } = -14;
+        public int MaxJumpHeight { get; set; }
         public IInputReader InputReader { get; set; }
 
 
@@ -38,7 +38,9 @@ namespace GameDevProject_2021.GameObjects.Actors
             this.jumpAnimation = new Animation();
             this.movementManager = new MovementManager();
             this.InputReader = inputReader;
-            this.Speed = new Vector2(4, 4);
+            this.Speed = 4;
+            this.StartY = -1;
+            this.MaxJumpHeight = -14;
             
             this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(0, 65, 32, 30)));//aparte methode voor maken
             this.runAnimation.AddFrame(new AnimationFrame(new Rectangle(32, 65, 32, 30)));
@@ -57,13 +59,35 @@ namespace GameDevProject_2021.GameObjects.Actors
         #endregion
         #region Methods
 
-        public override void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime, List<GameObject> gameObjects)
         {
             Move();
             runAnimation.Update(gameTime);
             jumpAnimation.Update(gameTime);
-
             CollisionRectangle = new Rectangle((int)Position.X, (int)Position.Y, 30, 30);//waarde veranderen voor size van collisionbox
+
+            foreach (var go in gameObjects)
+            {
+                if ((this.Movement.X > 0 && this.CollisionManager.CollisionLeft(this, go)) ||
+                    (this.Movement.X < 0 && this.CollisionManager.CollisionRight(this, go)))
+                {
+                    this.Movement = new Vector2(0, this.Movement.Y);
+                }
+                if ((this.Movement.Y > 0 && this.CollisionManager.CollisionTop(this, go)) ||
+                    (this.Movement.Y < 0 && this.CollisionManager.CollisionBottom(this, go)))
+                {
+                    this.Movement = new Vector2(this.Movement.X, 0);
+                    this.Jump = false;
+                }
+            }
+            //if ((this.Position+this.Movement).X <= (800 - 30) && (this.Position + this.Movement).X >= 0
+            //&& (this.Position + this.Movement).Y <= (480 - 30) && (this.Position + this.Movement).Y >= 0)//30 veranderen in variabele normaalgezien animati.sourcerect.width/heigth uitlezen
+            //{
+            //    this.Position += this.Movement;
+            //    this.Movement = Vector2.Zero;
+            //}
+            this.Position += this.Movement;
+            this.Movement = Vector2.Zero;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
