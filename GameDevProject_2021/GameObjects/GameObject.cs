@@ -47,7 +47,14 @@ namespace GameDevProject_2021.GameObjects
 
         public virtual void Update(GameTime gameTime, List<GameObject> gameObjects) // abstract maken om ervoor te zorgen dat alle kinderen moeten implementere. is implicitet hetzelfde als virutal
         {
-            throw new NotImplementedException();
+            if (Texture != null)
+            {
+                this.CollisionRectangle = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
+            }
+            else if (AnimationManager != null)
+            {
+                this.CollisionRectangle = new Rectangle((int)Position.X, (int)Position.Y, this.AnimationManager.Animation.FrameWidth, this.AnimationManager.Animation.FrameHeight);
+            }
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)

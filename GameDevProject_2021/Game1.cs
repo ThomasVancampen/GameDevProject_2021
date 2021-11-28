@@ -57,6 +57,7 @@ namespace GameDevProject_2021
                 {"Walk", new Animation(Content.Load<Texture2D>("Squirrel/SquirrelRun"), 8) },
                 {"Jump", new Animation(Content.Load<Texture2D>("Squirrel/SquirrelJump"), 4) },
             };
+            var groundTexture = Content.Load<Texture2D>("Ground/Ground");
             _gameObjects = new List<GameObject>()
             {
                 new Hero(heroAnimations, new KeyBoardReader())
@@ -65,9 +66,23 @@ namespace GameDevProject_2021
                     {
                         Left = Keys.Left,
                         Right = Keys.Right,
-                        Up = Keys.Space,
-                        Down = Keys.Down
+                        Up = Keys.Up,
+                        Down = Keys.None
                     }
+                },
+                new Hero(heroAnimations, new KeyBoardReader())
+                {
+                    InputKeys = new InputKeys()
+                    {
+                        Left = Keys.Q,
+                        Right = Keys.D,
+                        Up = Keys.Z,
+                        Down = Keys.None
+                    },Position = new Vector2(100, 480 - 32)
+                },
+                new StaticObject(groundTexture)
+                {
+                    Position = new Vector2(0, 1000)
                 }
             };
         }

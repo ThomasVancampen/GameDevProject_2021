@@ -49,10 +49,9 @@ namespace GameDevProject_2021.GameObjects.Actors
 
         public override void Update(GameTime gameTime, List<GameObject> gameObjects)
         {
+            base.Update(gameTime, gameObjects);
             Move();
-            CollisionRectangle = new Rectangle((int)Position.X, (int)Position.Y, 30, 30);//waarde veranderen voor size van collisionbox
-
-            if(Movement.X == 0 && Movement.Y == 0)
+            if (Movement.X == 0 && Movement.Y == 0)
             {
                 AnimationManager.Play(Animations["Idle"]);
             }
@@ -80,7 +79,11 @@ namespace GameDevProject_2021.GameObjects.Actors
                     this.Jump = false;
                 }
             }
-            //Geen border check meer
+            //if ((this.Position + this.Movement).Y <= (480 - 30) && (this.Position + this.Movement).Y >= 0)//30 veranderen in variabele normaalgezien animati.sourcerect.width/heigth uitlezen
+            //{
+            //        this.Position += this.Movement;
+            //        this.Movement = Vector2.Zero;
+            //}
             this.Position += this.Movement;
             this.Movement = Vector2.Zero;
         }
