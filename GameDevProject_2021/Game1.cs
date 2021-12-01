@@ -83,7 +83,7 @@ namespace GameDevProject_2021
                 //},
                 new StaticObject(groundTexture)
                 {
-                    Position = new Vector2(200, 800)
+                    Position = new Vector2(200, 900)
                 },
                 new StaticObject(groundTexture2)
                 {
@@ -116,7 +116,7 @@ namespace GameDevProject_2021
                 var blokTexture = new Texture2D(GraphicsDevice, 1, 1);
                 blokTexture.SetData(new[] { Color.Red });
                 
-                _spriteBatch.Draw(blokTexture, go.CollisionRectangle, Color.Red*0.5f);//TODO: remove hitbox
+                //_spriteBatch.Draw(blokTexture, go.CollisionRectangle, Color.Red*0.5f);//TODO: remove hitbox
             }
             _spriteBatch.End();
 

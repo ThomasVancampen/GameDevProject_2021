@@ -85,7 +85,6 @@ namespace GameDevProject_2021.Movement
                 obj.AnimationManager.TextureDirection = SpriteEffects.FlipHorizontally;
             }
 
-
             foreach (var go in gameObjects)
             {
                 if ((obj.Movement.X > 0 && obj.CollisionManager.CollisionLeft(obj, go)) ||
@@ -100,10 +99,22 @@ namespace GameDevProject_2021.Movement
                     obj.HasJumped=false;
                     obj.FallHeight = 0;
                 }
-                if (!obj.CollisionManager.CollisionBottom(obj, go))
+                if (!obj.CollisionManager.CollisionBottom(obj, go)&&!obj.Jump)
                 {
                     obj.HasJumped = true;
                 }
+            }
+            if (obj.Movement.X == 0 && obj.Movement.Y == 0)
+            {
+                obj.AnimationManager.Play(obj.Animations["Idle"]);
+            }
+            else if (obj.Movement.Y != 0)
+            {
+                obj.AnimationManager.Play(obj.Animations["Jump"]);
+            }
+            else if (obj.Movement.X != 0)
+            {
+                obj.AnimationManager.Play(obj.Animations["Walk"]);
             }
             obj.Position += obj.Movement;
             obj.Movement = Vector2.Zero;

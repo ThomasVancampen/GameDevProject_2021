@@ -52,7 +52,7 @@ namespace GameDevProject_2021.GameObjects
             }
             else if (AnimationManager != null)
             {
-                this.CollisionRectangle = new Rectangle((int)Position.X + AnimationManager.Animation.FrameWidth-19, (int)Position.Y+AnimationManager.Animation.FrameHeight-4, 32, 32);//TODO: waarde Moeten nog worden veranderd
+                this.CollisionRectangle = new Rectangle((int)Position.X + AnimationManager.Animation.FrameWidth-19, (int)Position.Y+AnimationManager.Animation.FrameHeight, 32, 32);//TODO: waarde Moeten nog worden veranderd
             }
         }
 

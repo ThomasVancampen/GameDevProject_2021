@@ -58,18 +58,6 @@ namespace GameDevProject_2021.GameObjects.Actors
             base.Update(gameTime, gameObjects);
             Move(gameObjects);
             
-            if (Movement.X == 0 && Movement.Y == 0)
-            {
-                AnimationManager.Play(Animations["Idle"]);
-            }
-            else if (Movement.Y != 0)
-            {
-                AnimationManager.Play(Animations["Jump"]);
-            }
-            else if (Movement.X != 0)
-            {
-                AnimationManager.Play(Animations["Walk"]);
-            }
             AnimationManager.Update(gameTime);
 
             //if ((this.Position + this.Movement).Y <= (480 - 30) && (this.Position + this.Movement).Y >= 0)//30 veranderen in variabele normaalgezien animati.sourcerect.width/heigth uitlezen
