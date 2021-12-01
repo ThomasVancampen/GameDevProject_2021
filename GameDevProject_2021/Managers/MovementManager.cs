@@ -1,5 +1,6 @@
 ﻿using GameDevProject_2021.Interfaces;
-using GameDevProject_2021.GameObjects.Actors;
+using GameDevProject_2021.GameObjects.Actors.Enemies;
+using GameDevProject_2021.GameObjects.Actors.Heroes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;

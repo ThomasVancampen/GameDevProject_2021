@@ -9,7 +9,7 @@ using System.Text;
 using GameDevProject_2021.Model;
 using System.Linq;
 
-namespace GameDevProject_2021.GameObjects.Actors
+namespace GameDevProject_2021.GameObjects.Actors.Heroes
 {
     class Hero : Actor, IGameObject, IJumpable
     {
