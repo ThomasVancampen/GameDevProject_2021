@@ -57,7 +57,8 @@ namespace GameDevProject_2021
                 {"Walk", new Animation(Content.Load<Texture2D>("Squirrel/SquirrelRun"), 8) },
                 {"Jump", new Animation(Content.Load<Texture2D>("Squirrel/SquirrelJump"), 4) },
             };
-            var groundTexture = Content.Load<Texture2D>("Ground/Ground");
+            var groundTexture = Content.Load<Texture2D>("Ground/Block");
+            var groundTexture2 = Content.Load<Texture2D>("Ground/GroundSprite (1)");
             _gameObjects = new List<GameObject>()
             {
                 new Hero(heroAnimations, new KeyBoardReader())
@@ -70,17 +71,21 @@ namespace GameDevProject_2021
                         Down = Keys.None
                     }
                 },
-                new Hero(heroAnimations, new KeyBoardReader())
-                {
-                    InputKeys = new InputKeys()
-                    {
-                        Left = Keys.Q,
-                        Right = Keys.D,
-                        Up = Keys.Z,
-                        Down = Keys.None
-                    },Position = new Vector2(100, 480 - 32)
-                },
+                //new Hero(heroAnimations, new KeyBoardReader())
+                //{
+                //    InputKeys = new InputKeys()
+                //    {
+                //        Left = Keys.Q,
+                //        Right = Keys.D,
+                //        Up = Keys.Z,
+                //        Down = Keys.None
+                //    }
+                //},
                 new StaticObject(groundTexture)
+                {
+                    Position = new Vector2(200, 800)
+                },
+                new StaticObject(groundTexture2)
                 {
                     Position = new Vector2(0, 1000)
                 }
@@ -108,6 +113,10 @@ namespace GameDevProject_2021
             foreach (var go in _gameObjects)
             {
                 go.Draw(_spriteBatch);
+                var blokTexture = new Texture2D(GraphicsDevice, 1, 1);
+                blokTexture.SetData(new[] { Color.Red });
+                
+                _spriteBatch.Draw(blokTexture, go.CollisionRectangle, Color.Red*0.5f);//TODO: remove hitbox
             }
             _spriteBatch.End();
 

@@ -36,8 +36,7 @@ namespace GameDevProject_2021.GameObjects
         #region Constructors
         public GameObject()
         {
-            this.Position = new Vector2(10, 480 - 32);
-            this._collisionRectangle = new Rectangle((int)Position.X, (int)Position.Y, 30, 30);
+            this.Position = new Vector2(10, 300);
             this.Movement = Vector2.Zero;
             this.CollisionManager = new CollisionManager();
         }
@@ -53,7 +52,7 @@ namespace GameDevProject_2021.GameObjects
             }
             else if (AnimationManager != null)
             {
-                this.CollisionRectangle = new Rectangle((int)Position.X, (int)Position.Y, this.AnimationManager.Animation.FrameWidth, this.AnimationManager.Animation.FrameHeight);
+                this.CollisionRectangle = new Rectangle((int)Position.X + AnimationManager.Animation.FrameWidth-19, (int)Position.Y+AnimationManager.Animation.FrameHeight-4, 32, 32);//TODO: waarde Moeten nog worden veranderd
             }
         }
 

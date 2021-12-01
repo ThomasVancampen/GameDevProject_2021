@@ -15,12 +15,14 @@ namespace GameDevProject_2021.GameObjects.Actors
     {
         #region Var and Prop
         public InputKeys InputKeys { get; set; }
-        public int JumpSpeed { get; set; } = 1;
+        public int JumpSpeed { get; set; }
         public int JumpHeight { get; set; }
         public bool Jump { get; set; } = false;
+        public bool HasJumped { get; set; }
         public float StartY { get; set; }
         public int MaxJumpHeight { get; set; }
         public IInputReader InputReader { get; set; }
+        public int FallHeight { get; set; } = 0;
         #endregion
 
         #region Constructors
@@ -32,6 +34,8 @@ namespace GameDevProject_2021.GameObjects.Actors
             this.Speed = 4;
             this.StartY = -1;
             this.MaxJumpHeight = -14;
+            this.JumpSpeed = 1;
+            this.HasJumped = true;
         }
         public Hero(Dictionary<string, Animation> animations, IInputReader inputReader)
         {
@@ -42,6 +46,8 @@ namespace GameDevProject_2021.GameObjects.Actors
             this.Speed = 4;
             this.StartY = -1;
             this.MaxJumpHeight = -14;
+            this.JumpSpeed = 1;
+            this.HasJumped = true;
         }
         #endregion
 
@@ -50,7 +56,8 @@ namespace GameDevProject_2021.GameObjects.Actors
         public override void Update(GameTime gameTime, List<GameObject> gameObjects)
         {
             base.Update(gameTime, gameObjects);
-            Move();
+            Move(gameObjects);
+            
             if (Movement.X == 0 && Movement.Y == 0)
             {
                 AnimationManager.Play(Animations["Idle"]);
@@ -65,36 +72,16 @@ namespace GameDevProject_2021.GameObjects.Actors
             }
             AnimationManager.Update(gameTime);
 
-            foreach (var go in gameObjects)
-            {
-                if ((this.Movement.X > 0 && this.CollisionManager.CollisionLeft(this, go)) ||
-                    (this.Movement.X < 0 && this.CollisionManager.CollisionRight(this, go)))
-                {
-                    this.Movement = new Vector2(0, this.Movement.Y);
-                }
-                if ((this.Movement.Y > 0 && this.CollisionManager.CollisionTop(this, go)) ||
-                    (this.Movement.Y < 0 && this.CollisionManager.CollisionBottom(this, go)))
-                {
-                    this.Movement = new Vector2(this.Movement.X, 0);
-                    this.Jump = false;
-                }
-            }
             //if ((this.Position + this.Movement).Y <= (480 - 30) && (this.Position + this.Movement).Y >= 0)//30 veranderen in variabele normaalgezien animati.sourcerect.width/heigth uitlezen
             //{
             //        this.Position += this.Movement;
             //        this.Movement = Vector2.Zero;
             //}
-            this.Position += this.Movement;
-            this.Movement = Vector2.Zero;
         }
 
-        //public override void Draw(SpriteBatch spriteBatch)
-        //{
-        //    spriteBatch.Draw(this.heroTexture, this.Position, null, Color.White,0, Vector2.Zero, 2, this.TextureDirection, 0);
-        //}
-        public void Move()
+        public void Move(List<GameObject> gameObjects)
         {
-            _movementManager.Move(this);
+            _movementManager.Move(this, gameObjects);
         }
         #endregion
     }

@@ -15,6 +15,7 @@ namespace GameDevProject_2021.Interfaces
         public IInputReader InputReader { get; set; }
         public int JumpSpeed { get; set; }
         public int JumpHeight { get; set; }
+        public bool HasJumped { get; set; }
         public bool Jump { get; set; }
         public float StartY { get; set; }
         public int MaxJumpHeight { get; set; }
