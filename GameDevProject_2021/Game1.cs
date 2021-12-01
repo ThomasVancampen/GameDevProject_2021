@@ -42,9 +42,9 @@ namespace GameDevProject_2021
         }
         protected override void LoadContent()
         {
-            _graphics.PreferredBackBufferWidth = GraphicsDevice.Adapter.CurrentDisplayMode.Width;
-            _graphics.PreferredBackBufferHeight = GraphicsDevice.Adapter.CurrentDisplayMode.Height;
-            _graphics.ApplyChanges();//Niet zeker waar dit moet
+            //_graphics.PreferredBackBufferWidth = GraphicsDevice.Adapter.CurrentDisplayMode.Width;
+            //_graphics.PreferredBackBufferHeight = GraphicsDevice.Adapter.CurrentDisplayMode.Height;
+            //_graphics.ApplyChanges();Niet zeker waar dit moet
 
             _spriteBatch = new SpriteBatch(GraphicsDevice);
         }
@@ -69,25 +69,27 @@ namespace GameDevProject_2021
                         Right = Keys.Right,
                         Up = Keys.Up,
                         Down = Keys.None
-                    }
+                    },
+                    Position = new Vector2(0, 0)
                 },
-                //new Hero(heroAnimations, new KeyBoardReader())
-                //{
-                //    InputKeys = new InputKeys()
-                //    {
-                //        Left = Keys.Q,
-                //        Right = Keys.D,
-                //        Up = Keys.Z,
-                //        Down = Keys.None
-                //    }
-                //},
+                new Hero(heroAnimations, new KeyBoardReader())
+                {
+                    InputKeys = new InputKeys()
+                    {
+                        Left = Keys.Q,
+                        Right = Keys.D,
+                        Up = Keys.Z,
+                        Down = Keys.None
+                    },
+                    Position = new Vector2(0, 0)
+                },
                 new StaticObject(groundTexture)
                 {
-                    Position = new Vector2(200, 900)
+                    Position = new Vector2(200, 290)
                 },
                 new StaticObject(groundTexture2)
                 {
-                    Position = new Vector2(0, 1000)
+                    Position = new Vector2(0, 420)
                 }
             };
         }
@@ -113,9 +115,9 @@ namespace GameDevProject_2021
             foreach (var go in _gameObjects)
             {
                 go.Draw(_spriteBatch);
-                var blokTexture = new Texture2D(GraphicsDevice, 1, 1);
-                blokTexture.SetData(new[] { Color.Red });
-                
+                //var blokTexture = new Texture2D(GraphicsDevice, 1, 1);
+                //blokTexture.SetData(new[] { Color.Red });
+
                 //_spriteBatch.Draw(blokTexture, go.CollisionRectangle, Color.Red*0.5f);//TODO: remove hitbox
             }
             _spriteBatch.End();
@@ -123,18 +125,5 @@ namespace GameDevProject_2021
             base.Draw(gameTime);
         }
         #endregion
-
-
-
-
-
-
-
-
-        //public void ChangeInput(IInputReader inputReader)
-        //{
-        //    inputReader = inputReader;
-        //}
-        //Om input te veranderen in options bvb
     }
 }

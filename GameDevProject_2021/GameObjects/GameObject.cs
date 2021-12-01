@@ -36,7 +36,6 @@ namespace GameDevProject_2021.GameObjects
         #region Constructors
         public GameObject()
         {
-            this.Position = new Vector2(10, 300);
             this.Movement = Vector2.Zero;
             this.CollisionManager = new CollisionManager();
         }
