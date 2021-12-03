@@ -23,6 +23,7 @@ namespace GameDevProject_2021.GameObjects.StaticObjects
         {
             base.Update(gameTime, gameObjects);
             AnimationManager.Play(Animations["Idle"]);
+            AnimationManager.Update(gameTime);
         }
     }
 }

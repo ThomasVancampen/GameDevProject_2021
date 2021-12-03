@@ -60,10 +60,10 @@ namespace GameDevProject_2021
             };
             var groundTexture = Content.Load<Texture2D>("Ground/Block");
             var groundTexture2 = Content.Load<Texture2D>("Ground/GroundSprite (1)");
-            //var flameAnimations = new Dictionary<string, Animation>()
-            //{
-            //    {"Idle", new Animation(Content.Load<Texture2D>("newFlame"), 4) }
-            //};
+            var flameAnimations = new Dictionary<string, Animation>()
+            {
+                {"Idle", new Animation(Content.Load<Texture2D>("newFlame"), 4) }
+            };
             _gameObjects = new List<GameObject>()
             {
                 new Hero(heroAnimations, new KeyBoardReader())
@@ -88,10 +88,10 @@ namespace GameDevProject_2021
                     },
                     Position = new Vector2(0, 0)
                 },
-                //new Trapp(flameAnimations)
-                //{
-                //    Position = new Vector2(200, 340)
-                //},
+                new Trapp(flameAnimations)
+                {
+                    Position = new Vector2(200, 340)
+                },
                 new StaticObject(groundTexture)
                 {
                     Position = new Vector2(300, 290)
