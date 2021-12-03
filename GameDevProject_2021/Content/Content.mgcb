@@ -13,7 +13,7 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin C:/Users/simon/Downloads/newFlame.png
+#begin FireWall/FireWallRaw.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -23,19 +23,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:C:/Users/simon/Downloads/newFlame.png;newFlame.png
-
-#begin Campfire.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campfire.png
+/build:FireWall/FireWallRaw.png
 
 #begin Ground/Block.png
 /importer:TextureImporter
@@ -60,6 +48,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Ground/GroundSprite (1).png
+
+#begin ShootingEnemy/BulletSeed.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:ShootingEnemy/BulletSeed.png
+
+#begin ShootingEnemy/Hunter.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:ShootingEnemy/Hunter.png
 
 #begin Squirrel/SquirrelDead.png
 /importer:TextureImporter
@@ -108,4 +120,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Squirrel/SquirrelRun.png
+
+#begin Trapp/newFlame.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Trapp/newFlame.png
 

@@ -62,7 +62,7 @@ namespace GameDevProject_2021
             var groundTexture2 = Content.Load<Texture2D>("Ground/GroundSprite (1)");
             var flameAnimations = new Dictionary<string, Animation>()
             {
-                {"Idle", new Animation(Content.Load<Texture2D>("newFlame"), 4) }
+                {"Idle", new Animation(Content.Load<Texture2D>("Trapp/NewFlame"), 4) }
             };
             _gameObjects = new List<GameObject>()
             {
