@@ -10,7 +10,7 @@ using GameDevProject_2021.Model;
 using System.Collections.Generic;
 using GameDevProject_2021.GameObjects;
 using GameDevProject_2021.Model.Animation1;
-using GameDevProject_2021.GameObjects.StaticObjects;
+using GameDevProject_2021.GameObjects.StaticObjects.StaticEnemy;
 
 namespace GameDevProject_2021
 {

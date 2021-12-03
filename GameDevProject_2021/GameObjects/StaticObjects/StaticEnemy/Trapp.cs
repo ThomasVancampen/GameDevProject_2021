@@ -6,18 +6,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace GameDevProject_2021.GameObjects.StaticObjects
+namespace GameDevProject_2021.GameObjects.StaticObjects.StaticEnemy
 {
-    class Trapp : GameObject
+    class Trapp : StaticObject
     {
-        public Trapp(Texture2D texture)
+        public Trapp(Texture2D texture) : base(texture)
         {
-            this.Texture = texture;
+           
         }
-        public Trapp(Dictionary<string, Animation> animations)
+        public Trapp(Dictionary<string, Animation> animations) : base(animations)
         {
-            this.Animations = animations;
-            this.AnimationManager = new AnimationManager(Animations.First().Value);
         }
         public override void Update(GameTime gameTime, List<GameObject> gameObjects)
         {

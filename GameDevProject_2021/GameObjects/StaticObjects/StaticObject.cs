@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace GameDevProject_2021.GameObjects
@@ -17,6 +18,7 @@ namespace GameDevProject_2021.GameObjects
         public StaticObject(Dictionary<string, Animation> animations)
         {
             this.Animations = animations;
+            this.AnimationManager = new AnimationManager(Animations.First().Value);
         }
     }
 }
