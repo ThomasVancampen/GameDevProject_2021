@@ -1,0 +1,53 @@
+﻿using GameDevProject_2021.Interfaces;
+using GameDevProject_2021.Model.Animation1;
+using GameDevProject_2021.Movement;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace GameDevProject_2021.GameObjects.Actors.Heroes
+{
+    class Temp : Hero
+    {
+        public Temp(Texture2D texture, IInputReader inputReader) : base(texture, inputReader)
+        {
+            
+            this.Speed = 4;
+            this.MaxJumpHeight = -14;
+            this.Gravity = 1;
+            this.IsFalling = true;
+            this.FallHeight = 0;
+        }
+        public Temp(Dictionary<string, Animation> animations, IInputReader inputReader) : base(animations, inputReader)
+        {
+            this.Speed = 4;
+            this.MaxJumpHeight = -14;
+            this.Gravity = 1;
+            this.IsFalling = true;
+            this.FallHeight = 0;
+        }
+        public override void Update(GameTime gameTime, List<GameObject> gameObjects)
+        {
+            base.Update(gameTime, gameObjects);
+
+            if (Movement.X == 0 && Movement.Y == 0)//TODO: checks moeten beter eventueel jump er in vermengen
+            {
+                AnimationManager.Play(Animations["Idle"]);
+            }
+            else if (Movement.Y != 0)
+            {
+                AnimationManager.Play(Animations["Jump"]);
+            }
+            else if (Movement.X != 0)
+            {
+                AnimationManager.Play(Animations["Walk"]);
+            }
+            Position += Movement;
+            Movement = Vector2.Zero;
+            AnimationManager.Update(gameTime);
+        }
+    }
+}

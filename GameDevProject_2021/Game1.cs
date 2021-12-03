@@ -66,7 +66,7 @@ namespace GameDevProject_2021
             };
             _gameObjects = new List<GameObject>()
             {
-                new Hero(heroAnimations, new KeyBoardReader())
+                new Temp(heroAnimations, new KeyBoardReader())
                 {
                     InputKeys = new InputKeys()
                     {
@@ -77,7 +77,7 @@ namespace GameDevProject_2021
                     },
                     Position = new Vector2(0, 0)
                 },
-                new Hero(heroAnimations, new KeyBoardReader())
+                new Temp(heroAnimations, new KeyBoardReader())
                 {
                     InputKeys = new InputKeys()
                     {

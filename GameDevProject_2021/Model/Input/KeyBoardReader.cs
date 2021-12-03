@@ -1,4 +1,5 @@
 ﻿using GameDevProject_2021.GameObjects.Actors;
+using GameDevProject_2021.GameObjects.Actors.Heroes;
 using GameDevProject_2021.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
@@ -29,7 +30,7 @@ namespace GameDevProject_2021.Model.Input
             }
             return movement;
         }
-        public Vector2 ReadInput(IJumpable obj)
+        public Vector2 ReadInput(Hero obj)
         {
             KeyboardState state = Keyboard.GetState();
             Vector2 movement = Vector2.Zero;

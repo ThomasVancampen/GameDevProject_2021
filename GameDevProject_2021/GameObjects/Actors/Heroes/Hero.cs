@@ -30,11 +30,6 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
             this.Texture = texture;
             this._movementManager = new MovementManager();
             this.InputReader = inputReader;
-            this.Speed = 4;
-            this.MaxJumpHeight = -14;
-            this.Gravity = 1;
-            this.IsFalling = true;
-            this.FallHeight = 0;
         }
         public Hero(Dictionary<string, Animation> animations, IInputReader inputReader)
         {
@@ -42,11 +37,6 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
             this.AnimationManager = new AnimationManager(Animations.First().Value);
             this._movementManager = new MovementManager();
             this.InputReader = inputReader;
-            this.Speed = 4;
-            this.MaxJumpHeight = -14;
-            this.Gravity = 1;
-            this.IsFalling = true;
-            this.FallHeight = 0;
         }
         #endregion
 
@@ -55,23 +45,7 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
         public override void Update(GameTime gameTime, List<GameObject> gameObjects)
         {
             base.Update(gameTime, gameObjects);
-            Move(gameObjects);
-
-            if (Movement.X == 0 && Movement.Y == 0)//TODO: checks moeten beter eventueel jump er in vermengen
-            {
-                AnimationManager.Play(Animations["Idle"]);
-            }
-            else if (Movement.Y != 0)
-            {
-                AnimationManager.Play(Animations["Jump"]);
-            }
-            else if (Movement.X != 0)
-            {
-                AnimationManager.Play(Animations["Walk"]);
-            }
-            Position += Movement;
-            Movement = Vector2.Zero;
-            AnimationManager.Update(gameTime);
+            this.Move(gameObjects);
         }
 
         public void Move(List<GameObject> gameObjects)
