@@ -15,7 +15,7 @@ namespace GameDevProject_2021.Movement
         #region Methods
         public void Move(Enemy obj, List<GameObject> gameObjects)
         {
-            obj.Movement = obj.InputReader.ReadInput(obj);
+            //obj.Movement = obj.InputReader.ReadInput(obj);
             var futurePosition = obj.Position + obj.Movement;
 
             if (futurePosition.X > obj.Position.X)
@@ -26,13 +26,12 @@ namespace GameDevProject_2021.Movement
             {
                 obj.AnimationManager.TextureDirection = SpriteEffects.FlipHorizontally;
             }
-
-            //if (futurePosition.X <= (800 - 30) && futurePosition.X >= 0
-            //&& futurePosition.Y <= (480 - 30) && futurePosition.Y >= 0)//30 veranderen in variabele normaalgezien animati.sourcerect.width/heigth uitlezen
-            //{
-            //        obj.Position = futurePosition;
-            //        obj.Movement = Vector2.Zero;
-            //}
+        }
+        public void Move(FireWall obj, List<GameObject> gameObjects)
+        {
+            obj.Movement += new Vector2(obj.Speed, 0);
+            obj.Position += obj.Movement;
+            obj.Movement = Vector2.Zero;
         }
         public void Move(Hero obj, List<GameObject> gameObjects)
         {

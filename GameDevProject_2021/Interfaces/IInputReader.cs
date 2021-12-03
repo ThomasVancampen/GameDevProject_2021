@@ -10,7 +10,7 @@ namespace GameDevProject_2021.Interfaces
     interface IInputReader
     {
         Vector2 ReadInput(Hero obj);
-        Vector2 ReadInput(IMoveable obj);
+        //Vector2 ReadInput(IMoveable obj);
 
     }
 }

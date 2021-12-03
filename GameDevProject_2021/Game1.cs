@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using GameDevProject_2021.GameObjects;
 using GameDevProject_2021.Model.Animation1;
 using GameDevProject_2021.GameObjects.StaticObjects.StaticEnemy;
+using GameDevProject_2021.GameObjects.Actors.Enemies;
 
 namespace GameDevProject_2021
 {
@@ -60,6 +61,7 @@ namespace GameDevProject_2021
             };
             var groundTexture = Content.Load<Texture2D>("Ground/Block");
             var groundTexture2 = Content.Load<Texture2D>("Ground/GroundSprite (1)");
+            var walltexture = Content.Load<Texture2D>("FireWall/FireWallRaw");
             var flameAnimations = new Dictionary<string, Animation>()
             {
                 {"Idle", new Animation(Content.Load<Texture2D>("Trapp/NewFlame"), 4) }
@@ -87,6 +89,10 @@ namespace GameDevProject_2021
                         Down = Keys.None
                     },
                     Position = new Vector2(0, 0)
+                },
+                new FireWall(walltexture)
+                {
+                    Position = new Vector2(-290, -400)
                 },
                 new Trapp(flameAnimations)
                 {

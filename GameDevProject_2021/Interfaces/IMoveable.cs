@@ -11,6 +11,6 @@ namespace GameDevProject_2021.Interfaces
     {
         public Vector2 Position { get; set; }
         public Vector2 Movement { get; set; }
-        public int Speed { get; set; }
+        public float Speed { get; set; }
     }
 }

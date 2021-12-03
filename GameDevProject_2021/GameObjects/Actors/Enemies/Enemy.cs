@@ -11,6 +11,8 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
     class Enemy : Actor, IMoveable
     {
         #region Var and Prop
+
+
         
         #endregion
     }
