@@ -40,41 +40,26 @@ namespace GameDevProject_2021.Movement
             var futurePosition = obj.Position + obj.Movement;
             var temp = obj.Movement;
 
-            if (obj.Jump && !obj.HasJumped)
+            if (obj.Jump && !obj.IsFalling)
             {
                 temp.Y += obj.JumpHeight;
-                obj.JumpHeight += obj.JumpSpeed;
+                obj.JumpHeight += obj.Gravity;
                 
-                //if (((obj.Position + temp).Y >= 800))
-                //{
-                //    obj.Jump = false;
-                //    //obj.StartY = -1;
-                //}
                 if (obj.JumpHeight>=0)
                 {
                     obj.Jump = false;
-                    obj.HasJumped = true;
+                    obj.IsFalling = true;
                 }
             }
             else
             {
-                //obj.StartY = obj.Position.Y;
                 obj.JumpHeight = obj.MaxJumpHeight;
             }
-            if (obj.HasJumped)
+            if (obj.IsFalling)
             {
                     temp.Y += obj.FallHeight;
-                    obj.FallHeight += obj.JumpSpeed;
+                    obj.FallHeight += obj.Gravity;
             }
-            //if (((obj.CollisionRectangle.Bottom) >= 800))
-            //{
-            //    obj.HasJumped = false;
-            //    obj.FallHeight = 0;
-            //}
-            //if (!obj.HasJumped)
-            //{
-            //    temp.Y = 0;
-            //}
             obj.Movement = temp;
 
             if (futurePosition.X > obj.Position.X)
@@ -97,17 +82,17 @@ namespace GameDevProject_2021.Movement
                     (obj.Movement.Y < 0 && obj.CollisionManager.CollisionBottom(obj, go)))
                 {
                     obj.Movement = new Vector2(obj.Movement.X, 0);
-                    obj.HasJumped=false;
+                    obj.IsFalling=false;
                     obj.FallHeight = 0;
                 }
 
                 if (!obj.CollisionManager.CollisionBottom(obj, go)&&!obj.Jump)
                 {
-                    obj.HasJumped = true;
+                    obj.IsFalling = true;
                 }
                 if (obj.CollisionManager.CollisionTop(obj, go))
                 {
-                    obj.HasJumped = true;
+                    obj.IsFalling = true;
                 }
             }
         }

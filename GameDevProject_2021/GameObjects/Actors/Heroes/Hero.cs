@@ -11,18 +11,17 @@ using System.Linq;
 
 namespace GameDevProject_2021.GameObjects.Actors.Heroes
 {
-    class Hero : Actor, IGameObject, IJumpable
+    class Hero : Actor, IGameObject, IJumpable, IControllable
     {
         #region Var and Prop
         public InputKeys InputKeys { get; set; }
-        public int JumpSpeed { get; set; }
+        public int Gravity { get; set; }
         public int JumpHeight { get; set; }
         public bool Jump { get; set; } = false;
-        public bool HasJumped { get; set; }
-        public float StartY { get; set; }
+        public bool IsFalling { get; set; }
         public int MaxJumpHeight { get; set; }
         public IInputReader InputReader { get; set; }
-        public int FallHeight { get; set; } = 0;
+        public int FallHeight { get; set; }
         #endregion
 
         #region Constructors
@@ -32,10 +31,10 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
             this._movementManager = new MovementManager();
             this.InputReader = inputReader;
             this.Speed = 4;
-            this.StartY = -1;
             this.MaxJumpHeight = -14;
-            this.JumpSpeed = 1;
-            this.HasJumped = true;
+            this.Gravity = 1;
+            this.IsFalling = true;
+            this.FallHeight = 0;
         }
         public Hero(Dictionary<string, Animation> animations, IInputReader inputReader)
         {
@@ -44,10 +43,10 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
             this._movementManager = new MovementManager();
             this.InputReader = inputReader;
             this.Speed = 4;
-            this.StartY = -1;
             this.MaxJumpHeight = -14;
-            this.JumpSpeed = 1;
-            this.HasJumped = true;
+            this.Gravity = 1;
+            this.IsFalling = true;
+            this.FallHeight = 0;
         }
         #endregion
 
@@ -58,7 +57,7 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
             base.Update(gameTime, gameObjects);
             Move(gameObjects);
 
-            if (Movement.X == 0 && Movement.Y == 0)//TODO: checks moeten beter
+            if (Movement.X == 0 && Movement.Y == 0)//TODO: checks moeten beter eventueel jump er in vermengen
             {
                 AnimationManager.Play(Animations["Idle"]);
             }
@@ -73,12 +72,6 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
             Position += Movement;
             Movement = Vector2.Zero;
             AnimationManager.Update(gameTime);
-
-            //if ((this.Position + this.Movement).Y <= (480 - 30) && (this.Position + this.Movement).Y >= 0)//30 veranderen in variabele normaalgezien animati.sourcerect.width/heigth uitlezen
-            //{
-            //        this.Position += this.Movement;
-            //        this.Movement = Vector2.Zero;
-            //}
         }
 
         public void Move(List<GameObject> gameObjects)

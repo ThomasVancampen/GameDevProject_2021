@@ -12,13 +12,10 @@ namespace GameDevProject_2021.Interfaces
         public Vector2 Position { get; set; }
         public Vector2 Movement { get; set; }
         public int Speed { get; set; }
-        public IInputReader InputReader { get; set; }
-        public int JumpSpeed { get; set; }
+        public int Gravity { get; set; }
         public int JumpHeight { get; set; }
-        public bool HasJumped { get; set; }
+        public bool IsFalling { get; set; }
         public bool Jump { get; set; }
-        public float StartY { get; set; }
         public int MaxJumpHeight { get; set; }
-        public InputKeys InputKeys { get; set; }
     }
 }
