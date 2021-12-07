@@ -22,6 +22,7 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
         public int MaxJumpHeight { get; set; }
         public IInputReader InputReader { get; set; }
         public int FallHeight { get; set; }
+        public int Lives { get; set; }
         #endregion
 
         #region Constructors

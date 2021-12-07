@@ -90,10 +90,10 @@ namespace GameDevProject_2021
                     },
                     Position = new Vector2(0, 0)
                 },
-                new FireWall(walltexture)
-                {
-                    Position = new Vector2(-290, -400)
-                },
+                //new FireWall(walltexture)
+                //{
+                //    Position = new Vector2(-290, -400)
+                //},
                 new Trapp(flameAnimations)
                 {
                     Position = new Vector2(200, 340)

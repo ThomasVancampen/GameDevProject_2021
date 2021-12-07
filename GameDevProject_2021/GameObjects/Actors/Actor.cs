@@ -14,10 +14,14 @@ namespace GameDevProject_2021.GameObjects.Actors
         #region Var and Prop
         public float Speed { get; set; }
         protected MovementManager _movementManager;
+        public bool IsAlive { get; set; }
         #endregion
 
         #region Constructors
-        
+        public Actor()
+        {
+            IsAlive = true;
+        }
         #endregion
     }
 }

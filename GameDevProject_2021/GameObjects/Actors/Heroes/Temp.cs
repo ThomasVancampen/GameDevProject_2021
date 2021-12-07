@@ -20,6 +20,7 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
             this.Gravity = 1;
             this.IsFalling = true;
             this.FallHeight = 0;
+            this.Lives = 3;
         }
         public Temp(Dictionary<string, Animation> animations, IInputReader inputReader) : base(animations, inputReader)
         {
@@ -28,6 +29,7 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
             this.Gravity = 1;
             this.IsFalling = true;
             this.FallHeight = 0;
+            this.Lives = 3;
         }
         public override void Update(GameTime gameTime, List<GameObject> gameObjects)
         {
