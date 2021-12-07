@@ -20,7 +20,6 @@ namespace GameDevProject_2021.States
         }
         public override void LoadContent()
         {
-            //hier beeindigd
             _buttonTexture = _contentManager.Load<Texture2D>("Buttons/Button");
             _backgroundTexture = _contentManager.Load<Texture2D>("Background/Background");
             _buttons = new List<Button>()
@@ -42,7 +41,6 @@ namespace GameDevProject_2021.States
         {
             _game.changeState(new GameState(_game, _contentManager)
             {
-
             });
         }
         public void Button_Quit_Clicked(object sender, EventArgs args)
@@ -59,15 +57,11 @@ namespace GameDevProject_2021.States
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
-            //spriteBatch.Begin();
-
             spriteBatch.Draw(_backgroundTexture, new Vector2(0, 0), Color.White);
             foreach (var button in _buttons)
             {
                 button.Draw(spriteBatch);
             }
-
-            //spriteBatch.End();
         }
     }
 }
