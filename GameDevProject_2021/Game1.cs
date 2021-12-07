@@ -54,7 +54,7 @@ namespace GameDevProject_2021
 
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            _currentState = new SpriteBatch(GraphicsDevice);
+            //_currentState = new SpriteBatch(GraphicsDevice);
 
             _currentState.LoadContent();
             _nextState = null;
