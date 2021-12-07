@@ -7,7 +7,7 @@ using System.Text;
 
 namespace GameDevProject_2021.States
 {
-    abstract class State
+    public abstract class State
     {
         protected Game1 _game;
         protected ContentManager _contentManager;

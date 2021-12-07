@@ -37,6 +37,18 @@
 /processorParam:TextureFormat=Color
 /build:Background/Background.png
 
+#begin Buttons/Button.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Buttons/Button.png
+
 #begin FireWall/FireWallRaw.png
 /importer:TextureImporter
 /processor:TextureProcessor

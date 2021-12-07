@@ -146,7 +146,7 @@ namespace GameDevProject_2021
             base.Update(gameTime);
         }
 
-        private void changeState(State state)//nieuw
+        public void changeState(State state)//nieuw
         {
             _nextState = state;
         }
