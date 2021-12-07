@@ -26,7 +26,7 @@ namespace GameDevProject_2021
         public static int ScreenWidth = 1080;
         public static int ScreenHeight = 480;
 
-        private List<GameObject> _gameObjects;
+        //private List<GameObject> _gameObjects;
 
         private State _currentState;
         private State _nextState;
@@ -122,8 +122,8 @@ namespace GameDevProject_2021
 
         protected override void Update(GameTime gameTime)
         {
-            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-            //    Exit();
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+                Exit();
 
 
 
@@ -141,7 +141,7 @@ namespace GameDevProject_2021
             //{
             //    go.Update(gameTime, _gameObjects);
             //}
-            //base.Update(gameTime);
+            base.Update(gameTime);
         }
 
         public void changeState(State state)//nieuw

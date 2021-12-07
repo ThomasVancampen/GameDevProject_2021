@@ -27,19 +27,24 @@ namespace GameDevProject_2021.States
             {
                 new Button(_buttonTexture)
                 {
-                    Position = new Vector2(1080/2, 200),
+                    Position = new Vector2(1080/2, 100),
                     Click = new EventHandler(Button_Quit_Clicked)
+                },
+                new Button(_buttonTexture)
+                {
+                    Position = new Vector2(1080/2, 300),
+                    Click = new EventHandler(Button_Play_Clicked)
                 }
             };
         }
 
-        //public void Button_Play_Clicked(object sender, EventArgs args)
-        //{
-        //    _game.changeState(new GameState(_game, _contentManager)
-        //    {
+        public void Button_Play_Clicked(object sender, EventArgs args)
+        {
+            _game.changeState(new GameState(_game, _contentManager)
+            {
 
-        //    });
-        //}
+            });
+        }
         public void Button_Quit_Clicked(object sender, EventArgs args)
         {
             _game.Exit();
