@@ -26,8 +26,6 @@ namespace GameDevProject_2021
         public static int ScreenWidth = 1080;
         public static int ScreenHeight = 480;
 
-        //private List<GameObject> _gameObjects;
-
         private State _currentState;
         private State _nextState;
 
@@ -51,7 +49,6 @@ namespace GameDevProject_2021
             _graphics.ApplyChanges();
 
             base.Initialize();
-            //InitializeGameObject();
         }
         protected override void LoadContent()
         {
@@ -61,65 +58,6 @@ namespace GameDevProject_2021
             _currentState.LoadContent();
             _nextState = null;
         }
-
-        //private void InitializeGameObject()
-        //{
-        //    var heroAnimations = new Dictionary<string, Animation>()
-        //    {
-        //        {"Idle", new Animation(Content.Load<Texture2D>("Squirrel/SquirrelIdle"), 6) },
-        //        {"Walk", new Animation(Content.Load<Texture2D>("Squirrel/SquirrelRun"), 8) },
-        //        {"Jump", new Animation(Content.Load<Texture2D>("Squirrel/SquirrelJump"), 4) },
-        //    };
-        //    var groundTexture = Content.Load<Texture2D>("Ground/Block");
-        //    var groundTexture2 = Content.Load<Texture2D>("Ground/GroundSprite (1)");
-        //    var walltexture = Content.Load<Texture2D>("FireWall/FireWallRaw");
-        //    var flameAnimations = new Dictionary<string, Animation>()
-        //    {
-        //        {"Idle", new Animation(Content.Load<Texture2D>("Trapp/NewFlame"), 4) }
-        //    };
-        //    _gameObjects = new List<GameObject>()
-        //    {
-        //        new Temp(heroAnimations, new KeyBoardReader())
-        //        {
-        //            InputKeys = new InputKeys()
-        //            {
-        //                Left = Keys.Left,
-        //                Right = Keys.Right,
-        //                Up = Keys.Up,
-        //                Down = Keys.None
-        //            },
-        //            Position = new Vector2(0, 0)
-        //        },
-        //        new Temp(heroAnimations, new KeyBoardReader())
-        //        {
-        //            InputKeys = new InputKeys()
-        //            {
-        //                Left = Keys.Q,
-        //                Right = Keys.D,
-        //                Up = Keys.Z,
-        //                Down = Keys.None
-        //            },
-        //            Position = new Vector2(0, 0)
-        //        },
-        //        new FireWall(walltexture)
-        //        {
-        //            Position = new Vector2(-290, -400)
-        //        },
-        //        new Trapp(flameAnimations)
-        //        {
-        //            Position = new Vector2(200, 340)
-        //        },
-        //        new StaticObject(groundTexture)
-        //        {
-        //            Position = new Vector2(300, 290)
-        //        },
-        //        new StaticObject(groundTexture2)
-        //        {
-        //            Position = new Vector2(0, 420)
-        //        }
-        //    };
-        //}
-
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
@@ -128,23 +66,17 @@ namespace GameDevProject_2021
 
 
 
-            if (_nextState != null)//nieuw
+            if (_nextState != null)
             {
                 _currentState = _nextState;
                 _currentState.LoadContent();
                 _nextState = null;
             }
             _currentState.Update(gameTime);
-
-
-            //foreach (var go in _gameObjects)
-            //{
-            //    go.Update(gameTime, _gameObjects);
-            //}
             base.Update(gameTime);
         }
 
-        public void changeState(State state)//nieuw
+        public void changeState(State state)
         {
             _nextState = state;
         }
@@ -155,10 +87,6 @@ namespace GameDevProject_2021
             _spriteBatch.Begin();
 
             _currentState.Draw(_spriteBatch);
-            //foreach (var go in _gameObjects)
-            //{
-            //    go.Draw(_spriteBatch);
-            //}
             _spriteBatch.End();
 
             base.Draw(gameTime);
