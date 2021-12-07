@@ -12,6 +12,7 @@ using GameDevProject_2021.GameObjects;
 using GameDevProject_2021.Model.Animation1;
 using GameDevProject_2021.GameObjects.StaticObjects.StaticEnemy;
 using GameDevProject_2021.GameObjects.Actors.Enemies;
+using GameDevProject_2021.States;
 
 namespace GameDevProject_2021
 {
@@ -23,6 +24,9 @@ namespace GameDevProject_2021
         private SpriteBatch _spriteBatch;
 
         private List<GameObject> _gameObjects;
+
+        private State _currentState;
+        private State _nextState;
 
         #endregion
 
@@ -49,6 +53,11 @@ namespace GameDevProject_2021
             //_graphics.ApplyChanges();Niet zeker waar dit moet
 
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            _currentState = new SpriteBatch(GraphicsDevice);
+
+            _currentState.LoadContent();
+            _nextState = null;
         }
 
         private void InitializeGameObject()
@@ -90,10 +99,10 @@ namespace GameDevProject_2021
                     },
                     Position = new Vector2(0, 0)
                 },
-                //new FireWall(walltexture)
-                //{
-                //    Position = new Vector2(-290, -400)
-                //},
+                new FireWall(walltexture)
+                {
+                    Position = new Vector2(-290, -400)
+                },
                 new Trapp(flameAnimations)
                 {
                     Position = new Vector2(200, 340)
@@ -115,6 +124,21 @@ namespace GameDevProject_2021
                 Exit();
 
 
+
+
+            if (_nextState != null)//nieuw
+            {
+                _currentState = _nextState;
+                _currentState.LoadContent();
+                _nextState = null;
+            }
+            _currentState.Update(gameTime);
+
+
+
+
+
+
             foreach (var go in _gameObjects)
             {
                 go.Update(gameTime, _gameObjects);
@@ -122,18 +146,20 @@ namespace GameDevProject_2021
             base.Update(gameTime);
         }
 
+        private void changeState(State state)//nieuw
+        {
+            _nextState = state;
+        }
+
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             _spriteBatch.Begin();
 
+            _currentState.Draw(_spriteBatch);
             foreach (var go in _gameObjects)
             {
                 go.Draw(_spriteBatch);
-                //var blokTexture = new Texture2D(GraphicsDevice, 1, 1);
-                //blokTexture.SetData(new[] { Color.Red });
-
-                //_spriteBatch.Draw(blokTexture, go.CollisionRectangle, Color.Red*0.5f);//TODO: remove hitbox
             }
             _spriteBatch.End();
 
