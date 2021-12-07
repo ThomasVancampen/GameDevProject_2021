@@ -23,6 +23,9 @@ namespace GameDevProject_2021
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+        public static int ScreenWidth = 1080;
+        public static int ScreenHeight = 480;
+
         private List<GameObject> _gameObjects;
 
         private State _currentState;
@@ -35,93 +38,92 @@ namespace GameDevProject_2021
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            IsMouseVisible = true;
+            IsMouseVisible = true; // hier of in initialize
         }
         #endregion
 
         #region Methods
         protected override void Initialize()
         {
+            _graphics.PreferredBackBufferWidth = ScreenWidth;
+            _graphics.PreferredBackBufferHeight = ScreenHeight;
+            _graphics.IsFullScreen = false;
+            _graphics.ApplyChanges();
 
             base.Initialize();
-            InitializeGameObject(); //hier of in loadcontent zoals in video?
+            //InitializeGameObject();
         }
         protected override void LoadContent()
         {
-            //_graphics.PreferredBackBufferWidth = GraphicsDevice.Adapter.CurrentDisplayMode.Width;
-            //_graphics.PreferredBackBufferHeight = GraphicsDevice.Adapter.CurrentDisplayMode.Height;
-            //_graphics.ApplyChanges();Niet zeker waar dit moet
-
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            //_currentState = new SpriteBatch(GraphicsDevice);
-
+            _currentState = new MenuState(this,Content);
             _currentState.LoadContent();
             _nextState = null;
         }
 
-        private void InitializeGameObject()
-        {
-            var heroAnimations = new Dictionary<string, Animation>()
-            {
-                {"Idle", new Animation(Content.Load<Texture2D>("Squirrel/SquirrelIdle"), 6) },
-                {"Walk", new Animation(Content.Load<Texture2D>("Squirrel/SquirrelRun"), 8) },
-                {"Jump", new Animation(Content.Load<Texture2D>("Squirrel/SquirrelJump"), 4) },
-            };
-            var groundTexture = Content.Load<Texture2D>("Ground/Block");
-            var groundTexture2 = Content.Load<Texture2D>("Ground/GroundSprite (1)");
-            var walltexture = Content.Load<Texture2D>("FireWall/FireWallRaw");
-            var flameAnimations = new Dictionary<string, Animation>()
-            {
-                {"Idle", new Animation(Content.Load<Texture2D>("Trapp/NewFlame"), 4) }
-            };
-            _gameObjects = new List<GameObject>()
-            {
-                new Temp(heroAnimations, new KeyBoardReader())
-                {
-                    InputKeys = new InputKeys()
-                    {
-                        Left = Keys.Left,
-                        Right = Keys.Right,
-                        Up = Keys.Up,
-                        Down = Keys.None
-                    },
-                    Position = new Vector2(0, 0)
-                },
-                new Temp(heroAnimations, new KeyBoardReader())
-                {
-                    InputKeys = new InputKeys()
-                    {
-                        Left = Keys.Q,
-                        Right = Keys.D,
-                        Up = Keys.Z,
-                        Down = Keys.None
-                    },
-                    Position = new Vector2(0, 0)
-                },
-                new FireWall(walltexture)
-                {
-                    Position = new Vector2(-290, -400)
-                },
-                new Trapp(flameAnimations)
-                {
-                    Position = new Vector2(200, 340)
-                },
-                new StaticObject(groundTexture)
-                {
-                    Position = new Vector2(300, 290)
-                },
-                new StaticObject(groundTexture2)
-                {
-                    Position = new Vector2(0, 420)
-                }
-            };
-        }
+        //private void InitializeGameObject()
+        //{
+        //    var heroAnimations = new Dictionary<string, Animation>()
+        //    {
+        //        {"Idle", new Animation(Content.Load<Texture2D>("Squirrel/SquirrelIdle"), 6) },
+        //        {"Walk", new Animation(Content.Load<Texture2D>("Squirrel/SquirrelRun"), 8) },
+        //        {"Jump", new Animation(Content.Load<Texture2D>("Squirrel/SquirrelJump"), 4) },
+        //    };
+        //    var groundTexture = Content.Load<Texture2D>("Ground/Block");
+        //    var groundTexture2 = Content.Load<Texture2D>("Ground/GroundSprite (1)");
+        //    var walltexture = Content.Load<Texture2D>("FireWall/FireWallRaw");
+        //    var flameAnimations = new Dictionary<string, Animation>()
+        //    {
+        //        {"Idle", new Animation(Content.Load<Texture2D>("Trapp/NewFlame"), 4) }
+        //    };
+        //    _gameObjects = new List<GameObject>()
+        //    {
+        //        new Temp(heroAnimations, new KeyBoardReader())
+        //        {
+        //            InputKeys = new InputKeys()
+        //            {
+        //                Left = Keys.Left,
+        //                Right = Keys.Right,
+        //                Up = Keys.Up,
+        //                Down = Keys.None
+        //            },
+        //            Position = new Vector2(0, 0)
+        //        },
+        //        new Temp(heroAnimations, new KeyBoardReader())
+        //        {
+        //            InputKeys = new InputKeys()
+        //            {
+        //                Left = Keys.Q,
+        //                Right = Keys.D,
+        //                Up = Keys.Z,
+        //                Down = Keys.None
+        //            },
+        //            Position = new Vector2(0, 0)
+        //        },
+        //        new FireWall(walltexture)
+        //        {
+        //            Position = new Vector2(-290, -400)
+        //        },
+        //        new Trapp(flameAnimations)
+        //        {
+        //            Position = new Vector2(200, 340)
+        //        },
+        //        new StaticObject(groundTexture)
+        //        {
+        //            Position = new Vector2(300, 290)
+        //        },
+        //        new StaticObject(groundTexture2)
+        //        {
+        //            Position = new Vector2(0, 420)
+        //        }
+        //    };
+        //}
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            //    Exit();
 
 
 
@@ -135,15 +137,11 @@ namespace GameDevProject_2021
             _currentState.Update(gameTime);
 
 
-
-
-
-
-            foreach (var go in _gameObjects)
-            {
-                go.Update(gameTime, _gameObjects);
-            }
-            base.Update(gameTime);
+            //foreach (var go in _gameObjects)
+            //{
+            //    go.Update(gameTime, _gameObjects);
+            //}
+            //base.Update(gameTime);
         }
 
         public void changeState(State state)//nieuw
@@ -157,10 +155,10 @@ namespace GameDevProject_2021
             _spriteBatch.Begin();
 
             _currentState.Draw(_spriteBatch);
-            foreach (var go in _gameObjects)
-            {
-                go.Draw(_spriteBatch);
-            }
+            //foreach (var go in _gameObjects)
+            //{
+            //    go.Draw(_spriteBatch);
+            //}
             _spriteBatch.End();
 
             base.Draw(gameTime);

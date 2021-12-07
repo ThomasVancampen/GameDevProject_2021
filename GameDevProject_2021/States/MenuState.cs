@@ -54,7 +54,7 @@ namespace GameDevProject_2021.States
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin();
+            //spriteBatch.Begin();
 
             spriteBatch.Draw(_backgroundTexture, new Vector2(0, 0), Color.White);
             foreach (var button in _buttons)
@@ -62,7 +62,7 @@ namespace GameDevProject_2021.States
                 button.Draw(spriteBatch);
             }
 
-            spriteBatch.End();
+            //spriteBatch.End();
         }
     }
 }
