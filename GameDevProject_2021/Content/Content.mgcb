@@ -109,7 +109,7 @@
 /processorParam:TextureFormat=Color
 /build:ShootingEnemy/BulletSeed.png
 
-#begin ShootingEnemy/Hunter.png
+#begin ShootingEnemy/HunterDead.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -119,7 +119,31 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:ShootingEnemy/Hunter.png
+/build:ShootingEnemy/HunterDead.png
+
+#begin ShootingEnemy/HunterRun.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:ShootingEnemy/HunterRun.png
+
+#begin ShootingEnemy/HunterShoot.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:ShootingEnemy/HunterShoot.png
 
 #begin Squirrel/SquirrelDead.png
 /importer:TextureImporter
@@ -169,7 +193,7 @@
 /processorParam:TextureFormat=Color
 /build:Squirrel/SquirrelRun.png
 
-#begin Trapp/newFlame.png
+#begin Trapp/Campfire.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -179,5 +203,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Trapp/newFlame.png
+/build:Trapp/Campfire.png
 
