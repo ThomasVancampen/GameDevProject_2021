@@ -37,13 +37,15 @@ namespace GameDevProject_2021.States
             var hunterAnimations = new Dictionary<string, Animation>()
             {
 
+                {"Run", new Animation(_contentManager.Load<Texture2D>("ShootingEnemy/HunterRun"), 8) },
                 {"Dead", new Animation(_contentManager.Load<Texture2D>("ShootingEnemy/HunterDead"), 5) },
                 {"Shoot", new Animation(_contentManager.Load<Texture2D>("ShootingEnemy/HunterShoot"), 7) },
-                 {"Run", new Animation(_contentManager.Load<Texture2D>("ShootingEnemy/HunterRun"), 7) },
+                
                 
             };
             var groundTexture = _contentManager.Load<Texture2D>("Ground/Block");
             var groundTexture2 = _contentManager.Load<Texture2D>("Ground/GroundSprite (1)");
+            var groundTexture3 = _contentManager.Load<Texture2D>("Ground/GroundSprite (1)");
             //var walltexture = _contentManager.Load<Texture2D>("FireWall/FireWallRaw");
             //var flameAnimations = new Dictionary<string, Animation>()
             //{
@@ -76,7 +78,7 @@ namespace GameDevProject_2021.States
 
                 new ShootingEnemy(hunterAnimations)
                 {
-                    Position = new Vector2(250,290)
+                    Position = new Vector2(298,355)
                 },
                 //new FireWall(walltexture)
                 //{
@@ -93,6 +95,10 @@ namespace GameDevProject_2021.States
                 new StaticObject(groundTexture2)
                 {
                     Position = new Vector2(0, 420)
+                },
+                new StaticObject(groundTexture2)
+                {
+                    Position = new Vector2(330, 420)
                 }
             };
         }

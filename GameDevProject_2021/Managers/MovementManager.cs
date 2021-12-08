@@ -13,20 +13,20 @@ namespace GameDevProject_2021.Movement
     class MovementManager
     {
         #region Methods
-        public void Move(Enemy obj, List<GameObject> gameObjects)
-        {
-            //obj.Movement = obj.InputReader.ReadInput(obj);
-            var futurePosition = obj.Position + obj.Movement;
+        //public void Move(Enemy obj, List<GameObject> gameObjects)
+        //{
+        //    //obj.Movement = obj.InputReader.ReadInput(obj);
+        //    var futurePosition = obj.Position + obj.Movement;
 
-            if (futurePosition.X > obj.Position.X)
-            {
-                obj.AnimationManager.TextureDirection = SpriteEffects.None;
-            }
-            if (futurePosition.X < obj.Position.X)
-            {
-                obj.AnimationManager.TextureDirection = SpriteEffects.FlipHorizontally;
-            }
-        }
+        //    if (futurePosition.X > obj.Position.X)
+        //    {
+        //        obj.AnimationManager.TextureDirection = SpriteEffects.None;
+        //    }
+        //    if (futurePosition.X < obj.Position.X)
+        //    {
+        //        obj.AnimationManager.TextureDirection = SpriteEffects.FlipHorizontally;
+        //    }
+        //}
         public void Move(FireWall obj, List<GameObject> gameObjects)
         {
             obj.Movement += new Vector2(obj.Speed, 0);
@@ -37,9 +37,19 @@ namespace GameDevProject_2021.Movement
         public void Move(ShootingEnemy obj, List<GameObject> gameObjects)
         {
             obj.Movement += new Vector2(obj.Speed, 0);
-            obj.Position += obj.Movement;
+            
             var futurePosition = obj.Position + obj.Movement;
-            obj.Movement = Vector2.Zero;
+            
+
+            if ((obj.RunDistanceCounter >=0 || obj.RunDistanceCounter <= obj.RunDistance)&& !obj.IsShooting)
+            {
+                obj.Movement += new Vector2(obj.Speed, 0);
+                obj.RunDistanceCounter -= obj.Speed;
+                if (obj.RunDistanceCounter>=obj.RunDistance|| obj.RunDistanceCounter <= 0)
+                { 
+                    obj.Speed *= -1;
+                }
+            }
 
             if (futurePosition.X > obj.Position.X)
             {
@@ -49,6 +59,7 @@ namespace GameDevProject_2021.Movement
             {
                 obj.AnimationManager.TextureDirection = SpriteEffects.FlipHorizontally;
             }
+           
         }
 
         public void Move(Hero obj, List<GameObject> gameObjects)
