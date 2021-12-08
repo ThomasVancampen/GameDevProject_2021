@@ -18,6 +18,7 @@ namespace GameDevProject_2021.States
     class GameState : State
     {
         private List<GameObject> _gameObjects;
+        private Texture2D _backgroundTexture;
         public GameState(Game1 game, ContentManager contentManager) : base(game, contentManager)
         {
 
@@ -46,11 +47,12 @@ namespace GameDevProject_2021.States
             var groundTexture = _contentManager.Load<Texture2D>("Ground/Block");
             var groundTexture2 = _contentManager.Load<Texture2D>("Ground/GroundSprite (1)");
             var groundTexture3 = _contentManager.Load<Texture2D>("Ground/GroundSprite (1)");
-            //var walltexture = _contentManager.Load<Texture2D>("FireWall/FireWallRaw");
-            //var flameAnimations = new Dictionary<string, Animation>()
-            //{
-            //    {"Idle", new Animation(_contentManager.Load<Texture2D>("Trapp/NewFlame"), 4) }
-            //};
+            var walltexture = _contentManager.Load<Texture2D>("FireWall/FireWallRaw");
+            _backgroundTexture = _contentManager.Load<Texture2D>("Background/GameBackground");
+            var flameAnimations = new Dictionary<string, Animation>()
+            {
+                {"Idle", new Animation(_contentManager.Load<Texture2D>("Trapp/Campfire"), 4) }
+            };
             _gameObjects = new List<GameObject>()
             {
                 new Temp(heroAnimations, new KeyBoardReader())
@@ -80,14 +82,15 @@ namespace GameDevProject_2021.States
                 {
                     Position = new Vector2(298,355)
                 },
-                //new FireWall(walltexture)
-                //{
-                //    Position = new Vector2(-290, -400)
-                //},
-                //new Trapp(flameAnimations)
-                //{
-                //    Position = new Vector2(200, 340)
-                //},
+                new Trapp(flameAnimations)
+                {
+                    Position = new Vector2(200, 360)
+                },
+                new FireWall(walltexture)
+                {
+                    Position = new Vector2(-290, -400)
+                },
+                
                 //new StaticObject(groundTexture)
                 //{
                 //    Position = new Vector2(300, 290)
@@ -104,6 +107,7 @@ namespace GameDevProject_2021.States
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
+            spriteBatch.Draw(_backgroundTexture, new Vector2(0, 0), Color.White);
             foreach (var go in _gameObjects)
             {
                 go.Draw(spriteBatch);

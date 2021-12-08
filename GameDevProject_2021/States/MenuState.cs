@@ -21,7 +21,7 @@ namespace GameDevProject_2021.States
         public override void LoadContent()
         {
             _buttonTexture = _contentManager.Load<Texture2D>("Buttons/Button");
-            _backgroundTexture = _contentManager.Load<Texture2D>("Background/Background");
+            _backgroundTexture = _contentManager.Load<Texture2D>("Background/MenuBackground");
             _buttons = new List<Button>()
             {
                 new Button(_buttonTexture)
