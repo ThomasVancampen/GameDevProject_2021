@@ -33,6 +33,24 @@ namespace GameDevProject_2021.Movement
             obj.Position += obj.Movement;
             obj.Movement = Vector2.Zero;
         }
+
+        public void Move(ShootingEnemy obj, List<GameObject> gameObjects)
+        {
+            obj.Movement += new Vector2(obj.Speed, 0);
+            obj.Position += obj.Movement;
+            var futurePosition = obj.Position + obj.Movement;
+            obj.Movement = Vector2.Zero;
+
+            if (futurePosition.X > obj.Position.X)
+            {
+                obj.AnimationManager.TextureDirection = SpriteEffects.None;
+            }
+            if (futurePosition.X < obj.Position.X)
+            {
+                obj.AnimationManager.TextureDirection = SpriteEffects.FlipHorizontally;
+            }
+        }
+
         public void Move(Hero obj, List<GameObject> gameObjects)
         {
             obj.Movement = obj.InputReader.ReadInput(obj);

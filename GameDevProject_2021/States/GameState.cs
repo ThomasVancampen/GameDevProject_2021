@@ -34,13 +34,21 @@ namespace GameDevProject_2021.States
                 {"Walk", new Animation(_contentManager.Load<Texture2D>("Squirrel/SquirrelRun"), 8) },
                 {"Jump", new Animation(_contentManager.Load<Texture2D>("Squirrel/SquirrelJump"), 4) },
             };
+            var hunterAnimations = new Dictionary<string, Animation>()
+            {
+
+                {"Dead", new Animation(_contentManager.Load<Texture2D>("ShootingEnemy/HunterDead"), 5) },
+                {"Shoot", new Animation(_contentManager.Load<Texture2D>("ShootingEnemy/HunterShoot"), 7) },
+                 {"Run", new Animation(_contentManager.Load<Texture2D>("ShootingEnemy/HunterRun"), 7) },
+                
+            };
             var groundTexture = _contentManager.Load<Texture2D>("Ground/Block");
             var groundTexture2 = _contentManager.Load<Texture2D>("Ground/GroundSprite (1)");
-            var walltexture = _contentManager.Load<Texture2D>("FireWall/FireWallRaw");
-            var flameAnimations = new Dictionary<string, Animation>()
-            {
-                {"Idle", new Animation(_contentManager.Load<Texture2D>("Trapp/NewFlame"), 4) }
-            };
+            //var walltexture = _contentManager.Load<Texture2D>("FireWall/FireWallRaw");
+            //var flameAnimations = new Dictionary<string, Animation>()
+            //{
+            //    {"Idle", new Animation(_contentManager.Load<Texture2D>("Trapp/NewFlame"), 4) }
+            //};
             _gameObjects = new List<GameObject>()
             {
                 new Temp(heroAnimations, new KeyBoardReader())
@@ -65,18 +73,23 @@ namespace GameDevProject_2021.States
                     },
                     Position = new Vector2(0, 0)
                 },
-                new FireWall(walltexture)
+
+                new ShootingEnemy(hunterAnimations)
                 {
-                    Position = new Vector2(-290, -400)
+                    Position = new Vector2(250,290)
                 },
-                new Trapp(flameAnimations)
-                {
-                    Position = new Vector2(200, 340)
-                },
-                new StaticObject(groundTexture)
-                {
-                    Position = new Vector2(300, 290)
-                },
+                //new FireWall(walltexture)
+                //{
+                //    Position = new Vector2(-290, -400)
+                //},
+                //new Trapp(flameAnimations)
+                //{
+                //    Position = new Vector2(200, 340)
+                //},
+                //new StaticObject(groundTexture)
+                //{
+                //    Position = new Vector2(300, 290)
+                //},
                 new StaticObject(groundTexture2)
                 {
                     Position = new Vector2(0, 420)
