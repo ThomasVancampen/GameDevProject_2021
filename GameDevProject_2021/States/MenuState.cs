@@ -11,7 +11,8 @@ namespace GameDevProject_2021.States
     class MenuState : State
     {
         private Texture2D _backgroundTexture;
-        private Texture2D _buttonTexture;
+        private Texture2D _startButtonTexture;
+        private Texture2D _exitButtonTexture;
 
         private List<Button> _buttons;
         public MenuState(Game1 game, ContentManager contentManager) : base(game, contentManager) 
@@ -20,19 +21,20 @@ namespace GameDevProject_2021.States
         }
         public override void LoadContent()
         {
-            _buttonTexture = _contentManager.Load<Texture2D>("Buttons/Button");
+            _startButtonTexture = _contentManager.Load<Texture2D>("Buttons/StartButton");
+            _exitButtonTexture = _contentManager.Load<Texture2D>("Buttons/ExitButton");
             _backgroundTexture = _contentManager.Load<Texture2D>("Background/MenuBackground");
             _buttons = new List<Button>()
             {
-                new Button(_buttonTexture)
+                new Button(_startButtonTexture)
                 {
-                    Position = new Vector2(1080/2, 100),
-                    Click = new EventHandler(Button_Quit_Clicked)
-                },
-                new Button(_buttonTexture)
-                {
-                    Position = new Vector2(1080/2, 300),
+                    Position = new Vector2(Game1.ScreenWidth/2, 100),
                     Click = new EventHandler(Button_Play_Clicked)
+                },
+                new Button(_exitButtonTexture)
+                {
+                    Position = new Vector2(Game1.ScreenWidth/2, 150),
+                    Click = new EventHandler(Button_Quit_Clicked)
                 }
             };
         }

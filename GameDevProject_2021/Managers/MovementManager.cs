@@ -123,6 +123,10 @@ namespace GameDevProject_2021.Movement
                     obj.IsFalling = true;
                 }
             }
+            //if (obj.Position.Y>=400 && !obj.Jump)
+            //{
+            //    obj.Movement = new Vector2(obj.Movement.X, 0);
+            //}
         }
         #endregion
     }

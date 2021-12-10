@@ -86,10 +86,10 @@ namespace GameDevProject_2021.States
                 {
                     Position = new Vector2(200, 360)
                 },
-                new FireWall(walltexture)
-                {
-                    Position = new Vector2(-290, -400)
-                },
+                //new FireWall(walltexture)
+                //{
+                //    Position = new Vector2(-290, -400)
+                //},
                 
                 //new StaticObject(groundTexture)
                 //{

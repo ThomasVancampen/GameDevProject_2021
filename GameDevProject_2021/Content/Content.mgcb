@@ -49,7 +49,7 @@
 /processorParam:TextureFormat=Color
 /build:Background/MenuBackground.png
 
-#begin Buttons/Button.png
+#begin Buttons/ExitButton.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -59,7 +59,19 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Buttons/Button.png
+/build:Buttons/ExitButton.png
+
+#begin Buttons/StartButton.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Buttons/StartButton.png
 
 #begin FireWall/FireWallRaw.png
 /importer:TextureImporter

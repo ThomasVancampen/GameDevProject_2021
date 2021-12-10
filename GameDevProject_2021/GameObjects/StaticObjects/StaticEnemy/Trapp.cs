@@ -19,6 +19,7 @@ namespace GameDevProject_2021.GameObjects.StaticObjects.StaticEnemy
         }
         public override void Update(GameTime gameTime, List<GameObject> gameObjects)
         {
+            this.CollisionRectangle = new Rectangle((int)Position.X + AnimationManager.Animation.FrameWidth - 19, (int)Position.Y + AnimationManager.Animation.FrameHeight, 32, 32);
             base.Update(gameTime, gameObjects);
             AnimationManager.Play(Animations["Idle"]);
             AnimationManager.Update(gameTime);

@@ -49,10 +49,6 @@ namespace GameDevProject_2021.GameObjects
             {
                 this.CollisionRectangle = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
             }
-            else if (AnimationManager != null)
-            {
-                this.CollisionRectangle = new Rectangle((int)Position.X + AnimationManager.Animation.FrameWidth-19, (int)Position.Y+AnimationManager.Animation.FrameHeight, 32, 32);//TODO: waarde Moeten nog worden veranderd
-            }
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)
