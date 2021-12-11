@@ -61,6 +61,18 @@
 /processorParam:TextureFormat=Color
 /build:Buttons/ExitButton.png
 
+#begin Buttons/HomeButton.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Buttons/HomeButton.png
+
 #begin Buttons/StartButton.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -84,6 +96,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:FireWall/FireWallRaw.png
+
+#begin GameOver/GameOver.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GameOver/GameOver.png
 
 #begin Ground/Block.png
 /importer:TextureImporter
