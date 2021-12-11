@@ -36,7 +36,11 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
             this.CollisionRectangle = new Rectangle((int)Position.X + AnimationManager.Animation.FrameWidth - 19, (int)Position.Y + AnimationManager.Animation.FrameHeight, 32, 32);
             base.Update(gameTime, gameObjects);
 
-            if (Movement.X == 0 && Movement.Y == 0)//TODO: checks moeten beter eventueel jump er in vermengen
+            if (!this.IsAlive)
+            {
+                AnimationManager.Play(Animations["Dead"]);
+            }
+            else if (Movement.X == 0 && Movement.Y == 0)//TODO: checks moeten beter eventueel jump er in vermengen
             {
                 AnimationManager.Play(Animations["Idle"]);
             }
@@ -50,7 +54,7 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
             }
             Position += Movement;
             Movement = Vector2.Zero;
-            if (gameTime.TotalGameTime.Seconds%10==9)
+            if (gameTime.TotalGameTime.Seconds%9==0)
             {
                 this.Lives--;
             }
@@ -58,7 +62,7 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
             {
                 this.IsAlive = false;
             }
-            AnimationManager.Update(gameTime);
+            AnimationManager.Update(gameTime);//na dood moet nog 4 keer updaten
         }
     }
 }

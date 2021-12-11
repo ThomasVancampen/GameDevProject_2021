@@ -34,6 +34,8 @@ namespace GameDevProject_2021.States
                 {"Idle", new Animation(_contentManager.Load<Texture2D>("Squirrel/SquirrelIdle"), 6) },
                 {"Walk", new Animation(_contentManager.Load<Texture2D>("Squirrel/SquirrelRun"), 8) },
                 {"Jump", new Animation(_contentManager.Load<Texture2D>("Squirrel/SquirrelJump"), 4) },
+                {"Dead", new Animation(_contentManager.Load<Texture2D>("Squirrel/SquirrelDead"), 4) },
+
             };
             var hunterAnimations = new Dictionary<string, Animation>()
             {
