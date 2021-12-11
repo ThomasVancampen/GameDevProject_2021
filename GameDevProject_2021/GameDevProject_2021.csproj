@@ -22,6 +22,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Buttons\" />
+    <Folder Include="Content\GameOver\" />
     <Folder Include="Content\Trapp\" />
   </ItemGroup>
 </Project>

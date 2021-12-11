@@ -22,7 +22,7 @@ namespace GameDevProject_2021.States
         public override void LoadContent()
         {
             _gameOverTexture = _contentManager.Load<Texture2D>("GameOver/GameOver");
-            _returnTexture = _contentManager.Load<Texture2D>("Buttons/HomeButton");
+            _returnTexture = _contentManager.Load<Texture2D>("Buttons/ReturnMenuButton");
             _backgroundTexture = _contentManager.Load<Texture2D>("Background/GameBackground");
             _buttons = new List<Button>()
             {
@@ -49,8 +49,8 @@ namespace GameDevProject_2021.States
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_backgroundTexture, new Vector2(0, 0), Color.Black);
-            spriteBatch.Draw(_backgroundTexture, new Vector2(Game1.ScreenWidth/2-_backgroundTexture.Width/2, Game1.ScreenHeight/2-_backgroundTexture.Height/2), Color.Black);
+            spriteBatch.Draw(_backgroundTexture, new Vector2(0, 0), Color.LightGray);
+            spriteBatch.Draw(_gameOverTexture, new Vector2(Game1.ScreenWidth/2-_gameOverTexture.Width/2, Game1.ScreenHeight/2-_gameOverTexture.Height/2), Color.White);
             foreach (var button in _buttons)
             {
                 button.Draw(spriteBatch);

@@ -44,9 +44,8 @@ namespace GameDevProject_2021.States
                 
                 
             };
-            var groundTexture = _contentManager.Load<Texture2D>("Ground/Block");
-            var groundTexture2 = _contentManager.Load<Texture2D>("Ground/GroundSprite (1)");
-            var groundTexture3 = _contentManager.Load<Texture2D>("Ground/GroundSprite (1)");
+            var block = _contentManager.Load<Texture2D>("Ground/Block");
+            var groundTexture = _contentManager.Load<Texture2D>("Ground/Ground");
             var walltexture = _contentManager.Load<Texture2D>("FireWall/FireWallRaw");
             _backgroundTexture = _contentManager.Load<Texture2D>("Background/GameBackground");
             var flameAnimations = new Dictionary<string, Animation>()
@@ -84,7 +83,7 @@ namespace GameDevProject_2021.States
                 },
                 new Trapp(flameAnimations)
                 {
-                    Position = new Vector2(200, 360)
+                    Position = new Vector2(200, 400)
                 },
                 //new FireWall(walltexture)
                 //{
@@ -95,14 +94,14 @@ namespace GameDevProject_2021.States
                 //{
                 //    Position = new Vector2(300, 290)
                 //},
-                new StaticObject(groundTexture2)
+                new StaticObject(groundTexture)
                 {
-                    Position = new Vector2(0, 420)
+                    Position = new Vector2(0, 460)
                 },
-                new StaticObject(groundTexture2)
-                {
-                    Position = new Vector2(330, 420)
-                }
+                //new StaticObject(groundTexture)
+                //{
+                //    Position = new Vector2(330, 420)
+                //}
             };
         }
         public override void Draw(SpriteBatch spriteBatch)
@@ -123,6 +122,17 @@ namespace GameDevProject_2021.States
         {
             foreach (var go in _gameObjects)
             {
+                //Life test
+                //if(go is Temp)
+                //{
+                //    var temp =  go as Temp;
+                //    if (!temp.IsAlive)
+                //    {
+                //        _game.changeState(new GameOverState(_game, _contentManager)
+                //        {
+                //        });
+                //    }
+                //}
                 go.Update(gameTime, _gameObjects);
             }
         }
