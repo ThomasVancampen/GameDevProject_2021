@@ -36,11 +36,11 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
             this.CollisionRectangle = new Rectangle((int)Position.X + AnimationManager.Animation.FrameWidth - 19, (int)Position.Y + AnimationManager.Animation.FrameHeight, 32, 32);
             base.Update(gameTime, gameObjects);
 
-            if (!this.IsAlive)
-            {
-                AnimationManager.Play(Animations["Dead"]);
-            }
-            else if (Movement.X == 0 && Movement.Y == 0)//TODO: checks moeten beter eventueel jump er in vermengen
+            //if (!this.IsAlive)
+            //{
+            //    AnimationManager.Play(Animations["Dead"]);
+            //}
+            if (Movement.X == 0 && Movement.Y == 0)//TODO: checks moeten beter eventueel jump er in vermengen
             {
                 AnimationManager.Play(Animations["Idle"]);
             }

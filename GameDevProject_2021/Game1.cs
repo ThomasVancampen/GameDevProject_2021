@@ -23,11 +23,13 @@ namespace GameDevProject_2021
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        public static int ScreenWidth = 1080;
-        public static int ScreenHeight = 480;
+
+        public static int ScreenWidth = 1700;
+        public static int ScreenHeight = 950;
 
         private State _currentState;
         private State _nextState;
+
 
         #endregion
 

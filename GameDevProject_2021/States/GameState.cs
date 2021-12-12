@@ -49,7 +49,7 @@ namespace GameDevProject_2021.States
             var block = _contentManager.Load<Texture2D>("Ground/Block");
             var groundTexture = _contentManager.Load<Texture2D>("Ground/Ground");
             var walltexture = _contentManager.Load<Texture2D>("FireWall/FireWallRaw");
-            _backgroundTexture = _contentManager.Load<Texture2D>("Background/GameBackground");
+            _backgroundTexture = _contentManager.Load<Texture2D>("Background/TreeBackground");
             var flameAnimations = new Dictionary<string, Animation>()
             {
                 {"Idle", new Animation(_contentManager.Load<Texture2D>("Trapp/Campfire"), 4) }
@@ -98,7 +98,11 @@ namespace GameDevProject_2021.States
                 //},
                 new StaticObject(groundTexture)
                 {
-                    Position = new Vector2(0, 460)
+                    Position = new Vector2(0, Game1.ScreenHeight-groundTexture.Height)
+                },
+                new StaticObject(groundTexture)
+                {
+                    Position = new Vector2(Game1.ScreenWidth/2, Game1.ScreenHeight-groundTexture.Height)
                 },
                 //new StaticObject(groundTexture)
                 //{
