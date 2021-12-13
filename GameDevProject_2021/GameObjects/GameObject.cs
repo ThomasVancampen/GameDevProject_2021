@@ -1,4 +1,4 @@
-﻿using GameDevProject_2021.Collision;
+﻿using GameDevProject_2021.Managers;
 using GameDevProject_2021.Interfaces;
 using GameDevProject_2021.Model.Animation1;
 using Microsoft.Xna.Framework;
@@ -12,7 +12,7 @@ namespace GameDevProject_2021.GameObjects
     abstract class GameObject : ICollide, IGameObject
     {
         #region Var and Prop
-        public CollisionManager CollisionManager { get; set; }
+        public CollisionDetectionManager CollisionManager { get; set; }
         public AnimationManager AnimationManager { get; set; }
 
         public Dictionary<string, Animation> Animations { get; set; }
@@ -37,7 +37,7 @@ namespace GameDevProject_2021.GameObjects
         public GameObject()
         {
             this.Movement = Vector2.Zero;
-            this.CollisionManager = new CollisionManager();
+            this.CollisionManager = new CollisionDetectionManager();
         }
         #endregion
 

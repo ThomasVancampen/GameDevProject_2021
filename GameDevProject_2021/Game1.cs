@@ -1,5 +1,5 @@
 ﻿using GameDevProject_2021.GameObjects.Actors.Heroes;
-using GameDevProject_2021.Collision;
+using GameDevProject_2021.Managers;
 using GameDevProject_2021.Model.Input;
 using GameDevProject_2021.Interfaces;
 using Microsoft.Xna.Framework;

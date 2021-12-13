@@ -1,5 +1,5 @@
 ﻿using GameDevProject_2021.Model.Animation1;
-using GameDevProject_2021.Movement;
+using GameDevProject_2021.Managers;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;

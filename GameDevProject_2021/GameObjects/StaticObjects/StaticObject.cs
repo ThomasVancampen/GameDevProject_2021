@@ -1,4 +1,5 @@
 ﻿using GameDevProject_2021.GameObjects;
+using GameDevProject_2021.Managers;
 using GameDevProject_2021.Model.Animation1;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

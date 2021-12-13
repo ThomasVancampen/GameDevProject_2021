@@ -1,4 +1,4 @@
-﻿using GameDevProject_2021.Movement;
+﻿using GameDevProject_2021.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;

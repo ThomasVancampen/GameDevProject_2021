@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using GameDevProject_2021.Movement;
+using GameDevProject_2021.Managers;
 
 namespace GameDevProject_2021.GameObjects.Actors
 {

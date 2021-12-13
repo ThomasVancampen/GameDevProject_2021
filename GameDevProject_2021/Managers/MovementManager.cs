@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Text;
 using GameDevProject_2021.GameObjects;
 
-namespace GameDevProject_2021.Movement
+namespace GameDevProject_2021.Managers
 {
     class MovementManager
     {
