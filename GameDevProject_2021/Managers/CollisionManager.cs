@@ -17,13 +17,13 @@ namespace GameDevProject_2021.Managers
             {
                 if (go is StaticObject)
                 {
-                    if ((obj.Movement.X > 0 && obj.CollisionManager.CollisionLeft(obj, go)) ||
-                    (obj.Movement.X < 0 && obj.CollisionManager.CollisionRight(obj, go)))
+                    if ((obj.Movement.X > 0 && obj.CollisionDetectionManager.CollisionLeft(obj, go)) ||
+                    (obj.Movement.X < 0 && obj.CollisionDetectionManager.CollisionRight(obj, go)))
                     {
                         obj.Movement = new Vector2(0, obj.Movement.Y);
                     }
-                    if ((obj.Movement.Y > 0 && obj.CollisionManager.CollisionTop(obj, go)) ||
-                        (obj.Movement.Y < 0 && obj.CollisionManager.CollisionBottom(obj, go)))
+                    if ((obj.Movement.Y > 0 && obj.CollisionDetectionManager.CollisionTop(obj, go)) ||
+                        (obj.Movement.Y < 0 && obj.CollisionDetectionManager.CollisionBottom(obj, go)))
                     {
                         obj.Movement = new Vector2(obj.Movement.X, 0);
                         obj.IsFalling = false;
@@ -32,19 +32,19 @@ namespace GameDevProject_2021.Managers
                 }
                 else if (go is FireWall)
                 {
-                    if ((obj.Movement.Y > 0 && obj.CollisionManager.CollisionTop(obj, go)) ||
-                        (obj.Movement.Y < 0 && obj.CollisionManager.CollisionBottom(obj, go)))
+                    if ((obj.CollisionDetectionManager.CollisionTop(obj, go)) ||
+                        (obj.CollisionDetectionManager.CollisionBottom(obj, go)))
                     {
                         obj.Lives = 0;
                         obj.IsAlive = false;
                     }
                 }
 
-                if (!obj.CollisionManager.CollisionBottom(obj, go) && !obj.Jump)
+                if (!obj.CollisionDetectionManager.CollisionBottom(obj, go) && !obj.Jump)
                 {
                     obj.IsFalling = true;
                 }
-                if (obj.CollisionManager.CollisionTop(obj, go))
+                if (obj.CollisionDetectionManager.CollisionTop(obj, go))
                 {
                     obj.IsFalling = true;
                 }

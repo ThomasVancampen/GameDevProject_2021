@@ -12,7 +12,7 @@ namespace GameDevProject_2021.GameObjects
     abstract class GameObject : ICollide, IGameObject
     {
         #region Var and Prop
-        public CollisionDetectionManager CollisionManager { get; set; }
+        public CollisionDetectionManager CollisionDetectionManager { get; set; }
         public AnimationManager AnimationManager { get; set; }
 
         public Dictionary<string, Animation> Animations { get; set; }
@@ -37,7 +37,7 @@ namespace GameDevProject_2021.GameObjects
         public GameObject()
         {
             this.Movement = Vector2.Zero;
-            this.CollisionManager = new CollisionDetectionManager();
+            this.CollisionDetectionManager = new CollisionDetectionManager();
         }
         #endregion
 

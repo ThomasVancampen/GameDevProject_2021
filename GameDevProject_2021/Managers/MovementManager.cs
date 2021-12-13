@@ -99,30 +99,30 @@ namespace GameDevProject_2021.Managers
                 obj.AnimationManager.TextureDirection = SpriteEffects.FlipHorizontally;
             }
 
-            foreach (var go in gameObjects)
-            {
-                if ((obj.Movement.X > 0 && obj.CollisionManager.CollisionLeft(obj, go)) ||
-                    (obj.Movement.X < 0 && obj.CollisionManager.CollisionRight(obj, go)))
-                {
-                    obj.Movement = new Vector2(0, obj.Movement.Y);
-                }
-                if ((obj.Movement.Y > 0 && obj.CollisionManager.CollisionTop(obj, go)) ||
-                    (obj.Movement.Y < 0 && obj.CollisionManager.CollisionBottom(obj, go)))
-                {
-                    obj.Movement = new Vector2(obj.Movement.X, 0);
-                    obj.IsFalling=false;
-                    obj.FallHeight = 0;
-                }
+            //foreach (var go in gameObjects)
+            //{
+            //    if ((obj.Movement.X > 0 && obj.CollisionDetectionManager.CollisionLeft(obj, go)) ||
+            //        (obj.Movement.X < 0 && obj.CollisionDetectionManager.CollisionRight(obj, go)))
+            //    {
+            //        obj.Movement = new Vector2(0, obj.Movement.Y);
+            //    }
+            //    if ((obj.Movement.Y > 0 && obj.CollisionDetectionManager.CollisionTop(obj, go)) ||
+            //        (obj.Movement.Y < 0 && obj.CollisionDetectionManager.CollisionBottom(obj, go)))
+            //    {
+            //        obj.Movement = new Vector2(obj.Movement.X, 0);
+            //        obj.IsFalling=false;
+            //        obj.FallHeight = 0;
+            //    }
 
-                if (!obj.CollisionManager.CollisionBottom(obj, go)&&!obj.Jump)
-                {
-                    obj.IsFalling = true;
-                }
-                if (obj.CollisionManager.CollisionTop(obj, go))
-                {
-                    obj.IsFalling = true;
-                }
-            }
+            //    if (!obj.CollisionDetectionManager.CollisionBottom(obj, go)&&!obj.Jump)
+            //    {
+            //        obj.IsFalling = true;
+            //    }
+            //    if (obj.CollisionDetectionManager.CollisionTop(obj, go))
+            //    {
+            //        obj.IsFalling = true;
+            //    }
+            //}
             //if (obj.Position.Y>=400 && !obj.Jump)
             //{
             //    obj.Movement = new Vector2(obj.Movement.X, 0);

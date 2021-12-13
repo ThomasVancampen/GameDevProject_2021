@@ -23,6 +23,7 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
         public IInputReader InputReader { get; set; }
         public int FallHeight { get; set; }
         public int Lives { get; set; }
+        public CollisionManager CollisionManager { get; set; }
         #endregion
 
         #region Constructors
@@ -38,6 +39,7 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
             this.AnimationManager = new AnimationManager(Animations.First().Value);
             this._movementManager = new MovementManager();
             this.InputReader = inputReader;
+            this.CollisionManager = new CollisionManager();
         }
         #endregion
 
