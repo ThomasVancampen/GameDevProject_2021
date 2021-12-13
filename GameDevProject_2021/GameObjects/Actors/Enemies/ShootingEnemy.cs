@@ -24,7 +24,7 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
             this.Animations = hunterAnimations;
             this.AnimationManager = new AnimationManager(Animations.First().Value);
             this._movementManager = new MovementManager();
-            this.RunDistance = 161;
+            this.RunDistance = 100;
             this.RunDistanceCounter = RunDistance;
             this.Speed = 0.5f;
             this.IsShooting = false;

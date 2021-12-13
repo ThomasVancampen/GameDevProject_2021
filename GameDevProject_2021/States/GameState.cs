@@ -46,7 +46,8 @@ namespace GameDevProject_2021.States
                 
                 
             };
-            var floor = _contentManager.Load<Texture2D>("Floor/WoodFloor");
+            var floorTexture = _contentManager.Load<Texture2D>("Floor/WoodFloor");
+            var exitTexture = _contentManager.Load<Texture2D>("Exit/Exit");
             var groundTexture = _contentManager.Load<Texture2D>("Ground/Ground");
             var walltexture = _contentManager.Load<Texture2D>("FireWall/FullFireWall");
             _backgroundTexture = _contentManager.Load<Texture2D>("Background/TreeBackground");
@@ -81,11 +82,43 @@ namespace GameDevProject_2021.States
 
                 new ShootingEnemy(hunterAnimations)
                 {
-                    Position = new Vector2(298,355)
+                    Position = new Vector2(620-30,630-60)
                 },
                 new Trapp(flameAnimations)
                 {
                     Position = new Vector2(200, 400)
+                },     
+                new StaticObject(floorTexture)
+                {
+                    Position = new Vector2(200, 830)
+                },
+                new StaticObject(floorTexture)
+                {
+                    Position = new Vector2(300, 730)
+                },
+                new StaticObject(floorTexture)
+                {
+                    Position = new Vector2(400, 630)
+                },
+                new StaticObject(floorTexture)
+                {
+                    Position = new Vector2(620, 630)
+                },
+                new StaticObject(floorTexture)
+                {
+                    Position = new Vector2(720, 630)
+                },
+                new StaticObject(floorTexture)
+                {
+                    Position = new Vector2(870, 530)
+                },
+                new StaticObject(floorTexture)
+                {
+                    Position = new Vector2(720, 430)
+                },
+                new StaticObject(exitTexture)
+                {
+                    Position = new Vector2(720+exitTexture.Width/2, 430-exitTexture.Height)
                 },
                 new FireWall(walltexture)
                 {
@@ -111,11 +144,6 @@ namespace GameDevProject_2021.States
                 {
                     Position = new Vector2(walltexture.Width*2,Game1.ScreenHeight+walltexture.Height-20)
                 },
-                
-                //new StaticObject(groundTexture)
-                //{
-                //    Position = new Vector2(300, 290)
-                //},
                 new StaticObject(groundTexture)
                 {
                     Position = new Vector2(0, Game1.ScreenHeight-groundTexture.Height)
@@ -124,10 +152,6 @@ namespace GameDevProject_2021.States
                 {
                     Position = new Vector2(Game1.ScreenWidth/2, Game1.ScreenHeight-groundTexture.Height)
                 },
-                //new StaticObject(groundTexture)
-                //{
-                //    Position = new Vector2(330, 420)
-                //}
             };
         }
         public override void Draw(SpriteBatch spriteBatch)
