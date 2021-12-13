@@ -16,6 +16,7 @@ namespace GameDevProject_2021.Managers
         public Vector2 Position { get; set; }
         public SpriteEffects TextureDirection { get { return this._textureDirection; } set { this._textureDirection = value; } }
         private SpriteEffects _textureDirection;
+        public Color Color { get; set; }
         #endregion
 
         #region Consturctors
@@ -23,6 +24,7 @@ namespace GameDevProject_2021.Managers
         {
             _animation = animation;
             this._textureDirection = 0;
+            this.Color = Color.White;
         }
         #endregion
 
@@ -42,7 +44,7 @@ namespace GameDevProject_2021.Managers
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_animation.Texture, Position, new Rectangle(_animation.CurrentFrame * _animation.FrameWidth, 0, _animation.FrameWidth, _animation.FrameHeight), Color.White, 0, Vector2.Zero, 2, this.TextureDirection, 0);
+            spriteBatch.Draw(_animation.Texture, Position, new Rectangle(_animation.CurrentFrame * _animation.FrameWidth, 0, _animation.FrameWidth, _animation.FrameHeight), Color, 0, Vector2.Zero, 2, this.TextureDirection, 0);
         }
         public void Update(GameTime gameTime)
         {

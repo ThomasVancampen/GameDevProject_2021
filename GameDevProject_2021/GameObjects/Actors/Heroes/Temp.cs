@@ -29,13 +29,14 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
             this.Gravity = 1;
             this.IsFalling = true;
             this.FallHeight = 0;
-            this.Lives = 1;
+            this.Lives = 4;
+            this.Hit = false;
         }
         public override void Update(GameTime gameTime, List<GameObject> gameObjects)
         {
             this.CollisionRectangle = new Rectangle((int)Position.X + AnimationManager.Animation.FrameWidth - 19, (int)Position.Y + AnimationManager.Animation.FrameHeight, 32, 32);
             base.Update(gameTime, gameObjects);
-            this.CollisionManager.Collide(this, gameObjects);
+            this.CollisionManager.Collide(this, gameObjects, gameTime);
 
             //if (!this.IsAlive)
             //{
@@ -59,10 +60,10 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
             //{
             //    this.Lives--;
             //}
-            //if (this.Lives <=0)
-            //{
-            //    this.IsAlive = false;
-            //}
+            if (this.Lives <=0)
+            {
+                this.IsAlive = false;
+            }
             AnimationManager.Update(gameTime);//na dood moet nog 4 keer updaten
         }
     }

@@ -80,13 +80,13 @@ namespace GameDevProject_2021.States
                 //    Position = new Vector2(0, 0)
                 //},
 
-                new ShootingEnemy(hunterAnimations)
-                {
-                    Position = new Vector2(620-30,630-60)
-                },
+                //new ShootingEnemy(hunterAnimations)
+                //{
+                //    Position = new Vector2(620-30,630-60)
+                //},
                 new Trapp(flameAnimations)
                 {
-                    Position = new Vector2(200, 400)
+                    Position = new Vector2(650, 630-50)
                 },     
                 new StaticObject(floorTexture)
                 {
@@ -120,30 +120,30 @@ namespace GameDevProject_2021.States
                 {
                     Position = new Vector2(720+exitTexture.Width/2, 430-exitTexture.Height)
                 },
-                new FireWall(walltexture)
-                {
-                    Position = new Vector2(0,Game1.ScreenHeight)
-                },
-                new FireWall(walltexture)
-                {
-                    Position = new Vector2(walltexture.Width,Game1.ScreenHeight)
-                },
-                new FireWall(walltexture)
-                {
-                    Position = new Vector2(walltexture.Width*2,Game1.ScreenHeight)
-                },
-                new FireWall(walltexture)
-                {
-                    Position = new Vector2(0,Game1.ScreenHeight+walltexture.Height-20)
-                },
-                new FireWall(walltexture)
-                {
-                    Position = new Vector2(walltexture.Width,Game1.ScreenHeight+walltexture.Height-20)
-                },
-                new FireWall(walltexture)
-                {
-                    Position = new Vector2(walltexture.Width*2,Game1.ScreenHeight+walltexture.Height-20)
-                },
+                //new FireWall(walltexture)
+                //{
+                //    Position = new Vector2(0,Game1.ScreenHeight)
+                //},
+                //new FireWall(walltexture)
+                //{
+                //    Position = new Vector2(walltexture.Width,Game1.ScreenHeight)
+                //},
+                //new FireWall(walltexture)
+                //{
+                //    Position = new Vector2(walltexture.Width*2,Game1.ScreenHeight)
+                //},
+                //new FireWall(walltexture)
+                //{
+                //    Position = new Vector2(0,Game1.ScreenHeight+walltexture.Height-20)
+                //},
+                //new FireWall(walltexture)
+                //{
+                //    Position = new Vector2(walltexture.Width,Game1.ScreenHeight+walltexture.Height-20)
+                //},
+                //new FireWall(walltexture)
+                //{
+                //    Position = new Vector2(walltexture.Width*2,Game1.ScreenHeight+walltexture.Height-20)
+                //},
                 new StaticObject(groundTexture)
                 {
                     Position = new Vector2(0, Game1.ScreenHeight-groundTexture.Height)
