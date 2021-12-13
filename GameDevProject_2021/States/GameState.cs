@@ -66,19 +66,19 @@ namespace GameDevProject_2021.States
                         Up = Keys.Up,
                         Down = Keys.None
                     },
-                    Position = new Vector2(0, 0)
+                    Position = new Vector2(250, 700)
                 },
-                new Temp(heroAnimations, new KeyBoardReader())
-                {
-                    InputKeys = new InputKeys()
-                    {
-                        Left = Keys.Q,
-                        Right = Keys.D,
-                        Up = Keys.Z,
-                        Down = Keys.None
-                    },
-                    Position = new Vector2(0, 0)
-                },
+                //new Temp(heroAnimations, new KeyBoardReader())
+                //{
+                //    InputKeys = new InputKeys()
+                //    {
+                //        Left = Keys.Q,
+                //        Right = Keys.D,
+                //        Up = Keys.Z,
+                //        Down = Keys.None
+                //    },
+                //    Position = new Vector2(0, 0)
+                //},
 
                 new ShootingEnemy(hunterAnimations)
                 {
@@ -172,17 +172,16 @@ namespace GameDevProject_2021.States
         {
             foreach (var go in _gameObjects)
             {
-                //Life test
-                //if(go is Temp)
-                //{
-                //    var temp =  go as Temp;
-                //    if (!temp.IsAlive)
-                //    {
-                //        _game.changeState(new GameOverState(_game, _contentManager)
-                //        {
-                //        });
-                //    }
-                //}
+                if(go is Temp)
+                {
+                    var temp =  go as Temp;
+                    if (!temp.IsAlive)
+                    {
+                        _game.changeState(new GameOverState(_game, _contentManager)
+                        {
+                        });
+                   }
+                }
                 go.Update(gameTime, _gameObjects);
             }
         }

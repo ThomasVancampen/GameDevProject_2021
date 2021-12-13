@@ -54,14 +54,14 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
             }
             Position += Movement;
             Movement = Vector2.Zero;
-            if (gameTime.TotalGameTime.Seconds%9==0)
-            {
-                this.Lives--;
-            }
-            if (this.Lives <=0)
-            {
-                this.IsAlive = false;
-            }
+            //if (gameTime.TotalGameTime.Seconds%9==0)
+            //{
+            //    this.Lives--;
+            //}
+            //if (this.Lives <=0)
+            //{
+            //    this.IsAlive = false;
+            //}
             AnimationManager.Update(gameTime);//na dood moet nog 4 keer updaten
         }
     }
