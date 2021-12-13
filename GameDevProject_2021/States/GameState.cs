@@ -46,13 +46,13 @@ namespace GameDevProject_2021.States
                 
                 
             };
-            var block = _contentManager.Load<Texture2D>("Ground/Block");
+            var floor = _contentManager.Load<Texture2D>("Floor/WoodFloor");
             var groundTexture = _contentManager.Load<Texture2D>("Ground/Ground");
-            var walltexture = _contentManager.Load<Texture2D>("FireWall/FireWallRaw");
+            var walltexture = _contentManager.Load<Texture2D>("FireWall/FullFireWall");
             _backgroundTexture = _contentManager.Load<Texture2D>("Background/TreeBackground");
             var flameAnimations = new Dictionary<string, Animation>()
             {
-                {"Idle", new Animation(_contentManager.Load<Texture2D>("Trapp/Campfire"), 4) }
+                {"Idle", new Animation(_contentManager.Load<Texture2D>("Trapp/FireTrapp"), 4) }
             };
             _gameObjects = new List<GameObject>()
             {
@@ -87,10 +87,30 @@ namespace GameDevProject_2021.States
                 {
                     Position = new Vector2(200, 400)
                 },
-                //new FireWall(walltexture)
-                //{
-                //    Position = new Vector2(-290, -400)
-                //},
+                new FireWall(walltexture)
+                {
+                    Position = new Vector2(0,Game1.ScreenHeight)
+                },
+                new FireWall(walltexture)
+                {
+                    Position = new Vector2(walltexture.Width,Game1.ScreenHeight)
+                },
+                new FireWall(walltexture)
+                {
+                    Position = new Vector2(walltexture.Width*2,Game1.ScreenHeight)
+                },
+                new FireWall(walltexture)
+                {
+                    Position = new Vector2(0,Game1.ScreenHeight+walltexture.Height-20)
+                },
+                new FireWall(walltexture)
+                {
+                    Position = new Vector2(walltexture.Width,Game1.ScreenHeight+walltexture.Height-20)
+                },
+                new FireWall(walltexture)
+                {
+                    Position = new Vector2(walltexture.Width*2,Game1.ScreenHeight+walltexture.Height-20)
+                },
                 
                 //new StaticObject(groundTexture)
                 //{

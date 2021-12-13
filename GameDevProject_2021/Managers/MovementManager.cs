@@ -29,7 +29,7 @@ namespace GameDevProject_2021.Movement
         //}
         public void Move(FireWall obj, List<GameObject> gameObjects)
         {
-            obj.Movement += new Vector2(obj.Speed, 0);
+            obj.Movement += new Vector2(0, -obj.Speed);
             obj.Position += obj.Movement;
             obj.Movement = Vector2.Zero;
         }

@@ -97,7 +97,7 @@
 /processorParam:TextureFormat=Color
 /build:Buttons/StartButton.png
 
-#begin FireWall/FireWallRaw.png
+#begin Exit/Exit.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -107,7 +107,31 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:FireWall/FireWallRaw.png
+/build:Exit/Exit.png
+
+#begin FireWall/FullFireWall.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:FireWall/FullFireWall.png
+
+#begin Floor/WoodFloor.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Floor/WoodFloor.png
 
 #begin GameOver/GameOver.png
 /importer:TextureImporter
@@ -253,7 +277,7 @@
 /processorParam:TextureFormat=Color
 /build:Squirrel/SquirrelRun.png
 
-#begin Trapp/Campfire.png
+#begin Trapp/FireTrapp.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -263,5 +287,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Trapp/Campfire.png
+/build:Trapp/FireTrapp.png
 
