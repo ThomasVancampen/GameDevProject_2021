@@ -29,7 +29,8 @@ namespace GameDevProject_2021.States
         {
             _levels = new List<ILevel>()
             {
-                new Level1(_contentManager)
+                new Level1(_contentManager),
+                new Level2(_contentManager)
             };
             foreach (var level in _levels)
             {

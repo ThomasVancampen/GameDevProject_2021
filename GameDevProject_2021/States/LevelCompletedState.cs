@@ -38,11 +38,11 @@ namespace GameDevProject_2021.States
             _currentLevel++;
             if (_currentLevel<_amountOfLevels)
             {
-                _game.changeState(new MenuState(_game, _contentManager, _currentLevel)
+                _game.changeState(new GameState(_game, _contentManager, _currentLevel)
                 {
                 });
-            }
-            _game.changeState(new GameCompletedState(_game, _contentManager, _currentLevel));
+            }else
+                _game.changeState(new GameCompletedState(_game, _contentManager, _currentLevel));
            
         }
 
