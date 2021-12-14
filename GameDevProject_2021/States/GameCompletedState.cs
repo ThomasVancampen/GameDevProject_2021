@@ -10,23 +10,58 @@ namespace GameDevProject_2021.States
 {
     class GameCompletedState : State
     {
-        public GameCompletedState(Game1 game, ContentManager contentMananger, int currentLevel) : base(game, contentMananger, currentLevel)
+        private Texture2D _backgroundTexture;
+        private Texture2D _victoryTexture;
+        private Texture2D _returnTexture;
+
+        private List<Button> _buttons;
+        public GameCompletedState(Game1 game, ContentManager contentManager, int currentLevel) : base(game, contentManager, currentLevel)
         {
 
         }
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            throw new NotImplementedException();
-        }
-
         public override void LoadContent()
         {
-            throw new NotImplementedException();
+            _victoryTexture = _contentManager.Load<Texture2D>("Text/Victory");
+            _returnTexture = _contentManager.Load<Texture2D>("Buttons/ReturnMenuButton");
+            _backgroundTexture = _contentManager.Load<Texture2D>("Background/MenuBackground");
+            _buttons = new List<Button>()
+            {
+                new Button(_returnTexture)
+                {
+                    Position = new Vector2(10, 10),
+                    Click = new EventHandler(Button_ReturnMenu_Clicked)
+                }
+            };
+        }
+        public void Button_ReturnMenu_Clicked(object sender, EventArgs args)
+        {
+            _currentLevel++;
+            if (_currentLevel < _amountOfLevels)
+            {
+                _game.changeState(new GameState(_game, _contentManager, _currentLevel)
+                {
+                });
+            }
+            else
+                _game.changeState(new GameCompletedState(_game, _contentManager, _currentLevel));
+
         }
 
         public override void Update(GameTime gameTime)
         {
-            throw new NotImplementedException();
+            foreach (var button in _buttons)
+            {
+                button.Update(gameTime);
+            }
+        }
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(_backgroundTexture, new Vector2(0, 0), Color.LightGray);
+            spriteBatch.Draw(_victoryTexture, new Vector2(Game1.ScreenWidth / 2 - _victoryTexture.Width / 2, Game1.ScreenHeight / 2 - _victoryTexture.Height / 2), Color.White);
+            foreach (var button in _buttons)
+            {
+                button.Draw(spriteBatch);
+            }
         }
     }
 }
