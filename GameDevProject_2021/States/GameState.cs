@@ -3,6 +3,7 @@ using GameDevProject_2021.GameObjects.Actors.Enemies;
 using GameDevProject_2021.GameObjects.Actors.Heroes;
 using GameDevProject_2021.GameObjects.StaticObjects.StaticEnemy;
 using GameDevProject_2021.GameObjects.StaticObjects.StaticExit;
+using GameDevProject_2021.GameObjects.StaticObjects.StaticLives;
 using GameDevProject_2021.Interfaces;
 using GameDevProject_2021.Levels;
 using GameDevProject_2021.Model;
@@ -22,12 +23,20 @@ namespace GameDevProject_2021.States
     class GameState : State
     {
         private List<ILevel> _levels;
+        private List<Life> _lives;
         public GameState(Game1 game, ContentManager contentManager, int currentLevel) : base(game, contentManager, currentLevel)
         {
             _currentLevel = currentLevel;
         }
         public void Initialize()
         {
+            var lifeTexture = _contentManager.Load<Texture2D>("Heart/LifeHeart");
+            _lives = new List<Life>()
+            {
+                new Life(lifeTexture){Position = new Vector2(0,0)},
+                new Life(lifeTexture){Position = new Vector2(lifeTexture.Width,0)},
+                new Life(lifeTexture){Position = new Vector2(lifeTexture.Width*2,0)}
+            };
             _levels = new List<ILevel>()
             {
                 new Level1(_contentManager),
@@ -46,17 +55,15 @@ namespace GameDevProject_2021.States
             {
                 go.Draw(spriteBatch);
             }
+            foreach (var life in _lives)
+            {
+                life.Draw(spriteBatch);
+            }
         }
 
         public override void LoadContent()
         {
             this.Initialize();
-        }
-        public void Button_ReturnMenu_Clicked(object sender, EventArgs args)
-        {
-            _game.changeState(new MenuState(_game, _contentManager, _currentLevel)
-            {
-            });
         }
 
         public override void Update(GameTime gameTime)
@@ -66,6 +73,11 @@ namespace GameDevProject_2021.States
                 if(go is Temp)
                 {
                     var temp =  go as Temp;
+                    if (temp.Lives !=_lives.Count)
+                    {
+                        _lives.RemoveAt(_lives.Count - 1);
+                    }
+
                     if (!temp.IsAlive)
                     {
                         _game.changeState(new GameOverState(_game, _contentManager, _currentLevel)

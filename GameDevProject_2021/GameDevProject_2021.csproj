@@ -22,6 +22,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Exit\" />
+    <Folder Include="Content\Heart\" />
     <Folder Include="Content\Trapp\" />
   </ItemGroup>
 </Project>

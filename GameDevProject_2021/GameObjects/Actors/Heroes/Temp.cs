@@ -12,24 +12,23 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
 {
     class Temp : Hero
     {
-        public Temp(Texture2D texture, IInputReader inputReader) : base(texture, inputReader)
-        {
-            
-            this.Speed = 4;
-            this.MaxJumpHeight = -14;
-            this.Gravity = 1;
-            this.IsFalling = true;
-            this.FallHeight = 0;
-            this.Lives = 1;
-        }
+        //public Temp(Texture2D texture, IInputReader inputReader) : base(texture, inputReader)
+        //{
+
+        //    InitialiseSquirrel()
+        //}
         public Temp(Dictionary<string, Animation> animations, IInputReader inputReader) : base(animations, inputReader)
         {
+            InitialiseSquirrel();
+        }
+        private void InitialiseSquirrel()
+        {
             this.Speed = 4;
             this.MaxJumpHeight = -14;
             this.Gravity = 1;
             this.IsFalling = true;
             this.FallHeight = 0;
-            this.Lives = 4;
+            this.Lives = 3;
             this.Hit = false;
             this.Victorious = false;
         }
