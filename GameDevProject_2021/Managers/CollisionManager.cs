@@ -17,7 +17,7 @@ namespace GameDevProject_2021.Managers
         {
             foreach (var go in gameObjects)
             {
-                if (go is StaticObject && !(go is Trapp))//moet nog anders gechecked worden, niet met staticobject
+                if (go is StaticObject && !(go is Trapp) && !(go is Exit))//moet nog anders gechecked worden, niet met staticobject
                 {
                     if ((obj.Movement.X > 0 && obj.CollisionDetectionManager.CollisionLeft(obj, go)) ||
                     (obj.Movement.X < 0 && obj.CollisionDetectionManager.CollisionRight(obj, go)))
@@ -30,6 +30,19 @@ namespace GameDevProject_2021.Managers
                         obj.Movement = new Vector2(obj.Movement.X, 0);
                         obj.IsFalling = false;
                         obj.FallHeight = 0;
+                    }
+                }
+                else if (go is Exit)
+                {
+                    if ((obj.Movement.X > 0 && obj.CollisionDetectionManager.CollisionLeft(obj, go)) ||
+                    (obj.Movement.X < 0 && obj.CollisionDetectionManager.CollisionRight(obj, go)))
+                    {
+                        obj.Victorious = true;
+                    }
+                    if ((obj.Movement.Y > 0 && obj.CollisionDetectionManager.CollisionTop(obj, go)) ||
+                        (obj.Movement.Y < 0 && obj.CollisionDetectionManager.CollisionBottom(obj, go)))
+                    {
+                        obj.Victorious = true;
                     }
                 }
                 else if (go is FireWall)
@@ -85,10 +98,6 @@ namespace GameDevProject_2021.Managers
                     {
                         obj.AnimationManager.Color = Color.White;
                     }
-                }
-                else if (go is Exit)
-                {
-                    //Code om naar volgend level te gaan en uiteindelijk victory scherm.
                 }
                 if (!obj.CollisionDetectionManager.CollisionBottom(obj, go) && !obj.Jump)
                 {

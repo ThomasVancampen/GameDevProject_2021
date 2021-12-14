@@ -8,22 +8,22 @@ using System.Text;
 
 namespace GameDevProject_2021.States
 {
-    class GameOverState : State
+    class LevelCompletedState : State
     {
         private Texture2D _backgroundTexture;
         private Texture2D _gameOverTexture;
         private Texture2D _returnTexture;
 
         private List<Button> _buttons;
-        public GameOverState(Game1 game, ContentManager contentManager, int currentLevel) : base(game, contentManager, currentLevel)
+        public LevelCompletedState(Game1 game, ContentManager contentManager, int currentLevel) : base(game, contentManager, currentLevel)
         {
 
         }
         public override void LoadContent()
         {
-            _gameOverTexture = _contentManager.Load<Texture2D>("GameOver/GameOver");
+            //_gameOverTexture = _contentManager.Load<Texture2D>("GameOver/GameOver");
             _returnTexture = _contentManager.Load<Texture2D>("Buttons/ReturnMenuButton");
-            _backgroundTexture = _contentManager.Load<Texture2D>("Background/GameBackground");
+            _backgroundTexture = _contentManager.Load<Texture2D>("Background/MenuBackground");
             _buttons = new List<Button>()
             {
                 new Button(_returnTexture)
@@ -35,9 +35,15 @@ namespace GameDevProject_2021.States
         }
         public void Button_ReturnMenu_Clicked(object sender, EventArgs args)
         {
-            _game.changeState(new MenuState(_game, _contentManager, _currentLevel)
+            _currentLevel++;
+            if (_currentLevel<_amountOfLevels)
             {
-            });
+                _game.changeState(new MenuState(_game, _contentManager, _currentLevel)
+                {
+                });
+            }
+            _game.changeState(new GameCompletedState(_game, _contentManager, _currentLevel));
+           
         }
 
         public override void Update(GameTime gameTime)
@@ -50,7 +56,7 @@ namespace GameDevProject_2021.States
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(_backgroundTexture, new Vector2(0, 0), Color.LightGray);
-            spriteBatch.Draw(_gameOverTexture, new Vector2(Game1.ScreenWidth/2-_gameOverTexture.Width/2, Game1.ScreenHeight/2-_gameOverTexture.Height/2), Color.White);
+            //spriteBatch.Draw(_gameOverTexture, new Vector2(Game1.ScreenWidth / 2 - _gameOverTexture.Width / 2, Game1.ScreenHeight / 2 - _gameOverTexture.Height / 2), Color.White);
             foreach (var button in _buttons)
             {
                 button.Draw(spriteBatch);

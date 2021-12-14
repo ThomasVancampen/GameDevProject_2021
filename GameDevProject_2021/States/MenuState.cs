@@ -15,7 +15,7 @@ namespace GameDevProject_2021.States
         private Texture2D _exitButtonTexture;
 
         private List<Button> _buttons;
-        public MenuState(Game1 game, ContentManager contentManager) : base(game, contentManager) 
+        public MenuState(Game1 game, ContentManager contentManager, int currentLevel) : base(game, contentManager, currentLevel) 
         {
         
         }
@@ -41,7 +41,7 @@ namespace GameDevProject_2021.States
 
         public void Button_Play_Clicked(object sender, EventArgs args)
         {
-            _game.changeState(new GameState(_game, _contentManager)
+            _game.changeState(new GameState(_game, _contentManager, _currentLevel)
             {
             });
         }

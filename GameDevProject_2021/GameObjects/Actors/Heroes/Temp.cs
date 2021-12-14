@@ -31,6 +31,7 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
             this.FallHeight = 0;
             this.Lives = 4;
             this.Hit = false;
+            this.Victorious = false;
         }
         public override void Update(GameTime gameTime, List<GameObject> gameObjects)
         {

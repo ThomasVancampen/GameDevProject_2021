@@ -11,10 +11,14 @@ namespace GameDevProject_2021.States
     {
         protected Game1 _game;
         protected ContentManager _contentManager;
-        public State(Game1 game, ContentManager cm)
+        protected int _currentLevel;
+        protected int _amountOfLevels;
+        public State(Game1 game, ContentManager cm, int currentLevel)
         {
-            _game = game;
-            _contentManager = cm;
+            this._game = game;
+            this._contentManager = cm;
+            this._currentLevel = currentLevel;
+            this._amountOfLevels = 2;
         }
         public abstract void Update(GameTime gameTime);
         public abstract void LoadContent();

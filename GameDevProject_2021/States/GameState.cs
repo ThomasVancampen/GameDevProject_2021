@@ -21,9 +21,9 @@ namespace GameDevProject_2021.States
     class GameState : State
     {
         private List<ILevel> _levels;
-        public GameState(Game1 game, ContentManager contentManager) : base(game, contentManager)
+        public GameState(Game1 game, ContentManager contentManager, int currentLevel) : base(game, contentManager, currentLevel)
         {
-
+            _currentLevel = currentLevel;
         }
         public void Initialize()
         {
@@ -39,8 +39,8 @@ namespace GameDevProject_2021.States
         
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_levels[0].BackgroundTexture, new Vector2(0, 0), Color.White);
-            foreach (var go in _levels[0].GameObjects)//de nul moet een variabele worden
+            spriteBatch.Draw(_levels[_currentLevel].BackgroundTexture, new Vector2(0, 0), Color.White);
+            foreach (var go in _levels[_currentLevel].GameObjects)//de nul moet een variabele worden
             {
                 go.Draw(spriteBatch);
             }
@@ -53,19 +53,26 @@ namespace GameDevProject_2021.States
 
         public override void Update(GameTime gameTime)
         {
-            foreach (var go in _levels[0].GameObjects)
+            foreach (var go in _levels[_currentLevel].GameObjects)
             {
                 if(go is Temp)
                 {
                     var temp =  go as Temp;
                     if (!temp.IsAlive)
                     {
-                        _game.changeState(new GameOverState(_game, _contentManager)
+                        _game.changeState(new GameOverState(_game, _contentManager, _currentLevel)
                         {
                         });
-                   }
+                    }
+                    else if (temp.Victorious)
+                    {
+                        _game.changeState(new LevelCompletedState(_game, _contentManager, _currentLevel)
+                        {
+                        });
+                    }
+
                 }
-                go.Update(gameTime, _levels[0].GameObjects);
+                go.Update(gameTime, _levels[_currentLevel].GameObjects);
             }
         }
     }

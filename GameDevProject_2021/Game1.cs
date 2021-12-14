@@ -29,6 +29,7 @@ namespace GameDevProject_2021
 
         private State _currentState;
         private State _nextState;
+        private int _currentLevel;
 
 
         #endregion
@@ -50,13 +51,15 @@ namespace GameDevProject_2021
             _graphics.IsFullScreen = false;
             _graphics.ApplyChanges();
 
+            _currentLevel = 0;
+
             base.Initialize();
         }
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            _currentState = new MenuState(this,Content);
+            _currentState = new MenuState(this,Content, _currentLevel);
             _currentState.LoadContent();
             _nextState = null;
         }
