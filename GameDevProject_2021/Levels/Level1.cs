@@ -19,9 +19,9 @@ namespace GameDevProject_2021.Levels
 {
     class Level1 : ILevel
     {
-        public List<GameObject> GameObjects { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Texture2D BackgroundTexture { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public ContentManager ContentManager { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public List<GameObject> GameObjects { get; set; }
+        public Texture2D BackgroundTexture { get; set; }
+        public ContentManager ContentManager { get; set; }
 
         public Level1(ContentManager cm)
         {
