@@ -2,6 +2,7 @@
 using GameDevProject_2021.GameObjects.Actors.Enemies;
 using GameDevProject_2021.GameObjects.Actors.Heroes;
 using GameDevProject_2021.GameObjects.StaticObjects.StaticEnemy;
+using GameDevProject_2021.GameObjects.StaticObjects.StaticExit;
 using GameDevProject_2021.Interfaces;
 using Microsoft.Xna.Framework;
 using System;
@@ -84,6 +85,10 @@ namespace GameDevProject_2021.Managers
                     {
                         obj.AnimationManager.Color = Color.White;
                     }
+                }
+                else if (go is Exit)
+                {
+                    //Code om naar volgend level te gaan en uiteindelijk victory scherm.
                 }
                 if (!obj.CollisionDetectionManager.CollisionBottom(obj, go) && !obj.Jump)
                 {
