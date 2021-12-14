@@ -17,7 +17,7 @@ namespace GameDevProject_2021.States
         private List<Button> _buttons;
         public MenuState(Game1 game, ContentManager contentManager, int currentLevel) : base(game, contentManager, currentLevel) 
         {
-        
+            _currentLevel = 0;
         }
         public override void LoadContent()
         {

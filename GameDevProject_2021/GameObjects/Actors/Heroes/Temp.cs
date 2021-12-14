@@ -55,6 +55,11 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
             {
                 AnimationManager.Play(Animations["Walk"]);
             }
+
+            if(((int)Position.X + AnimationManager.Animation.FrameWidth - 19)+Movement.X<=0 ||((int)Position.X + AnimationManager.Animation.FrameWidth - 19)+Movement.X >= 1700)//texture width moet er nog bij geteld worden.
+            {
+                this.Movement = new Vector2(0, this.Movement.Y);
+            }
             Position += Movement;
             Movement = Vector2.Zero;
             //if (gameTime.TotalGameTime.Seconds%9==0)
