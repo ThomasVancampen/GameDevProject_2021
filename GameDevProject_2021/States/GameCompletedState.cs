@@ -23,7 +23,7 @@ namespace GameDevProject_2021.States
         {
             _victoryTexture = _contentManager.Load<Texture2D>("Text/Victory");
             _returnTexture = _contentManager.Load<Texture2D>("Buttons/ReturnMenuButton");
-            _backgroundTexture = _contentManager.Load<Texture2D>("Background/MenuBackground");
+            _backgroundTexture = _contentManager.Load<Texture2D>("Background/TreeBackground");
             _buttons = new List<Button>()
             {
                 new Button(_returnTexture)
@@ -35,15 +35,8 @@ namespace GameDevProject_2021.States
         }
         public void Button_ReturnMenu_Clicked(object sender, EventArgs args)
         {
-            _currentLevel++;
-            if (_currentLevel < _amountOfLevels)
-            {
-                _game.changeState(new GameState(_game, _contentManager, _currentLevel)
-                {
-                });
-            }
-            else
-                _game.changeState(new GameCompletedState(_game, _contentManager, _currentLevel));
+            //nog bekijken hoe we levels willen doen als we terug naar hoofdmenu gaan
+            _game.changeState(new MenuState(_game, _contentManager, _currentLevel));
 
         }
 

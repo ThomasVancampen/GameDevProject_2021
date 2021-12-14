@@ -7,6 +7,7 @@ using GameDevProject_2021.Interfaces;
 using GameDevProject_2021.Levels;
 using GameDevProject_2021.Model;
 using GameDevProject_2021.Model.Animation1;
+using GameDevProject_2021.Model.ControlButtons;
 using GameDevProject_2021.Model.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -50,6 +51,12 @@ namespace GameDevProject_2021.States
         public override void LoadContent()
         {
             this.Initialize();
+        }
+        public void Button_ReturnMenu_Clicked(object sender, EventArgs args)
+        {
+            _game.changeState(new MenuState(_game, _contentManager, _currentLevel)
+            {
+            });
         }
 
         public override void Update(GameTime gameTime)

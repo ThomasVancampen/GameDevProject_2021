@@ -23,7 +23,7 @@ namespace GameDevProject_2021.States
         {
             _startButtonTexture = _contentManager.Load<Texture2D>("Buttons/StartButton");
             _exitButtonTexture = _contentManager.Load<Texture2D>("Buttons/ExitButton");
-            _backgroundTexture = _contentManager.Load<Texture2D>("Background/MenuBackground");
+            _backgroundTexture = _contentManager.Load<Texture2D>("Background/TreeBackground");
             _buttons = new List<Button>()
             {
                 new Button(_startButtonTexture)

@@ -97,7 +97,7 @@
 /processorParam:TextureFormat=Color
 /build:Buttons/ReplayButton.png
 
-#begin Buttons/ReturnButton.png
+#begin Buttons/RestartButton.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -107,7 +107,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Buttons/ReturnButton.png
+/build:Buttons/RestartButton.png
 
 #begin Buttons/ReturnMenuButton.png
 /importer:TextureImporter
