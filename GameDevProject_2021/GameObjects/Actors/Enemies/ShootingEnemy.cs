@@ -21,7 +21,7 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
 
         private Texture2D _bulletTexture;
 
-        public List<EnemyBullet> bullets { get; set; }
+        public List<EnemyBullet> Bullets { get; set; }
         #endregion
 
         #region constructors
@@ -36,7 +36,7 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
             this.IsShooting = false;
             this.ShootingTimer = 4;
             this._bulletTexture = bulletTexture;
-            this.bullets = new List<EnemyBullet>();
+            this.Bullets = new List<EnemyBullet>();
             this.IsGoingRight = true;
         }
         #endregion
@@ -54,21 +54,21 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
                 this.Movement = Vector2.Zero;
                 this.IsShooting = true;
 
-                if (this.IsShooting && bullets.Count <= 0 && this.IsGoingRight)
+                if (this.IsShooting && Bullets.Count <= 0 && this.IsGoingRight)
                 {
 
-                    bullets.Add(new EnemyBullet(_bulletTexture)
+                    Bullets.Add(new EnemyBullet(_bulletTexture)
                     {
                         Position = new Vector2((int)Position.X + AnimationManager.Animation.FrameWidth, (int)Position.Y + AnimationManager.Animation.FrameHeight)
                     });
                 }
-                else if (this.IsShooting && bullets.Count <= 0 && !this.IsGoingRight)
+                else if (this.IsShooting && Bullets.Count <= 0 && !this.IsGoingRight)
                 {
-                    bullets.Add(new EnemyBullet(_bulletTexture)
+                    Bullets.Add(new EnemyBullet(_bulletTexture)
                     {
                         Position = new Vector2((int)Position.X + AnimationManager.Animation.FrameWidth-19, (int)Position.Y + AnimationManager.Animation.FrameHeight)
                     });
-                    bullets[0].Speed *= -1;
+                    Bullets[0].Speed *= -1;
                 }
             }
             else
@@ -76,7 +76,7 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
                 AnimationManager.Play(Animations["Run"]);
                 this.IsShooting = false;
             }
-            foreach (var bullet in bullets)
+            foreach (var bullet in Bullets)
             {
                 if (bullet.Exists)
                 {
@@ -99,9 +99,9 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
-            if (bullets.Count >= 1)
+            if (Bullets.Count >= 1)
             {
-                foreach (var bullet in bullets)
+                foreach (var bullet in Bullets)
                 {
                     if (bullet.Exists)
                     {
@@ -110,7 +110,7 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
                     }
                     else
                     {
-                        bullets.RemoveAt(0);
+                        Bullets.RemoveAt(0);
                         break;
                     }
                 }

@@ -92,7 +92,7 @@ namespace GameDevProject_2021.Managers
                             obj.AnimationManager.Color = Color.White;
                         }
 
-                        if (gameTime.TotalGameTime.Seconds>obj.InvincibleStartTimer+obj.InvincibleTime)//check moet nog beter dan met elapsed gametime, dit zal er voor zorgen dat het random is
+                        if (gameTime.TotalGameTime.Seconds>obj.InvincibleStartTimer+obj.InvincibleTime)
                         {
                                 obj.Hit = false;
                         }
@@ -102,6 +102,26 @@ namespace GameDevProject_2021.Managers
                         obj.AnimationManager.Color = Color.White;
                     }
 
+                }
+                else if (go is ShootingEnemy)
+                {
+                    var temp = go as ShootingEnemy;
+                    foreach (var bullet in temp.Bullets)
+                    {
+                        GotHit(obj, bullet, gameTime);
+                    }
+                    if ((obj.Movement.X > 0 && obj.CollisionDetectionManager.CollisionLeft(obj, go)) ||
+                    (obj.Movement.X < 0 && obj.CollisionDetectionManager.CollisionRight(obj, go)))
+                    {
+                        obj.Movement = new Vector2(0, obj.Movement.Y);
+                    }
+                    if ((obj.Movement.Y > 0 && obj.CollisionDetectionManager.CollisionTop(obj, go)) ||
+                        (obj.Movement.Y < 0 && obj.CollisionDetectionManager.CollisionBottom(obj, go)))
+                    {
+                        obj.Movement = new Vector2(obj.Movement.X, 0);
+                        obj.IsFalling = false;
+                        obj.FallHeight = 0;
+                    }
                 }
 
                 //if (go is EnemyBullet)
