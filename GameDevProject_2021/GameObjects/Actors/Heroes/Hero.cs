@@ -32,20 +32,10 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
 
         #endregion
 
-        #region Constructors
-        public Hero(Texture2D texture, IInputReader inputReader)
-        {
-            this.Texture = texture;
-            this._movementManager = new MovementManager();
-            this.InputReader = inputReader;
-        }
+        #region Constructor
         public Hero(Dictionary<string, Animation> animations, IInputReader inputReader)
         {
-            this.Animations = animations;
-            this.AnimationManager = new AnimationManager(Animations.First().Value);
-            this._movementManager = new MovementManager();
-            this.InputReader = inputReader;
-            this.CollisionManager = new CollisionManager();
+            InitialiseHero(animations, inputReader);
         }
         #endregion
 
@@ -60,6 +50,18 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
         public void Move(List<GameObject> gameObjects)
         {
             _movementManager.Move(this, gameObjects);
+        }
+        private void InitialiseHero(Dictionary<string, Animation> animations, IInputReader inputReader)
+        {
+            this.Animations = animations;
+            this.AnimationManager = new AnimationManager(Animations.First().Value);
+            this._movementManager = new MovementManager();
+            this.CollisionManager = new CollisionManager();
+            this.InputReader = inputReader;
+            this.IsFalling = true;
+            this.Victorious = false;
+            this.Hit = false;
+
         }
         #endregion
     }

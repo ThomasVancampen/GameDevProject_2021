@@ -26,11 +26,8 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
             this.Speed = 4;
             this.MaxJumpHeight = -14;
             this.Gravity = 1;
-            this.IsFalling = true;
             this.FallHeight = 0;
             this.Lives = 3;
-            this.Hit = false;
-            this.Victorious = false;
             this.InvincibleStartTimer = 1;
             this.InvincibleTime = this.InvincibleStartTimer;
 
