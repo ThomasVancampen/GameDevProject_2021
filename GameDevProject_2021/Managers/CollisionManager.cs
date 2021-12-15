@@ -94,9 +94,7 @@ namespace GameDevProject_2021.Managers
 
                         if (gameTime.TotalGameTime.Seconds>obj.InvincibleStartTimer+obj.InvincibleTime)//check moet nog beter dan met elapsed gametime, dit zal er voor zorgen dat het random is
                         {
-                           
                                 obj.Hit = false;
-                                
                         }
                     }
                     else
@@ -105,6 +103,12 @@ namespace GameDevProject_2021.Managers
                     }
 
                 }
+
+                //if (go is EnemyBullet)
+                //{
+                //    GotHit(obj, go, gameTime);
+                //}
+
                 if (!obj.CollisionDetectionManager.CollisionBottom(obj, go) && !obj.Jump)
                 {
                     obj.IsFalling = true;
@@ -113,6 +117,52 @@ namespace GameDevProject_2021.Managers
                 {
                     obj.IsFalling = true;
                 }
+            }
+        }
+        public void GotHit(Squirrel obj, GameObject go, GameTime gameTime)
+        { 
+            if ((obj.Movement.X > 0 && obj.CollisionDetectionManager.CollisionLeft(obj, go)) ||
+                   (obj.Movement.X < 0 && obj.CollisionDetectionManager.CollisionRight(obj, go)))
+            {
+                if (!obj.Hit)
+                {
+                    obj.InvincibleStartTimer = gameTime.TotalGameTime.Seconds;
+                    obj.Lives--;
+                    obj.Hit = true;
+                }
+            }
+            if ((obj.Movement.Y > 0 && obj.CollisionDetectionManager.CollisionTop(obj, go)) ||
+                (obj.Movement.Y < 0 && obj.CollisionDetectionManager.CollisionBottom(obj, go)))
+            {
+                obj.IsFalling = false;
+                obj.FallHeight = 0;
+                if (!obj.Hit)
+                {
+                    obj.InvincibleStartTimer = gameTime.TotalGameTime.Seconds;
+                    obj.Lives--;
+                    obj.Hit = true;
+                }
+            }
+
+            if (obj.Hit)//encapsuleren naar ergens anders
+            {
+                if (obj.AnimationManager.Color == Color.White)
+                {
+                    obj.AnimationManager.Color = Color.Red;
+                }
+                else if (obj.AnimationManager.Color == Color.Red)
+                {
+                    obj.AnimationManager.Color = Color.White;
+                }
+
+                if (gameTime.TotalGameTime.Seconds > obj.InvincibleStartTimer + obj.InvincibleTime)//check moet nog beter dan met elapsed gametime, dit zal er voor zorgen dat het random is
+                {
+                    obj.Hit = false;
+                }
+            }
+            else
+            {
+                obj.AnimationManager.Color = Color.White;
             }
         }
     }
