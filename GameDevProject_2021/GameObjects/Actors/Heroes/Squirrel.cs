@@ -10,17 +10,17 @@ using System.Text;
 
 namespace GameDevProject_2021.GameObjects.Actors.Heroes
 {
-    class Temp : Hero
+    class Squirrel : Hero
     {
-        //public Temp(Texture2D texture, IInputReader inputReader) : base(texture, inputReader)
-        //{
-
-        //    InitialiseSquirrel()
-        //}
-        public Temp(Dictionary<string, Animation> animations, IInputReader inputReader) : base(animations, inputReader)
+        #region Var and Prop
+        #endregion
+        #region Constuctor
+        public Squirrel(Dictionary<string, Animation> animations, IInputReader inputReader) : base(animations, inputReader)
         {
             InitialiseSquirrel();
         }
+        #endregion
+        #region Methods
         private void InitialiseSquirrel()
         {
             this.Speed = 4;
@@ -74,5 +74,6 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
             }
             AnimationManager.Update(gameTime);//na dood moet nog 4 keer updaten
         }
+        #endregion
     }
 }

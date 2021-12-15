@@ -62,7 +62,7 @@ namespace GameDevProject_2021.Levels
             };
             GameObjects = new List<GameObject>()
             {
-                new Temp(heroAnimations, new KeyBoardReader())
+                new Squirrel(heroAnimations, new KeyBoardReader())
                 {
                     InputKeys = new InputKeys()
                     {

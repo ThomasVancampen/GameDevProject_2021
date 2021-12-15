@@ -13,7 +13,7 @@ namespace GameDevProject_2021.Managers
 {
     class CollisionManager
     {
-        public void Collide(Temp obj, List<GameObject> gameObjects, GameTime gameTime)
+        public void Collide(Squirrel obj, List<GameObject> gameObjects, GameTime gameTime)
         {
             foreach (var go in gameObjects)
             {

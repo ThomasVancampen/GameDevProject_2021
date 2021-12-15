@@ -70,9 +70,9 @@ namespace GameDevProject_2021.States
         {
             foreach (var go in _levels[_currentLevel].GameObjects)
             {
-                if(go is Temp)
+                if(go is Squirrel)
                 {
-                    var temp =  go as Temp;
+                    var temp =  go as Squirrel;
                     if (temp.Lives !=_lives.Count)
                     {
                         _lives.RemoveAt(_lives.Count - 1);
