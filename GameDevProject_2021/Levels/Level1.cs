@@ -3,6 +3,7 @@ using GameDevProject_2021.GameObjects.Actors.Enemies;
 using GameDevProject_2021.GameObjects.Actors.Heroes;
 using GameDevProject_2021.GameObjects.StaticObjects.StaticEnemy;
 using GameDevProject_2021.GameObjects.StaticObjects.StaticExit;
+using GameDevProject_2021.GameObjects.StaticObjects.StaticPlatform;
 using GameDevProject_2021.Interfaces;
 using GameDevProject_2021.Model;
 using GameDevProject_2021.Model.Animation1;
@@ -93,31 +94,31 @@ namespace GameDevProject_2021.Levels
                 {
                     Position = new Vector2(650, 630-50)
                 },
-                new StaticObject(floorTexture)
+                new StaticPlatform(floorTexture)
                 {
                     Position = new Vector2(200, 830)
                 },
-                new StaticObject(floorTexture)
+                new StaticPlatform(floorTexture)
                 {
                     Position = new Vector2(300, 730)
                 },
-                new StaticObject(floorTexture)
+                new StaticPlatform(floorTexture)
                 {
                     Position = new Vector2(400, 630)
                 },
-                new StaticObject(floorTexture)
+                new StaticPlatform(floorTexture)
                 {
                     Position = new Vector2(620, 630)
                 },
-                new StaticObject(floorTexture)
+                new StaticPlatform(floorTexture)
                 {
                     Position = new Vector2(720, 630)
                 },
-                new StaticObject(floorTexture)
+                new StaticPlatform(floorTexture)
                 {
                     Position = new Vector2(870, 530)
                 },
-                new StaticObject(floorTexture)
+                new StaticPlatform(floorTexture)
                 {
                     Position = new Vector2(720, 430)
                 },
@@ -149,11 +150,11 @@ namespace GameDevProject_2021.Levels
                 //{
                 //    Position = new Vector2(walltexture.Width*2,Game1.ScreenHeight+walltexture.Height-20)
                 //},
-                new StaticObject(groundTexture)
+                new StaticPlatform(groundTexture)
                 {
                     Position = new Vector2(0, Game1.ScreenHeight-groundTexture.Height)
                 },
-                new StaticObject(groundTexture)
+                new StaticPlatform(groundTexture)
                 {
                     Position = new Vector2(Game1.ScreenWidth/2, Game1.ScreenHeight-groundTexture.Height)
                 },
