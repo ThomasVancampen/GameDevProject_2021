@@ -24,6 +24,9 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
         public int FallHeight { get; set; }
         public int Lives { get; set; }
         public bool Hit { get; set; }
+        public int InvincibleTime { get; set; }
+        public int InvincibleStartTimer { get; set; }
+
         public bool Victorious { get; set; }
         public CollisionManager CollisionManager { get; set; }
 

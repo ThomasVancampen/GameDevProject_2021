@@ -62,6 +62,7 @@ namespace GameDevProject_2021.Managers
                         obj.Movement = new Vector2(0, obj.Movement.Y);
                         if (!obj.Hit)
                         {
+                            obj.InvincibleStartTimer = gameTime.TotalGameTime.Seconds;
                             obj.Lives--;
                             obj.Hit = true;
                         }
@@ -74,11 +75,13 @@ namespace GameDevProject_2021.Managers
                         obj.FallHeight = 0;
                         if (!obj.Hit)
                         {
+                            obj.InvincibleStartTimer = gameTime.TotalGameTime.Seconds;
                             obj.Lives--;
                             obj.Hit = true;
                         }
                     }
-                    if (obj.Hit)
+
+                    if (obj.Hit)//encapsuleren naar ergens anders
                     {
                         if (obj.AnimationManager.Color == Color.White)
                         {
@@ -89,15 +92,18 @@ namespace GameDevProject_2021.Managers
                             obj.AnimationManager.Color = Color.White;
                         }
 
-                        if (gameTime.TotalGameTime.Seconds % 5 == 0)//check moet nog beter dan met elapsed gametime, dit zal er voor zorgen dat het random is
+                        if (gameTime.TotalGameTime.Seconds>obj.InvincibleStartTimer+obj.InvincibleTime)//check moet nog beter dan met elapsed gametime, dit zal er voor zorgen dat het random is
                         {
-                            obj.Hit = false;
+                           
+                                obj.Hit = false;
+                                
                         }
                     }
                     else
                     {
                         obj.AnimationManager.Color = Color.White;
                     }
+
                 }
                 if (!obj.CollisionDetectionManager.CollisionBottom(obj, go) && !obj.Jump)
                 {

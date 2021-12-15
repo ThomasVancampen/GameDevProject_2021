@@ -31,6 +31,9 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
             this.Lives = 3;
             this.Hit = false;
             this.Victorious = false;
+            this.InvincibleStartTimer = 1;
+            this.InvincibleTime = this.InvincibleStartTimer;
+
         }
         public override void Update(GameTime gameTime, List<GameObject> gameObjects)
         {
