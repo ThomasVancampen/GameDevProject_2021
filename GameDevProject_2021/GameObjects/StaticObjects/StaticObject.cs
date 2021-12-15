@@ -10,7 +10,7 @@ using System.Text;
 
 namespace GameDevProject_2021.GameObjects
 {
-    class StaticObject : GameObject
+    abstract class StaticObject : GameObject
     {
         public StaticObject(Texture2D texture)
         {
