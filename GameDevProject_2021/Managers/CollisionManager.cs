@@ -17,7 +17,7 @@ namespace GameDevProject_2021.Managers
         {
             foreach (var go in gameObjects)
             {
-                if (go is StaticObject && !(go is Trapp) && !(go is Exit))//moet nog anders gechecked worden, niet met staticobject
+                if (go is StaticObject && !(go is FireTrapp) && !(go is Exit))//moet nog anders gechecked worden, niet met staticobject
                 {
                     if ((obj.Movement.X > 0 && obj.CollisionDetectionManager.CollisionLeft(obj, go)) ||
                     (obj.Movement.X < 0 && obj.CollisionDetectionManager.CollisionRight(obj, go)))
@@ -54,7 +54,7 @@ namespace GameDevProject_2021.Managers
                         obj.Exists = false;
                     }
                 }
-                else if (go is Trapp)
+                else if (go is FireTrapp)
                 {
                     if ((obj.Movement.X > 0 && obj.CollisionDetectionManager.CollisionLeft(obj, go)) ||
                     (obj.Movement.X < 0 && obj.CollisionDetectionManager.CollisionRight(obj, go)))

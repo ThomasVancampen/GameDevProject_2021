@@ -43,7 +43,6 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
 
         public override void Update(GameTime gameTime, List<GameObject> gameObjects)
         {
-            base.Update(gameTime, gameObjects);
             Move(gameObjects);
         }
 

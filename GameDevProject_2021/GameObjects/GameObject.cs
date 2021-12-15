@@ -31,7 +31,7 @@ namespace GameDevProject_2021.GameObjects
         public bool Exists { get; set; }
         #endregion
 
-        #region Constructors
+        #region Constructor
         public GameObject()
         {
             this.Exists = true;
@@ -45,6 +45,10 @@ namespace GameDevProject_2021.GameObjects
             if (Texture != null)
             {
                 this.CollisionRectangle = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
+            }
+            else if (AnimationManager!=null)
+            {
+                this.CollisionRectangle = new Rectangle((int)Position.X , (int)Position.Y, AnimationManager.Animation.FrameWidth, AnimationManager.Animation.FrameHeight);
             }
         }
 

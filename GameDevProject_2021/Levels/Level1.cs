@@ -90,7 +90,7 @@ namespace GameDevProject_2021.Levels
                 //{
                 //    Position = new Vector2(620-30,630-60)
                 //},
-                new Trapp(flameAnimations)
+                new FireTrapp(flameAnimations)
                 {
                     Position = new Vector2(650, 630-50)
                 },
