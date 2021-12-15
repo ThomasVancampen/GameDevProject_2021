@@ -41,7 +41,7 @@ namespace GameDevProject_2021.Managers
             if (obj.TravelDistanceCounter >= 0)
             {
                 obj.Movement += new Vector2(obj.Speed, 0);
-                obj.TravelDistanceCounter -= obj.Speed;
+                obj.TravelDistanceCounter -= obj.BulletSpeed;
                 if (obj.TravelDistanceCounter >= obj.TravelDistance ||  obj.TravelDistanceCounter <= 0)
                 {
                     obj.Exists = false;

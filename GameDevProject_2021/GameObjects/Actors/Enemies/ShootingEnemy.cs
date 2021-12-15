@@ -59,12 +59,16 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
 
                     bullets.Add(new EnemyBullet(_bulletTexture)
                     {
-                        Position = this.Position
+                        Position = new Vector2((int)Position.X + AnimationManager.Animation.FrameWidth, (int)Position.Y + AnimationManager.Animation.FrameHeight)
                     });
-                    if (!this.IsGoingRight)
+                }
+                else if (this.IsShooting && bullets.Count <= 0 && !this.IsGoingRight)
+                {
+                    bullets.Add(new EnemyBullet(_bulletTexture)
                     {
-                        bullets[0].Speed *= -1;
-                    }
+                        Position = new Vector2((int)Position.X + AnimationManager.Animation.FrameWidth-19, (int)Position.Y + AnimationManager.Animation.FrameHeight)
+                    });
+                    bullets[0].Speed *= -1;
                 }
             }
             else

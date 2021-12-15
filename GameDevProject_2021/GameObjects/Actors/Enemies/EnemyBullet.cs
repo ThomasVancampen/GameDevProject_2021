@@ -10,11 +10,13 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
     {
         public float TravelDistance { get; set; }
         public float TravelDistanceCounter { get; set; }
+        public float BulletSpeed { get; set; }
 
         public EnemyBullet(Texture2D texture)
         {
             this.Texture = texture;
             this.Speed = 1.8f;
+            this.BulletSpeed = 1.8f;
             this.TravelDistance = 250;
             this.TravelDistanceCounter = TravelDistance;
         }
