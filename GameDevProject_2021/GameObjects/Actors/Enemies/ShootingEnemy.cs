@@ -16,6 +16,7 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
 
         public bool IsShooting { get; set; }
         public int ShootingTimer { get; set; }
+        //public CollisionDetectionManager CollisionDetectionManager { get; set; }
         #endregion
 
         #region constructors
@@ -24,6 +25,7 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
             this.Animations = hunterAnimations;
             this.AnimationManager = new AnimationManager(Animations.First().Value);
             this._movementManager = new MovementManager();
+            //this.CollisionDetectionManager = new CollisionDetectionManager();
             this.RunDistance = 100;
             this.RunDistanceCounter = RunDistance;
             this.Speed = 0.5f;

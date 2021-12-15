@@ -13,7 +13,6 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
         {
             this.Texture = texture;
             this.Speed = 0.1f;
-            this._movementManager = new MovementManager();
         }
         public override void Update(GameTime gameTime, List<GameObject> gameObjects)
         {

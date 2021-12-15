@@ -12,9 +12,7 @@ namespace GameDevProject_2021.GameObjects
     abstract class GameObject : ICollide, IGameObject
     {
         #region Var and Prop
-        public CollisionDetectionManager CollisionDetectionManager { get; set; }
         public AnimationManager AnimationManager { get; set; }
-
         public Dictionary<string, Animation> Animations { get; set; }
         public Texture2D Texture { get; set; }
         public Vector2 Position { get{ return _postion; } 
@@ -28,16 +26,15 @@ namespace GameDevProject_2021.GameObjects
             ; } 
         }
         protected Vector2 _postion;
-        public Vector2 Movement { get; set; }
         public Rectangle CollisionRectangle { get { return this._collisionRectangle; } set { this._collisionRectangle = value; } }
         private Rectangle _collisionRectangle;
+        public bool Exists { get; set; }
         #endregion
 
         #region Constructors
         public GameObject()
         {
-            this.Movement = Vector2.Zero;
-            this.CollisionDetectionManager = new CollisionDetectionManager();
+            this.Exists = true;
         }
         #endregion
 

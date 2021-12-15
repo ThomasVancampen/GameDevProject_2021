@@ -17,11 +17,11 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
         #region Constuctor
         public Squirrel(Dictionary<string, Animation> animations, IInputReader inputReader) : base(animations, inputReader)
         {
-            InitialiseSquirrel();
+            InitializeSquirrel();
         }
         #endregion
         #region Methods
-        private void InitialiseSquirrel()
+        private void InitializeSquirrel()
         {
             this.Speed = 4;
             this.MaxJumpHeight = -14;
@@ -67,7 +67,7 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
             //}
             if (this.Lives <=0)
             {
-                this.IsAlive = false;
+                this.Exists = false;
             }
             AnimationManager.Update(gameTime);//na dood moet nog 4 keer updaten
         }

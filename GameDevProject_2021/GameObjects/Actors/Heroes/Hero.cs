@@ -26,16 +26,16 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
         public bool Hit { get; set; }
         public int InvincibleTime { get; set; }
         public int InvincibleStartTimer { get; set; }
-
         public bool Victorious { get; set; }
         public CollisionManager CollisionManager { get; set; }
+        public CollisionDetectionManager CollisionDetectionManager { get; set; }
 
         #endregion
 
         #region Constructor
         public Hero(Dictionary<string, Animation> animations, IInputReader inputReader)
         {
-            InitialiseHero(animations, inputReader);
+            InitializeHero(animations, inputReader);
         }
         #endregion
 
@@ -51,12 +51,12 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
         {
             _movementManager.Move(this, gameObjects);
         }
-        private void InitialiseHero(Dictionary<string, Animation> animations, IInputReader inputReader)
+        private void InitializeHero(Dictionary<string, Animation> animations, IInputReader inputReader)
         {
             this.Animations = animations;
             this.AnimationManager = new AnimationManager(Animations.First().Value);
-            this._movementManager = new MovementManager();
             this.CollisionManager = new CollisionManager();
+            this.CollisionDetectionManager = new CollisionDetectionManager();
             this.InputReader = inputReader;
             this.IsFalling = true;
             this.Victorious = false;

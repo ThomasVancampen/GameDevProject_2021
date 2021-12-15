@@ -51,7 +51,7 @@ namespace GameDevProject_2021.Managers
                         (obj.CollisionDetectionManager.CollisionBottom(obj, go)))
                     {
                         obj.Lives = 0;
-                        obj.IsAlive = false;
+                        obj.Exists = false;
                     }
                 }
                 else if (go is Trapp)

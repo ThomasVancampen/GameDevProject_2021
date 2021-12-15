@@ -78,7 +78,7 @@ namespace GameDevProject_2021.States
                         _lives.RemoveAt(_lives.Count - 1);
                     }
 
-                    if (!temp.IsAlive)
+                    if (!temp.Exists)
                     {
                         _game.changeState(new GameOverState(_game, _contentManager, _currentLevel)
                         {
