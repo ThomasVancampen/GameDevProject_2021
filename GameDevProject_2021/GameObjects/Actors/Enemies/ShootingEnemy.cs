@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace GameDevProject_2021.GameObjects.Actors.Enemies
 {
@@ -16,21 +17,27 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
 
         public bool IsShooting { get; set; }
         public int ShootingTimer { get; set; }
-        //public CollisionDetectionManager CollisionDetectionManager { get; set; }
+        public bool IsGoingRight { get; set; }
+
+        private Texture2D _bulletTexture;
+
+        public List<EnemyBullet> bullets { get; set; }
         #endregion
 
         #region constructors
-        public ShootingEnemy(Dictionary<string, Animation> hunterAnimations)
+        public ShootingEnemy(Dictionary<string, Animation> hunterAnimations, Texture2D bulletTexture)
         {
             this.Animations = hunterAnimations;
             this.AnimationManager = new AnimationManager(Animations.First().Value);
             this._movementManager = new MovementManager();
-            //this.CollisionDetectionManager = new CollisionDetectionManager();
             this.RunDistance = 100;
             this.RunDistanceCounter = RunDistance;
             this.Speed = 0.5f;
             this.IsShooting = false;
             this.ShootingTimer = 4;
+            this._bulletTexture = bulletTexture;
+            this.bullets = new List<EnemyBullet>();
+            this.IsGoingRight = true;
         }
         #endregion
 
@@ -40,17 +47,38 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
             this.CollisionRectangle = new Rectangle((int)Position.X + AnimationManager.Animation.FrameWidth - 19, (int)Position.Y + AnimationManager.Animation.FrameHeight, 32, 32);
             base.Update(gameTime, gameObjects);
             Move(gameObjects);
-            
-            if (gameTime.TotalGameTime.Seconds%this.ShootingTimer == 0)
+
+            if (gameTime.TotalGameTime.Seconds % this.ShootingTimer == 0)
             {
                 AnimationManager.Play(Animations["Shoot"]);
                 this.Movement = Vector2.Zero;
                 this.IsShooting = true;
+
+                if (this.IsShooting && bullets.Count <= 0 && this.IsGoingRight)
+                {
+
+                    bullets.Add(new EnemyBullet(_bulletTexture)
+                    {
+                        Position = this.Position
+                    });
+                    if (!this.IsGoingRight)
+                    {
+                        bullets[0].Speed *= -1;
+                    }
+                }
             }
             else
             {
                 AnimationManager.Play(Animations["Run"]);
                 this.IsShooting = false;
+            }
+            foreach (var bullet in bullets)
+            {
+                if (bullet.Exists)
+                {
+                    bullet.Update(gameTime, gameObjects);
+
+                }
             }
 
             AnimationManager.Update(gameTime);
@@ -62,6 +90,27 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
         public void Move(List<GameObject> gameObjects)
         {
             _movementManager.Move(this, gameObjects);
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            base.Draw(spriteBatch);
+            if (bullets.Count >= 1)
+            {
+                foreach (var bullet in bullets)
+                {
+                    if (bullet.Exists)
+                    {
+
+                        bullet.Draw(spriteBatch);
+                    }
+                    else
+                    {
+                        bullets.RemoveAt(0);
+                        break;
+                    }
+                }
+            }
         }
         #endregion
     }

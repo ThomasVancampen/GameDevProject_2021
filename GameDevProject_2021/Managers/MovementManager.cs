@@ -34,19 +34,36 @@ namespace GameDevProject_2021.Managers
             obj.Movement = Vector2.Zero;
         }
 
+        public void Move(EnemyBullet obj, List<GameObject> gameObjects)
+        {
+
+
+            if (obj.TravelDistanceCounter >= 0)
+            {
+                obj.Movement += new Vector2(obj.Speed, 0);
+                obj.TravelDistanceCounter -= obj.Speed;
+                if (obj.TravelDistanceCounter >= obj.TravelDistance ||  obj.TravelDistanceCounter <= 0)
+                {
+                    obj.Exists = false;
+                }
+            }
+            obj.Position += obj.Movement;
+            obj.Movement = Vector2.Zero;
+        }
+
         public void Move(ShootingEnemy obj, List<GameObject> gameObjects)
         {
             obj.Movement += new Vector2(obj.Speed, 0);
-            
-            var futurePosition = obj.Position + obj.Movement;
-            
 
-            if ((obj.RunDistanceCounter >=0 || obj.RunDistanceCounter <= obj.RunDistance)&& !obj.IsShooting)
+            var futurePosition = obj.Position + obj.Movement;
+
+
+            if ((obj.RunDistanceCounter >= 0 && obj.RunDistanceCounter <= obj.RunDistance)&& !obj.IsShooting)
             {
                 obj.Movement += new Vector2(obj.Speed, 0);
                 obj.RunDistanceCounter -= obj.Speed;
-                if (obj.RunDistanceCounter>=obj.RunDistance|| obj.RunDistanceCounter <= 0)
-                { 
+                if (obj.RunDistanceCounter >= obj.RunDistance || obj.RunDistanceCounter <= 0)
+                {
                     obj.Speed *= -1;
                 }
             }
@@ -54,12 +71,14 @@ namespace GameDevProject_2021.Managers
             if (futurePosition.X > obj.Position.X)
             {
                 obj.AnimationManager.TextureDirection = SpriteEffects.None;
+                obj.IsGoingRight = true;
             }
             if (futurePosition.X < obj.Position.X)
             {
                 obj.AnimationManager.TextureDirection = SpriteEffects.FlipHorizontally;
+                obj.IsGoingRight = false;
             }
-           
+
         }
 
         public void Move(Hero obj, List<GameObject> gameObjects)
@@ -98,35 +117,6 @@ namespace GameDevProject_2021.Managers
             {
                 obj.AnimationManager.TextureDirection = SpriteEffects.FlipHorizontally;
             }
-
-            //foreach (var go in gameObjects)
-            //{
-            //    if ((obj.Movement.X > 0 && obj.CollisionDetectionManager.CollisionLeft(obj, go)) ||
-            //        (obj.Movement.X < 0 && obj.CollisionDetectionManager.CollisionRight(obj, go)))
-            //    {
-            //        obj.Movement = new Vector2(0, obj.Movement.Y);
-            //    }
-            //    if ((obj.Movement.Y > 0 && obj.CollisionDetectionManager.CollisionTop(obj, go)) ||
-            //        (obj.Movement.Y < 0 && obj.CollisionDetectionManager.CollisionBottom(obj, go)))
-            //    {
-            //        obj.Movement = new Vector2(obj.Movement.X, 0);
-            //        obj.IsFalling=false;
-            //        obj.FallHeight = 0;
-            //    }
-
-            //    if (!obj.CollisionDetectionManager.CollisionBottom(obj, go)&&!obj.Jump)
-            //    {
-            //        obj.IsFalling = true;
-            //    }
-            //    if (obj.CollisionDetectionManager.CollisionTop(obj, go))
-            //    {
-            //        obj.IsFalling = true;
-            //    }
-            //}
-            //if (obj.Position.Y>=400 && !obj.Jump)
-            //{
-            //    obj.Movement = new Vector2(obj.Movement.X, 0);
-            //}
         }
         #endregion
     }
