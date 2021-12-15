@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Text;
 using GameDevProject_2021.Model;
 using System.Linq;
+using GameDevProject_2021.Managers.Collision;
 
 namespace GameDevProject_2021.GameObjects.Actors.Heroes
 {
@@ -27,7 +28,7 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
         public int InvincibleTime { get; set; }
         public int InvincibleStartTimer { get; set; }
         public bool Victorious { get; set; }
-        public CollisionManager CollisionManager { get; set; }
+        public ICollideable CollisionManager { get; set; }
         public CollisionDetectionManager CollisionDetectionManager { get; set; }
 
         #endregion
@@ -54,7 +55,6 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
         {
             this.Animations = animations;
             this.AnimationManager = new AnimationManager(Animations.First().Value);
-            this.CollisionManager = new CollisionManager();
             this.CollisionDetectionManager = new CollisionDetectionManager();
             this.InputReader = inputReader;
             this.IsFalling = true;

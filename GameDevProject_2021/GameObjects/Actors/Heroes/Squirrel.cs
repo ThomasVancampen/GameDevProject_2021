@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using GameDevProject_2021.Managers.Collision;
 
 namespace GameDevProject_2021.GameObjects.Actors.Heroes
 {
@@ -23,6 +24,7 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
         #region Methods
         private void InitializeSquirrel()
         {
+            this.CollisionManager = new SquirrelCollisionManager();
             this.Speed = 4;
             this.MaxJumpHeight = -14;
             this.Gravity = 1;

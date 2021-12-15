@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace GameDevProject_2021.Managers
+namespace GameDevProject_2021.Managers.Collision
 {
     class CollisionDetectionManager
     {

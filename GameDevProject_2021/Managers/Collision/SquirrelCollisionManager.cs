@@ -9,12 +9,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace GameDevProject_2021.Managers
+namespace GameDevProject_2021.Managers.Collision
 {
-    class CollisionManager
+    class SquirrelCollisionManager : ICollideable
     {
-        public void Collide(Squirrel obj, List<GameObject> gameObjects, GameTime gameTime)
+        public void Collide(GameObject obj1, List<GameObject> gameObjects, GameTime gameTime)
         {
+            var obj = obj1 as Squirrel;
             foreach (var go in gameObjects)
             {
                 if (go is StaticObject && !(go is FireTrapp) && !(go is Exit))//moet nog anders gechecked worden, niet met staticobject
