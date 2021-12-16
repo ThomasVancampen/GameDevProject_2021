@@ -68,6 +68,7 @@ namespace GameDevProject_2021.States
 
         public override void Update(GameTime gameTime)
         {
+            GameObject rem = null;
             foreach (var go in _levels[_currentLevel].GameObjects)
             {
                 if(go is Squirrel)
@@ -90,10 +91,14 @@ namespace GameDevProject_2021.States
                         {
                         });
                     }
-
+                }
+                if (!go.Exists)
+                {
+                    rem = go;
                 }
                 go.Update(gameTime, _levels[_currentLevel].GameObjects);
             }
+            _levels[_currentLevel].GameObjects.Remove(rem);
         }
     }
 }

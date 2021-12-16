@@ -87,14 +87,14 @@ namespace GameDevProject_2021.Levels
                 //    Position = new Vector2(0, 0)
                 //},
 
-                new ShootingEnemy(hunterAnimations, bulletTexture)
-                {
-                    Position = new Vector2(620-30,630-60)
-                },
-                //new FireTrapp(flameAnimations)
+                //new ShootingEnemy(hunterAnimations, bulletTexture)
                 //{
-                //    Position = new Vector2(650, 630-50)
+                //    Position = new Vector2(620-30,630-60)
                 //},
+                new FireTrapp(flameAnimations)
+                {
+                    Position = new Vector2(650, 630-50)
+                },
                 new StaticPlatform(floorTexture)
                 {
                     Position = new Vector2(200, 830)

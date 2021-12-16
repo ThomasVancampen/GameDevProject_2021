@@ -3,6 +3,7 @@ using GameDevProject_2021.GameObjects.Actors.Enemies;
 using GameDevProject_2021.GameObjects.Actors.Heroes;
 using GameDevProject_2021.GameObjects.StaticObjects.StaticEnemy;
 using GameDevProject_2021.GameObjects.StaticObjects.StaticExit;
+using GameDevProject_2021.GameObjects.StaticObjects.StaticPlatform;
 using GameDevProject_2021.Interfaces;
 using Microsoft.Xna.Framework;
 using System;
@@ -18,7 +19,7 @@ namespace GameDevProject_2021.Managers.Collision
             var obj = obj1 as Squirrel;
             foreach (var go in gameObjects)
             {
-                if (go is StaticObject && !(go is FireTrapp) && !(go is Exit))//moet nog anders gechecked worden, niet met staticobject
+                if (go is StaticPlatform)//moet nog anders gechecked worden, niet met staticobject
                 {
                     if ((obj.Movement.X > 0 && obj.CollisionDetectionManager.CollisionLeft(obj, go)) ||
                     (obj.Movement.X < 0 && obj.CollisionDetectionManager.CollisionRight(obj, go)))
@@ -124,12 +125,6 @@ namespace GameDevProject_2021.Managers.Collision
                         obj.FallHeight = 0;
                     }
                 }
-
-                //if (go is EnemyBullet)
-                //{
-                //    GotHit(obj, go, gameTime);
-                //}
-
                 if (!obj.CollisionDetectionManager.CollisionBottom(obj, go) && !obj.Jump)
                 {
                     obj.IsFalling = true;

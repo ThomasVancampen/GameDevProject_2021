@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
+using GameDevProject_2021.Managers.Collision;
+using GameDevProject_2021.Interfaces;
 
 namespace GameDevProject_2021.GameObjects.Actors.Enemies
 {
@@ -22,6 +24,8 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
         private Texture2D _bulletTexture;
 
         public List<EnemyBullet> Bullets { get; set; }
+        public ICollideable CollisionManager { get; set; }
+        public CollisionDetectionManager CollisionDetectionManager { get; set; }
         #endregion
 
         #region constructors
@@ -38,18 +42,25 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
             this._bulletTexture = bulletTexture;
             this.Bullets = new List<EnemyBullet>();
             this.IsGoingRight = true;
+            this.CollisionDetectionManager = new CollisionDetectionManager();
+            this.CollisionManager = new TreeElfColissionManager();
         }
         #endregion
 
         #region methods
         public override void Update(GameTime gameTime, List<GameObject> gameObjects)
         {
-            this.CollisionRectangle = new Rectangle((int)Position.X + AnimationManager.Animation.FrameWidth - 19, (int)Position.Y + AnimationManager.Animation.FrameHeight, 32, 32);
             base.Update(gameTime, gameObjects);
+            this.CollisionRectangle = new Rectangle((int)Position.X + AnimationManager.Animation.FrameWidth - 19, (int)Position.Y + AnimationManager.Animation.FrameHeight, 32, 32);
             Move(gameObjects);
+            this.CollisionManager.Collide(this, gameObjects, gameTime);
 
             if (gameTime.TotalGameTime.Seconds % this.ShootingTimer == 0)
             {
+                if (!this.Exists)
+                {
+                    AnimationManager.Play(Animations["Dead"]);
+                }
                 AnimationManager.Play(Animations["Shoot"]);
                 this.Movement = Vector2.Zero;
                 this.IsShooting = true;
@@ -73,7 +84,14 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
             }
             else
             {
-                AnimationManager.Play(Animations["Run"]);
+                if (!this.Exists)
+                {
+                    AnimationManager.Play(Animations["Dead"]);
+                }
+                else
+                {
+                    AnimationManager.Play(Animations["Run"]);
+                }
                 this.IsShooting = false;
             }
             foreach (var bullet in Bullets)
