@@ -40,29 +40,10 @@ namespace GameDevProject_2021.GameObjects
 
         #region Methods
 
-        public virtual void Update(GameTime gameTime, List<GameObject> gameObjects) // abstract maken om ervoor te zorgen dat alle kinderen moeten implementere. is implicitet hetzelfde als virutal
-        {
-            if (Texture != null)
-            {
-                this.CollisionRectangle = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
-            }
-            else if (AnimationManager!=null)
-            {
-                this.CollisionRectangle = new Rectangle((int)Position.X , (int)Position.Y, AnimationManager.Animation.FrameWidth, AnimationManager.Animation.FrameHeight);
-            }
-        }
+        abstract public void Update(GameTime gameTime, List<GameObject> gameObjects); // abstract maken om ervoor te zorgen dat alle kinderen moeten implementere. is implicitet hetzelfde als virutal
 
-        public virtual void Draw(SpriteBatch spriteBatch)
-        {
-            if (Texture != null)
-            {
-                spriteBatch.Draw(Texture, Position, Color.White);
-            }
-            else if (AnimationManager != null)
-            {
-                AnimationManager.Draw(spriteBatch);
-            }
-        }
+
+        abstract public void Draw(SpriteBatch spriteBatch);
         #endregion
     }
 }

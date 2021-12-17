@@ -26,6 +26,7 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
         public List<EnemyBullet> Bullets { get; set; }
         public ICollideable CollisionManager { get; set; }
         public CollisionDetectionManager CollisionDetectionManager { get; set; }
+        public bool CanMove { get; set; }
         #endregion
 
         #region constructors
@@ -44,15 +45,18 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
             this.IsGoingRight = true;
             this.CollisionDetectionManager = new CollisionDetectionManager();
             this.CollisionManager = new TreeElfColissionManager();
+            this.CanMove = true;
         }
         #endregion
 
         #region methods
         public override void Update(GameTime gameTime, List<GameObject> gameObjects)
         {
-            base.Update(gameTime, gameObjects);
             this.CollisionRectangle = new Rectangle((int)Position.X + AnimationManager.Animation.FrameWidth - 19, (int)Position.Y + AnimationManager.Animation.FrameHeight, 32, 32);
-            Move(gameObjects);
+            if (this.CanMove)
+            {
+                Move();
+            }
             this.CollisionManager.Collide(this, gameObjects, gameTime);
 
             if (gameTime.TotalGameTime.Seconds % this.ShootingTimer == 0)
@@ -104,19 +108,25 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
             }
 
             AnimationManager.Update(gameTime);
-            this.Position += this.Movement;
-            this.Movement = Vector2.Zero;
+            if (this.CanMove)
+            {
+                this.Position += this.Movement;
+                this.Movement = Vector2.Zero;
+            }
 
         }
 
-        public void Move(List<GameObject> gameObjects)
+        public override void Move()
         {
-            _movementManager.Move(this, gameObjects);
+            _movementManager.Move(this);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch);
+            if (AnimationManager != null)
+            {
+                AnimationManager.Draw(spriteBatch);
+            }
             if (Bullets.Count >= 1)
             {
                 foreach (var bullet in Bullets)

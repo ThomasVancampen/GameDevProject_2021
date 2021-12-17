@@ -20,13 +20,16 @@ namespace GameDevProject_2021.Managers.Collision
             {
                 if (go is Hero)
                 {
-                    if (obj.CollisionRectangle.Top <= go.CollisionRectangle.Bottom &&
-                    obj.CollisionRectangle.Bottom > go.CollisionRectangle.Top &&
-                    obj.CollisionRectangle.Right > go.CollisionRectangle.Left &&
-                    obj.CollisionRectangle.Left < go.CollisionRectangle.Right)
+                    if ((obj.Movement.X > 0 && obj.CollisionDetectionManager.CollisionLeft(obj, go)) ||
+                    (obj.Movement.X < 0 && obj.CollisionDetectionManager.CollisionRight(obj, go)))
                     {
-                         obj.Exists = false;
+                        obj.CanMove = false;
                     }
+                    else
+                    {
+                        obj.CanMove = true;
+                    }
+
                 }
             }
         }

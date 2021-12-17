@@ -37,7 +37,7 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
         public override void Update(GameTime gameTime, List<GameObject> gameObjects)
         {
             this.CollisionRectangle = new Rectangle((int)Position.X + AnimationManager.Animation.FrameWidth - 19, (int)Position.Y + AnimationManager.Animation.FrameHeight, 32, 32);
-            base.Update(gameTime, gameObjects);
+            Move();
             this.CollisionManager.Collide(this, gameObjects, gameTime);
 
             //if (!this.IsAlive)
@@ -68,6 +68,18 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
                 this.Exists = false;
             }
             AnimationManager.Update(gameTime);//na dood moet nog 4 keer updaten
+        }
+        public override void Move()
+        {
+            _movementManager.Move(this);
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            if (AnimationManager != null)
+            {
+                AnimationManager.Draw(spriteBatch);
+            }
         }
         #endregion
     }

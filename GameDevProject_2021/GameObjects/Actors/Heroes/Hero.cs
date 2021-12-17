@@ -12,13 +12,13 @@ using GameDevProject_2021.Managers.Collision;
 
 namespace GameDevProject_2021.GameObjects.Actors.Heroes
 {
-    class Hero : Actor, IGameObject, IJumpable, IControllable
+    abstract class Hero : Actor, IGameObject, IJumpable, IControllable
     {
         #region Var and Prop
         public InputKeys InputKeys { get; set; }
         public int Gravity { get; set; }
         public int JumpHeight { get; set; }
-        public bool Jump { get; set; } = false;
+        public bool IsJumping { get; set; } = false;
         public bool IsFalling { get; set; }
         public int MaxJumpHeight { get; set; }
         public IInputReader InputReader { get; set; }
@@ -41,16 +41,6 @@ namespace GameDevProject_2021.GameObjects.Actors.Heroes
         #endregion
 
         #region Methods
-
-        public override void Update(GameTime gameTime, List<GameObject> gameObjects)
-        {
-            Move(gameObjects);
-        }
-
-        public void Move(List<GameObject> gameObjects)
-        {
-            _movementManager.Move(this, gameObjects);
-        }
         private void InitializeHero(Dictionary<string, Animation> animations, IInputReader inputReader)
         {
             this.Animations = animations;

@@ -125,7 +125,7 @@ namespace GameDevProject_2021.Managers.Collision
                         obj.FallHeight = 0;
                     }
                 }
-                if (!obj.CollisionDetectionManager.CollisionBottom(obj, go) && !obj.Jump)
+                if (!obj.CollisionDetectionManager.CollisionBottom(obj, go) && !obj.IsJumping)
                 {
                     obj.IsFalling = true;
                 }

@@ -27,14 +27,14 @@ namespace GameDevProject_2021.Managers
         //        obj.AnimationManager.TextureDirection = SpriteEffects.FlipHorizontally;
         //    }
         //}
-        public void Move(FireWall obj, List<GameObject> gameObjects)
+        public void Move(FireWall obj)
         {
             obj.Movement += new Vector2(0, -obj.Speed);
             obj.Position += obj.Movement;
             obj.Movement = Vector2.Zero;
         }
 
-        public void Move(EnemyBullet obj, List<GameObject> gameObjects)
+        public void Move(EnemyBullet obj)
         {
 
 
@@ -51,7 +51,7 @@ namespace GameDevProject_2021.Managers
             obj.Movement = Vector2.Zero;
         }
 
-        public void Move(ShootingEnemy obj, List<GameObject> gameObjects)
+        public void Move(ShootingEnemy obj)
         {
             obj.Movement += new Vector2(obj.Speed, 0);
 
@@ -81,20 +81,20 @@ namespace GameDevProject_2021.Managers
 
         }
 
-        public void Move(Hero obj, List<GameObject> gameObjects)
+        public void Move(Squirrel obj)
         {
             obj.Movement = obj.InputReader.ReadInput(obj);
             var futurePosition = obj.Position + obj.Movement;
             var temp = obj.Movement;
 
-            if (obj.Jump && !obj.IsFalling)
+            if (obj.IsJumping && !obj.IsFalling)
             {
                 temp.Y += obj.JumpHeight;
                 obj.JumpHeight += obj.Gravity;
                 
                 if (obj.JumpHeight>=0)
                 {
-                    obj.Jump = false;
+                    obj.IsJumping = false;
                     obj.IsFalling = true;
                 }
             }

@@ -23,6 +23,7 @@ namespace GameDevProject_2021.GameObjects.Actors
             this._movementManager = new MovementManager();
             this.Movement = Vector2.Zero;
         }
+        abstract public void Move();
         #endregion
     }
 }

@@ -8,12 +8,10 @@ using System.Text;
 
 namespace GameDevProject_2021.GameObjects.Actors.Enemies
 {
-    class Enemy : Actor, IMoveable
+    abstract class Enemy : Actor, IMoveable
     {
         #region Var and Prop
 
-
-        
         #endregion
     }
 }

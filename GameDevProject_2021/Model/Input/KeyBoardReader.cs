@@ -42,10 +42,10 @@ namespace GameDevProject_2021.Model.Input
             {
                 movement.X += obj.Speed;
             }
-            if (state.IsKeyDown(obj.InputKeys.Up) && !obj.Jump && _jumpButtonIsUp)
+            if (state.IsKeyDown(obj.InputKeys.Up) && !obj.IsJumping && _jumpButtonIsUp)
             {
                 _jumpButtonIsUp = false;
-                obj.Jump = true;
+                obj.IsJumping = true;
             }
             if (state.IsKeyUp(obj.InputKeys.Up))
             {

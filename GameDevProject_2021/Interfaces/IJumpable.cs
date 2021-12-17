@@ -15,7 +15,7 @@ namespace GameDevProject_2021.Interfaces
         public int Gravity { get; set; }
         public int JumpHeight { get; set; }
         public bool IsFalling { get; set; }
-        public bool Jump { get; set; }
+        public bool IsJumping { get; set; }
         public int MaxJumpHeight { get; set; }
     }
 }

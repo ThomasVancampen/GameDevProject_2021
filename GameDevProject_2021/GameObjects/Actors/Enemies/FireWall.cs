@@ -16,12 +16,24 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
         }
         public override void Update(GameTime gameTime, List<GameObject> gameObjects)
         {
-            base.Update(gameTime, gameObjects);
-            Move(gameObjects);
+            if (Texture != null)
+            {
+                this.CollisionRectangle = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
+            }
+            Move();
         }
-        public void Move(List<GameObject> gameObjects)
+
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            _movementManager.Move(this, gameObjects);
+            if (Texture != null)
+            {
+                spriteBatch.Draw(Texture, Position, Color.White);
+            }
+        }
+
+        public override void Move()
+        {
+            _movementManager.Move(this);
         }
     }
 }
