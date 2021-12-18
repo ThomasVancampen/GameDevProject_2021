@@ -75,22 +75,6 @@ namespace GameDevProject_2021.Levels
                     },
                     Position = new Vector2(250, 700)
                 },
-                //new Temp(heroAnimations, new KeyBoardReader())
-                //{
-                //    InputKeys = new InputKeys()
-                //    {
-                //        Left = Keys.Q,
-                //        Right = Keys.D,
-                //        Up = Keys.Z,
-                //        Down = Keys.None
-                //    },
-                //    Position = new Vector2(0, 0)
-                //},
-
-                //new ShootingEnemy(hunterAnimations, bulletTexture)
-                //{
-                //    Position = new Vector2(620-30,630-60)
-                //},
                 new FireTrapp(flameAnimations)
                 {
                     Position = new Vector2(650, 630-50)
@@ -127,30 +111,6 @@ namespace GameDevProject_2021.Levels
                 {
                     Position = new Vector2(720+exitTexture.Width/2, 430-exitTexture.Height)
                 },
-                //new FireWall(walltexture)
-                //{
-                //    Position = new Vector2(0,Game1.ScreenHeight)
-                //},
-                //new FireWall(walltexture)
-                //{
-                //    Position = new Vector2(walltexture.Width,Game1.ScreenHeight)
-                //},
-                //new FireWall(walltexture)
-                //{
-                //    Position = new Vector2(walltexture.Width*2,Game1.ScreenHeight)
-                //},
-                //new FireWall(walltexture)
-                //{
-                //    Position = new Vector2(0,Game1.ScreenHeight+walltexture.Height-20)
-                //},
-                //new FireWall(walltexture)
-                //{
-                //    Position = new Vector2(walltexture.Width,Game1.ScreenHeight+walltexture.Height-20)
-                //},
-                //new FireWall(walltexture)
-                //{
-                //    Position = new Vector2(walltexture.Width*2,Game1.ScreenHeight+walltexture.Height-20)
-                //},
                 new StaticPlatform(groundTexture)
                 {
                     Position = new Vector2(0, Game1.ScreenHeight-groundTexture.Height)

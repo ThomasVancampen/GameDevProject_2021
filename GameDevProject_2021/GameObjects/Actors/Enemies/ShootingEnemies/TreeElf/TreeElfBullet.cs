@@ -6,13 +6,13 @@ using System.Text;
 
 namespace GameDevProject_2021.GameObjects.Actors.Enemies
 {
-    class EnemyBullet : Enemy
+    class TreeElfBullet : Enemy
     {
         public float TravelDistance { get; set; }
         public float TravelDistanceCounter { get; set; }
         public float BulletSpeed { get; set; }
 
-        public EnemyBullet(Texture2D texture)
+        public TreeElfBullet(Texture2D texture)
         {
             this.Texture = texture;
             this.Speed = 1.8f;

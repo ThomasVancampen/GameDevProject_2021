@@ -34,7 +34,7 @@ namespace GameDevProject_2021.Managers
             obj.Movement = Vector2.Zero;
         }
 
-        public void Move(EnemyBullet obj)
+        public void Move(TreeElfBullet obj)
         {
 
 

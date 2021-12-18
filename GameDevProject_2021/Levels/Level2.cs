@@ -1,5 +1,6 @@
 ﻿using GameDevProject_2021.GameObjects;
 using GameDevProject_2021.GameObjects.Actors.Enemies;
+using GameDevProject_2021.GameObjects.Actors.Enemies.ShootingEnemies.TreeElf;
 using GameDevProject_2021.GameObjects.Actors.Heroes;
 using GameDevProject_2021.GameObjects.StaticObjects.StaticEnemy;
 using GameDevProject_2021.GameObjects.StaticObjects.StaticExit;
@@ -75,26 +76,10 @@ namespace GameDevProject_2021.Levels
                     },
                     Position = new Vector2(250, 700)
                 },
-                //new Temp(heroAnimations, new KeyBoardReader())
-                //{
-                //    InputKeys = new InputKeys()
-                //    {
-                //        Left = Keys.Q,
-                //        Right = Keys.D,
-                //        Up = Keys.Z,
-                //        Down = Keys.None
-                //    },
-                //    Position = new Vector2(0, 0)
-                //},
-
-                new ShootingEnemy(hunterAnimations, bulletTexture)
+                new TreeElf(hunterAnimations, bulletTexture)
                 {
                     Position = new Vector2(620-30,630-60)
                 },
-                //new Trapp(flameAnimations)
-                //{
-                //    Position = new Vector2(650, 630-50)
-                //},
                 new StaticPlatform(floorTexture)
                 {
                     Position = new Vector2(200, 830)
