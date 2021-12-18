@@ -22,12 +22,19 @@ namespace GameDevProject_2021.States
 {
     class GameState : State
     {
+        #region Var and Prop
         private List<ILevel> _levels;
         private List<Life> _lives;
+        #endregion
+
+        #region Constructor
         public GameState(Game1 game, ContentManager contentManager, int currentLevel) : base(game, contentManager, currentLevel)
         {
             _currentLevel = currentLevel;
         }
+        #endregion
+
+        #region Methods
         public void Initialize()
         {
             var lifeTexture = _contentManager.Load<Texture2D>("Heart/LifeHeart");
@@ -100,5 +107,6 @@ namespace GameDevProject_2021.States
             }
             _levels[_currentLevel].GameObjects.Remove(rem);
         }
+        #endregion
     }
 }

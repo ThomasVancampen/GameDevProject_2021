@@ -10,16 +10,23 @@ namespace GameDevProject_2021.States
 {
     class GameOverState : State
     {
+        #region Var and Prop
         private Texture2D _backgroundTexture;
         private Texture2D _gameOverTexture;
         private Texture2D _returnTexture;
         private Texture2D _restartTexture;
 
         private List<Button> _buttons;
+        #endregion
+
+        #region Constructor
         public GameOverState(Game1 game, ContentManager contentManager, int currentLevel) : base(game, contentManager, currentLevel)
         {
 
         }
+        #endregion
+
+        #region Methods
         public override void LoadContent()
         {
             _gameOverTexture = _contentManager.Load<Texture2D>("Text/GameOver");
@@ -69,5 +76,6 @@ namespace GameDevProject_2021.States
                 button.Draw(spriteBatch);
             }
         }
+        #endregion
     }
 }

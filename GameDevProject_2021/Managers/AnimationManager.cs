@@ -19,7 +19,7 @@ namespace GameDevProject_2021.Managers
         public Color Color { get; set; }
         #endregion
 
-        #region Consturctors
+        #region Consturctor
         public AnimationManager(Animation animation)
         {
             _animation = animation;

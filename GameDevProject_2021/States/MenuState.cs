@@ -10,15 +10,22 @@ namespace GameDevProject_2021.States
 {
     class MenuState : State
     {
+        #region Var and Prop
         private Texture2D _backgroundTexture;
         private Texture2D _startButtonTexture;
         private Texture2D _exitButtonTexture;
 
         private List<Button> _buttons;
+        #endregion
+
+        #region Constructor
         public MenuState(Game1 game, ContentManager contentManager, int currentLevel) : base(game, contentManager, currentLevel) 
         {
             _currentLevel = 0;
         }
+        #endregion
+
+        #region Methods
         public override void LoadContent()
         {
             _startButtonTexture = _contentManager.Load<Texture2D>("Buttons/StartButton");
@@ -65,5 +72,6 @@ namespace GameDevProject_2021.States
                 button.Draw(spriteBatch);
             }
         }
+        #endregion
     }
 }

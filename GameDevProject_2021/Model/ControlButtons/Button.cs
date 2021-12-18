@@ -9,25 +9,28 @@ namespace GameDevProject_2021.Model.ControlButtons
 {
     class Button
     {
+        #region Var and Prop
         private MouseState _currentMouseState;
-        //private SpriteFont _font;
         private bool _isHovering;
         private MouseState _previousMouseState;
         public Texture2D Texture { get; }
 
         public EventHandler Click { get; set; }
-        //public string Text { get; set; }
 
         public bool Clicked { get; set; }
         public Vector2 Position { get; set; }
 
         public Rectangle Rectangle { get { return new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height); }}
+        #endregion
 
+        #region Constructor
         public Button(Texture2D texture)
         {
             Texture = texture;
-            //_font = font;
         }
+        #endregion
+
+        #region Methods
         public void Draw(SpriteBatch spritebatch)
         {
             var tempColor = Color.White;
@@ -36,14 +39,6 @@ namespace GameDevProject_2021.Model.ControlButtons
                 tempColor = Color.LightGray;
             }
             spritebatch.Draw(Texture, Position, tempColor);
-
-            //if (!string.IsNullOrEmpty(Text))
-            //{
-            //    var x = (Rectangle.X + (Rectangle.Width / 2)) - (_font.MeasureString(Text).X / 2);
-            //    var y = (Rectangle.Y + (Rectangle.Height / 2)) - (_font.MeasureString(Text).Y / 2);
-
-            //    spritebatch.DrawString(_font, Text,new Vector2(x, y), Color.Black, 0,new Vector2(0, 0), 0, SpriteEffects.None, 0);
-            //}
         }
 
         public void Update(GameTime gameTime)
@@ -60,9 +55,10 @@ namespace GameDevProject_2021.Model.ControlButtons
                 _isHovering = true;
                 if (_previousMouseState.LeftButton == ButtonState.Pressed && _currentMouseState.LeftButton == ButtonState.Released)
                 {
-                    Click?.Invoke(this, new EventArgs());//TODO: opzoeken wat dit exact doet
+                    Click?.Invoke(this, new EventArgs());
                 }
             }
         }
+        #endregion
     }
 }

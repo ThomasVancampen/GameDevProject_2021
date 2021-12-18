@@ -10,15 +10,22 @@ namespace GameDevProject_2021.States
 {
     class GameCompletedState : State
     {
+        #region Var and Prop
         private Texture2D _backgroundTexture;
         private Texture2D _victoryTexture;
         private Texture2D _returnTexture;
 
         private List<Button> _buttons;
+        #endregion
+
+        #region Constructor
         public GameCompletedState(Game1 game, ContentManager contentManager, int currentLevel) : base(game, contentManager, currentLevel)
         {
 
         }
+        #endregion
+
+        #region Methods
         public override void LoadContent()
         {
             _victoryTexture = _contentManager.Load<Texture2D>("Text/Victory");
@@ -56,5 +63,6 @@ namespace GameDevProject_2021.States
                 button.Draw(spriteBatch);
             }
         }
+        #endregion
     }
 }

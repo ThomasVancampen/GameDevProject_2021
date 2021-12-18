@@ -19,7 +19,7 @@ namespace GameDevProject_2021.Model.Animation1
         public Texture2D Texture { get; set; }
         #endregion
 
-        #region Constuctors
+        #region Constructor
 
         public Animation(Texture2D texture, int frameCount)
         {
