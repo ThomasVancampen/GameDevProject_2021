@@ -14,6 +14,7 @@ namespace GameDevProject_2021.Managers.Collision
 {
     class SquirrelCollisionManager : ICollideable
     {
+        #region Methods
         public void Collide(GameObject obj1, List<GameObject> gameObjects, GameTime gameTime)
         {
             var obj = obj1 as Squirrel;
@@ -180,6 +181,7 @@ namespace GameDevProject_2021.Managers.Collision
             {
                 obj.AnimationManager.Color = Color.White;
             }
+            #endregion
         }
     }
 }

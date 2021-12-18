@@ -12,6 +12,7 @@ namespace GameDevProject_2021.GameObjects
 {
     abstract class StaticObject : GameObject
     {
+        #region Constructor
         public StaticObject(Texture2D texture)
         {
             this.Texture = texture;
@@ -21,5 +22,6 @@ namespace GameDevProject_2021.GameObjects
             this.Animations = animations;
             this.AnimationManager = new AnimationManager(Animations.First().Value);
         }
+        #endregion
     }
 }

@@ -10,9 +10,12 @@ namespace GameDevProject_2021.GameObjects.StaticObjects.StaticEnemy
 {
     class FireTrapp : StaticObject
     {
+        #region Constructor
         public FireTrapp(Texture2D texture) : base(texture){}
         public FireTrapp(Dictionary<string, Animation> animations) : base(animations){}
+        #endregion
 
+        #region Methods
         public override void Draw(SpriteBatch spriteBatch)
         {
             if (AnimationManager != null)
@@ -27,5 +30,6 @@ namespace GameDevProject_2021.GameObjects.StaticObjects.StaticEnemy
             AnimationManager.Play(Animations["Idle"]);
             AnimationManager.Update(gameTime);
         }
+        #endregion
     }
 }

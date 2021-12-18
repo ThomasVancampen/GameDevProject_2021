@@ -34,7 +34,7 @@ namespace GameDevProject_2021
 
         #endregion
 
-        #region Constructors
+        #region Constructor
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);

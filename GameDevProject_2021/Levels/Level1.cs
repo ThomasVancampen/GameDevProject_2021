@@ -43,21 +43,10 @@ namespace GameDevProject_2021.Levels
                 {"Dead", new Animation(ContentManager.Load<Texture2D>("Squirrel/SquirrelDead"), 4) },
 
             };
-            var hunterAnimations = new Dictionary<string, Animation>()
-            {
-
-                {"Run", new Animation(ContentManager.Load<Texture2D>("ShootingEnemy/HunterRun"), 8) },
-                {"Dead", new Animation(ContentManager.Load<Texture2D>("ShootingEnemy/HunterDead"), 5) },
-                {"Shoot", new Animation(ContentManager.Load<Texture2D>("ShootingEnemy/HunterShoot"), 7) },
-
-
-            };
             var floorTexture = ContentManager.Load<Texture2D>("Floor/WoodFloor");
             var exitTexture = ContentManager.Load<Texture2D>("Exit/Exit");
             var groundTexture = ContentManager.Load<Texture2D>("Ground/Ground");
-            var walltexture = ContentManager.Load<Texture2D>("FireWall/FullFireWall");
             BackgroundTexture = ContentManager.Load<Texture2D>("Background/TreeBackground");
-            var bulletTexture = ContentManager.Load<Texture2D>("ShootingEnemy/BulletSeed");
             var flameAnimations = new Dictionary<string, Animation>()
             {
                 {"Idle", new Animation(ContentManager.Load<Texture2D>("Trapp/FireTrapp"), 4) }

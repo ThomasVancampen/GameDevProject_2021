@@ -17,7 +17,7 @@ namespace GameDevProject_2021.GameObjects.Actors
         public Vector2 Movement { get; set; }
         #endregion
 
-        #region Constructors
+        #region Constructor
         public Actor()
         {
             this._movementManager = new MovementManager();

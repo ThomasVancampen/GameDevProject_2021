@@ -13,10 +13,18 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies.ShootingEnemies.TreeElf
 {
     class TreeElf : ShootingEnemy
     {
+        #region Var and Prop
+        #endregion
+
+        #region Constructor
+        
         public TreeElf(Dictionary<string, Animation> hunterAnimations, Texture2D bulletTexture) : base(hunterAnimations, bulletTexture)
         {
             InitializeTreeElf();
         }
+        #endregion
+
+        #region Methods
         public override void Update(GameTime gameTime, List<GameObject> gameObjects)
         {
             this.CollisionRectangle = new Rectangle((int)Position.X + AnimationManager.Animation.FrameWidth - 19, (int)Position.Y + AnimationManager.Animation.FrameHeight, 32, 32);
@@ -118,5 +126,6 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies.ShootingEnemies.TreeElf
             this.Bullets = new List<TreeElfBullet>();
             this.CollisionManager = new TreeElfColissionManager();
         }
+        #endregion
     }
 }

@@ -8,9 +8,13 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
 {
     class TreeElfBullet : Enemy
     {
+        #region Var and Prop
         public float TravelDistance { get; set; }
         public float TravelDistanceCounter { get; set; }
         public float BulletSpeed { get; set; }
+        #endregion
+
+        #region Constuctor
 
         public TreeElfBullet(Texture2D texture)
         {
@@ -20,6 +24,9 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
             this.TravelDistance = 250;
             this.TravelDistanceCounter = TravelDistance;
         }
+        #endregion
+
+        #region Methods
 
         public override void Update(GameTime gameTime, List<GameObject> gameObjects)
         {
@@ -41,5 +48,6 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
                 spriteBatch.Draw(Texture, Position, Color.White);
             }
         }
+        #endregion
     }
 }

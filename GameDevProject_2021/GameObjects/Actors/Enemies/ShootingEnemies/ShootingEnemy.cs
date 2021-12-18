@@ -13,7 +13,7 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
 {
     abstract class ShootingEnemy : Enemy
     {
-        #region prop and var
+        #region Prop and Var
         public float RunDistance { get; set; }
         public float RunDistanceCounter { get; set; }
 
@@ -29,14 +29,14 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
         public bool CanMove { get; set; }
         #endregion
 
-        #region constructors
+        #region Constructor
         public ShootingEnemy(Dictionary<string, Animation> animations, Texture2D bulletTexture)
         {
             InitializeShootingEnemy(animations, bulletTexture);
         }
         #endregion
 
-        #region methods
+        #region Methods
         private void InitializeShootingEnemy(Dictionary<string, Animation> animations, Texture2D bulletTexture)
         {
             this.Animations = animations;

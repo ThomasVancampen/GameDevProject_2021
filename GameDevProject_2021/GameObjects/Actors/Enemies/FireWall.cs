@@ -9,11 +9,15 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
 {
     class FireWall : Actor
     {
+        #region Constructor
         public FireWall(Texture2D texture)
         {
             this.Texture = texture;
             this.Speed = 0.1f;
         }
+        #endregion
+
+        #region Methods
         public override void Update(GameTime gameTime, List<GameObject> gameObjects)
         {
             if (Texture != null)
@@ -35,5 +39,6 @@ namespace GameDevProject_2021.GameObjects.Actors.Enemies
         {
             _movementManager.Move(this);
         }
+        #endregion
     }
 }

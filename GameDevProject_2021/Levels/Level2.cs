@@ -59,10 +59,6 @@ namespace GameDevProject_2021.Levels
             var walltexture = ContentManager.Load<Texture2D>("FireWall/FullFireWall");
             BackgroundTexture = ContentManager.Load<Texture2D>("Background/TreeBackground");
             var bulletTexture = ContentManager.Load<Texture2D>("ShootingEnemy/BulletSeed");
-            var flameAnimations = new Dictionary<string, Animation>()
-            {
-                {"Idle", new Animation(ContentManager.Load<Texture2D>("Trapp/FireTrapp"), 4) }
-            };
             GameObjects = new List<GameObject>()
             {
                 new Squirrel(heroAnimations, new KeyBoardReader())

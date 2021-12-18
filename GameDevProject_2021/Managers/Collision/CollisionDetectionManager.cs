@@ -10,14 +10,6 @@ namespace GameDevProject_2021.Managers.Collision
     class CollisionDetectionManager
     {
         #region Methods
-        //public bool CollisionCheck(Rectangle r1, Rectangle r2)
-        //{
-        //    if (r1.Intersects(r2))
-        //    {
-        //        return true;
-        //    }
-        //    return false;
-        //}
         public bool CollisionLeft(Actor obj1, GameObject obj2)
         {
             return obj1.CollisionRectangle.Right + obj1.Movement.X > obj2.CollisionRectangle.Left &&

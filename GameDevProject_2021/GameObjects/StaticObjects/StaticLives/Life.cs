@@ -8,8 +8,11 @@ namespace GameDevProject_2021.GameObjects.StaticObjects.StaticLives
 {
     class Life : StaticObject
     {
+        #region Constructor
         public Life(Texture2D texture) : base(texture) { }
+        #endregion
 
+        #region Methods
         public override void Draw(SpriteBatch spriteBatch)
         {
             if (Texture != null)
@@ -25,5 +28,6 @@ namespace GameDevProject_2021.GameObjects.StaticObjects.StaticLives
                 this.CollisionRectangle = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
             }
         }
+        #endregion
     }
 }

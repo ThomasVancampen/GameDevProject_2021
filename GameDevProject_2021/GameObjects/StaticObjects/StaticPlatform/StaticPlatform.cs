@@ -9,9 +9,13 @@ namespace GameDevProject_2021.GameObjects.StaticObjects.StaticPlatform
 {
     class StaticPlatform : StaticObject
     {
+        #region Constructor
         public StaticPlatform(Texture2D texture) : base(texture)
         {
         }
+        #endregion
+
+        #region Methods
 
         public override void Draw(SpriteBatch spriteBatch)
         {
@@ -28,5 +32,6 @@ namespace GameDevProject_2021.GameObjects.StaticObjects.StaticPlatform
                 this.CollisionRectangle = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
             }
         }
+        #endregion
     }
 }
