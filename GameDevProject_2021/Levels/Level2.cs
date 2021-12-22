@@ -60,10 +60,17 @@ namespace GameDevProject_2021.Levels
             var walltexture = ContentManager.Load<Texture2D>("FireWall/FullFireWall");
             BackgroundTexture = ContentManager.Load<Texture2D>("Background/TreeBackground");
             var bulletTexture = ContentManager.Load<Texture2D>("ShootingEnemy/BulletSeed");
+            var flameAnimations = new Dictionary<string, Animation>()
+            {
+                {"Idle", new Animation(ContentManager.Load<Texture2D>("Trapp/FireTrapp"), 4) }
+            };
             GameObjects = new List<GameObject>()
             {
-                GameObjectFactory.CreateControlableAnimatedGameObject("Squirrel", 300, 700, squirrelAnimations, new KeyBoardReader(),new InputKeys(){Left = Keys.Left, Right = Keys.Right, Up = Keys.Up, Down = Keys.None}),
-                GameObjectFactory.CreateAnimatedShootingGameObject("TreeElf",620-30,630-60, hunterAnimations, bulletTexture),
+                GameObjectFactory.CreateControlableAnimatedGameObject("Squirrel", 250, 700, squirrelAnimations, new KeyBoardReader(),new InputKeys(){Left = Keys.Left, Right = Keys.Right, Up = Keys.Up, Down = Keys.None}),
+                GameObjectFactory.CreateAnimatedGameObject("FireTrapp", 650, 630-50, flameAnimations),
+                GameObjectFactory.CreateAnimatedGameObject("FireTrapp", 640, 430-50, flameAnimations),
+                GameObjectFactory.CreateAnimatedGameObject("FireTrapp", 740, 430-50, flameAnimations),
+                GameObjectFactory.CreateGameObject("FireWall", 0, Game1.ScreenHeight, walltexture),
                 GameObjectFactory.CreateGameObject("StaticPlatform",300 ,730, floorTexture),
                 GameObjectFactory.CreateGameObject("StaticPlatform",400 ,630, floorTexture),
                 GameObjectFactory.CreateGameObject("StaticPlatform",620 ,630, floorTexture),
@@ -76,6 +83,7 @@ namespace GameDevProject_2021.Levels
                 GameObjectFactory.CreateGameObject("StaticPlatform",720 ,230, floorTexture),
                 GameObjectFactory.CreateGameObject("StaticPlatform",820 ,230, floorTexture),
                 GameObjectFactory.CreateGameObject("StaticPlatform",920 ,230, floorTexture),
+                GameObjectFactory.CreateAnimatedShootingGameObject("TreeElf",1020-30,430-60, hunterAnimations, bulletTexture),
                 GameObjectFactory.CreateGameObject("StaticPlatform",1020 ,230, floorTexture),
                 GameObjectFactory.CreateGameObject("StaticPlatform",1120 ,230, floorTexture),
                 GameObjectFactory.CreateGameObject("StaticPlatform",470 ,330, floorTexture),
