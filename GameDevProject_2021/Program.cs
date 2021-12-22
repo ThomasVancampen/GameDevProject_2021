@@ -7,7 +7,7 @@ namespace GameDevProject_2021
         [STAThread]
         static void Main()
         {
-            using (var game = Game1.getInstance())
+            using (var game = new Game1())
                 game.Run();
         }
     }
