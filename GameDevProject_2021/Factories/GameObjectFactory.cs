@@ -6,6 +6,7 @@ using GameDevProject_2021.GameObjects.StaticObjects.StaticEnemy;
 using GameDevProject_2021.GameObjects.StaticObjects.StaticExit;
 using GameDevProject_2021.GameObjects.StaticObjects.StaticPlatform;
 using GameDevProject_2021.Interfaces;
+using GameDevProject_2021.Model;
 using GameDevProject_2021.Model.Animation1;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -55,13 +56,13 @@ namespace GameDevProject_2021.Factories
             }
             return newObject;
         }
-        public static GameObject CreateControlableAnimatedGameObject(string type, int x, int y, Dictionary<string, Animation> animations, IInputReader inputReader)
+        public static GameObject CreateControlableAnimatedGameObject(string type, int x, int y, Dictionary<string, Animation> animations, IInputReader inputReader, InputKeys inputKeys)
         {
             GameObject newObject = null;
             type = type.ToUpper();
             if (type == "SQUIRREL")
             {
-                newObject = new Squirrel(animations, inputReader) { Position = new Vector2(x, y)};
+                newObject = new Squirrel(animations, inputReader) { Position = new Vector2(x, y), InputKeys = inputKeys};
             }
             return newObject;
         }

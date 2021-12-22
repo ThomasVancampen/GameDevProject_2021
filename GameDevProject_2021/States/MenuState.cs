@@ -35,12 +35,12 @@ namespace GameDevProject_2021.States
             {
                 new Button(_startButtonTexture)
                 {
-                    Position = new Vector2(Game1.ScreenWidth/2, 100),
+                    Position = new Vector2(Game1.ScreenWidth/2-_startButtonTexture.Width/2, Game1.ScreenHeight/2),
                     Click = new EventHandler(Button_Play_Clicked)
                 },
                 new Button(_exitButtonTexture)
                 {
-                    Position = new Vector2(Game1.ScreenWidth/2, 150),
+                    Position = new Vector2(Game1.ScreenWidth/2-_startButtonTexture.Width/2, Game1.ScreenHeight/2+50),
                     Click = new EventHandler(Button_Quit_Clicked)
                 }
             };

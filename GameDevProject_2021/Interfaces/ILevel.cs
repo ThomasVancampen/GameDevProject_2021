@@ -1,4 +1,5 @@
-﻿using GameDevProject_2021.GameObjects;
+﻿using GameDevProject_2021.Factories;
+using GameDevProject_2021.GameObjects;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;

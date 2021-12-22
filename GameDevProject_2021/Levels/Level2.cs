@@ -1,4 +1,5 @@
-﻿using GameDevProject_2021.GameObjects;
+﻿using GameDevProject_2021.Factories;
+using GameDevProject_2021.GameObjects;
 using GameDevProject_2021.GameObjects.Actors.Enemies;
 using GameDevProject_2021.GameObjects.Actors.Enemies.ShootingEnemies.TreeElf;
 using GameDevProject_2021.GameObjects.Actors.Heroes;
@@ -36,7 +37,7 @@ namespace GameDevProject_2021.Levels
 
         private void InitializeGameObject()
         {
-            var heroAnimations = new Dictionary<string, Animation>()
+            var squirrelAnimations = new Dictionary<string, Animation>()
             {
                 {"Idle", new Animation(ContentManager.Load<Texture2D>("Squirrel/SquirrelIdle"), 6) },
                 {"Walk", new Animation(ContentManager.Load<Texture2D>("Squirrel/SquirrelRun"), 8) },
@@ -61,85 +62,29 @@ namespace GameDevProject_2021.Levels
             var bulletTexture = ContentManager.Load<Texture2D>("ShootingEnemy/BulletSeed");
             GameObjects = new List<GameObject>()
             {
-                new Squirrel(heroAnimations, new KeyBoardReader())
-                {
-                    InputKeys = new InputKeys()
-                    {
-                        Left = Keys.Left,
-                        Right = Keys.Right,
-                        Up = Keys.Up,
-                        Down = Keys.None
-                    },
-                    Position = new Vector2(250, 700)
-                },
-                new TreeElf(hunterAnimations, bulletTexture)
-                {
-                    Position = new Vector2(620-30,630-60)
-                },
-                new StaticPlatform(floorTexture)
-                {
-                    Position = new Vector2(200, 830)
-                },
-                new StaticPlatform(floorTexture)
-                {
-                    Position = new Vector2(300, 730)
-                },
-                new StaticPlatform(floorTexture)
-                {
-                    Position = new Vector2(400, 630)
-                },
-                new StaticPlatform(floorTexture)
-                {
-                    Position = new Vector2(620, 630)
-                },
-                new StaticPlatform(floorTexture)
-                {
-                    Position = new Vector2(720, 630)
-                },
-                new StaticPlatform(floorTexture)
-                {
-                    Position = new Vector2(870, 530)
-                },
-                new StaticPlatform(floorTexture)
-                {
-                    Position = new Vector2(720, 430)
-                },
-                new Exit(exitTexture)
-                {
-                    Position = new Vector2(720+exitTexture.Width/2, 430-exitTexture.Height)
-                },
-                new FireWall(walltexture)
-                {
-                    Position = new Vector2(0,Game1.ScreenHeight)
-                },
-                new FireWall(walltexture)
-                {
-                    Position = new Vector2(walltexture.Width,Game1.ScreenHeight)
-                },
-                new FireWall(walltexture)
-                {
-                    Position = new Vector2(walltexture.Width*2,Game1.ScreenHeight)
-                },
-                new FireWall(walltexture)
-                {
-                    Position = new Vector2(0,Game1.ScreenHeight+walltexture.Height-20)
-                },
-                new FireWall(walltexture)
-                {
-                    Position = new Vector2(walltexture.Width,Game1.ScreenHeight+walltexture.Height-20)
-                },
-                new FireWall(walltexture)
-                {
-                    Position = new Vector2(walltexture.Width*2,Game1.ScreenHeight+walltexture.Height-20)
-                },
-                new StaticPlatform(groundTexture)
-                {
-                    Position = new Vector2(0, Game1.ScreenHeight-groundTexture.Height)
-                },
-                new StaticPlatform(groundTexture)
-                {
-                    Position = new Vector2(Game1.ScreenWidth/2, Game1.ScreenHeight-groundTexture.Height)
-                },
+                GameObjectFactory.CreateControlableAnimatedGameObject("Squirrel", 300, 700, squirrelAnimations, new KeyBoardReader(),new InputKeys(){Left = Keys.Left, Right = Keys.Right, Up = Keys.Up, Down = Keys.None}),
+                GameObjectFactory.CreateAnimatedShootingGameObject("TreeElf",620-30,630-60, hunterAnimations, bulletTexture),
+                GameObjectFactory.CreateGameObject("StaticPlatform",300 ,730, floorTexture),
+                GameObjectFactory.CreateGameObject("StaticPlatform",400 ,630, floorTexture),
+                GameObjectFactory.CreateGameObject("StaticPlatform",620 ,630, floorTexture),
+                GameObjectFactory.CreateGameObject("StaticPlatform",720 ,630, floorTexture),
+                GameObjectFactory.CreateGameObject("StaticPlatform",200 ,830, floorTexture),
+                GameObjectFactory.CreateGameObject("StaticPlatform",870 ,530, floorTexture),
+                GameObjectFactory.CreateGameObject("StaticPlatform",720 ,430, floorTexture),
+                GameObjectFactory.CreateGameObject("StaticPlatform",620 ,430, floorTexture),
+                GameObjectFactory.CreateGameObject("StaticPlatform",620 ,230, floorTexture),
+                GameObjectFactory.CreateGameObject("StaticPlatform",720 ,230, floorTexture),
+                GameObjectFactory.CreateGameObject("StaticPlatform",820 ,230, floorTexture),
+                GameObjectFactory.CreateGameObject("StaticPlatform",920 ,230, floorTexture),
+                GameObjectFactory.CreateGameObject("StaticPlatform",1020 ,230, floorTexture),
+                GameObjectFactory.CreateGameObject("StaticPlatform",1120 ,230, floorTexture),
+                GameObjectFactory.CreateGameObject("StaticPlatform",470 ,330, floorTexture),
+                GameObjectFactory.CreateGameObject("StaticPlatform",1020 ,430, floorTexture),
+                GameObjectFactory.CreateGameObject("StaticPlatform",1120 ,430, floorTexture),
+                GameObjectFactory.CreateGameObject("StaticPlatform",1270 ,330, floorTexture),
+                GameObjectFactory.CreateGameObject("Exit",870+exitTexture.Width/2, 230-exitTexture.Height, exitTexture),
+                GameObjectFactory.CreateGameObject("StaticPlatform", 0, Game1.ScreenHeight-groundTexture.Height, groundTexture),
+                GameObjectFactory.CreateGameObject("StaticPlatform", Game1.ScreenWidth/2, Game1.ScreenHeight-groundTexture.Height, groundTexture),
             };
         }
     }
