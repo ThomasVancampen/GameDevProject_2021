@@ -31,19 +31,33 @@ namespace GameDevProject_2021
         private State _nextState;
         private int _currentLevel;
 
+        private static Game1 _uniqueInstance;
+
 
         #endregion
 
         #region Constructor
         public Game1()
         {
-            _graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
-            IsMouseVisible = true; // hier of in initialize
+            InitGame();
         }
         #endregion
 
         #region Methods
+        public static Game1 getInstance()
+        {
+            if (_uniqueInstance == null)
+            {
+                _uniqueInstance = new Game1();
+            }
+            return _uniqueInstance;
+        }
+        public void InitGame()
+        {
+            _graphics = new GraphicsDeviceManager(this);
+            Content.RootDirectory = "Content";
+            IsMouseVisible = true;
+        }
         protected override void Initialize()
         {
             _graphics.PreferredBackBufferWidth = ScreenWidth;
@@ -59,7 +73,7 @@ namespace GameDevProject_2021
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            _currentState = new MenuState(this,Content, _currentLevel);
+            _currentState = new MenuState(_uniqueInstance,Content, _currentLevel);
             _currentState.LoadContent();
             _nextState = null;
         }
