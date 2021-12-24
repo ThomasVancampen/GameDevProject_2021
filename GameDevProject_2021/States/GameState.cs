@@ -78,9 +78,9 @@ namespace GameDevProject_2021.States
             GameObject rem = null;
             foreach (var go in _levels[_currentLevel].GameObjects)
             {
-                if(go is Squirrel)
+                if(go is Hero)
                 {
-                    var temp =  go as Squirrel;
+                    var temp =  go as Hero;
                     if (temp.Lives !=_lives.Count)
                     {
                         _lives.RemoveAt(_lives.Count - 1);

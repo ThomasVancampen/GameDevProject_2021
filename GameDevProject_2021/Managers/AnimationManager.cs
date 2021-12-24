@@ -10,6 +10,8 @@ namespace GameDevProject_2021.Managers
     class AnimationManager
     {
         #region Var and Prop
+        //Deze mnaier van handelen met animation hebben we gevonden in een youtube video
+        //https://www.youtube.com/watch?v=OLsiWxgONeM
         public Animation Animation { get { return _animation; } }
         private Animation _animation;
         private float _timer;

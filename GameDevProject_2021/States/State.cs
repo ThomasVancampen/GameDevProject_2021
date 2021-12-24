@@ -8,7 +8,8 @@ using System.Text;
 namespace GameDevProject_2021.States
 {
     public abstract class State
-    {
+    { //We hebben ons state mechanisme gebasseerd op deze video
+        //https://www.youtube.com/watch?v=L3US4AmPuG4
         #region Var and Prop
         protected Game1 _game;
         protected ContentManager _contentManager;

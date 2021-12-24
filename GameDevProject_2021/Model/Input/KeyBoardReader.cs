@@ -16,20 +16,6 @@ namespace GameDevProject_2021.Model.Input
         #endregion
 
         #region Methods
-        //public Vector2 ReadInput(IMoveable obj)
-        //{
-        //    KeyboardState state = Keyboard.GetState();
-        //    Vector2 movement = Vector2.Zero;
-        //    if (state.IsKeyDown(obj.InputKeys.Left))
-        //    {
-        //        movement.X -= obj.Speed;
-        //    }
-        //    if (state.IsKeyDown(obj.InputKeys.Right))
-        //    {
-        //        movement.X += obj.Speed;
-        //    }
-        //    return movement;
-        //}
         public Vector2 ReadInput(Hero obj)
         {
             KeyboardState state = Keyboard.GetState();
@@ -42,6 +28,8 @@ namespace GameDevProject_2021.Model.Input
             {
                 movement.X += obj.Speed;
             }
+            //Dit handige trucje hebben we gevonden op internet om een onderscheid te maken tussen hold en tap
+            //https://stackoverflow.com/questions/36961902/monogame-key-pressed-instead-of-
             if (state.IsKeyDown(obj.InputKeys.Up) && !obj.IsJumping && _jumpButtonIsUp)
             {
                 _jumpButtonIsUp = false;

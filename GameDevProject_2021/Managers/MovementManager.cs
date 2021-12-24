@@ -13,20 +13,6 @@ namespace GameDevProject_2021.Managers
     class MovementManager
     {
         #region Methods
-        //public void Move(Enemy obj, List<GameObject> gameObjects)
-        //{
-        //    //obj.Movement = obj.InputReader.ReadInput(obj);
-        //    var futurePosition = obj.Position + obj.Movement;
-
-        //    if (futurePosition.X > obj.Position.X)
-        //    {
-        //        obj.AnimationManager.TextureDirection = SpriteEffects.None;
-        //    }
-        //    if (futurePosition.X < obj.Position.X)
-        //    {
-        //        obj.AnimationManager.TextureDirection = SpriteEffects.FlipHorizontally;
-        //    }
-        //}
         public void Move(FireWall obj)
         {
             obj.Movement += new Vector2(0, -obj.Speed);
@@ -86,7 +72,8 @@ namespace GameDevProject_2021.Managers
             obj.Movement = obj.InputReader.ReadInput(obj);
             var futurePosition = obj.Position + obj.Movement;
             var temp = obj.Movement;
-
+            //http://flatformer.blogspot.com/2010/02/making-character-jump-in-xnac-basic.html
+            //We hebben hier het jump algorithme over genomen en aangepast zodat het werkt voor onze applicatie.
             if (obj.IsJumping && !obj.IsFalling)
             {
                 temp.Y += obj.JumpHeight;

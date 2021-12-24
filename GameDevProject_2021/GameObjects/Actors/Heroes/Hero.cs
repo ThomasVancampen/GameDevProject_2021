@@ -12,7 +12,7 @@ using GameDevProject_2021.Managers.Collision;
 
 namespace GameDevProject_2021.GameObjects.Actors.Heroes
 {
-    abstract class Hero : Actor, IGameObject, IJumpable, IControllable
+    abstract class Hero : Actor, IJumpable, IControllable
     {
         #region Var and Prop
         public InputKeys InputKeys { get; set; }

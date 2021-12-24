@@ -9,7 +9,7 @@ using GameDevProject_2021.Managers;
 
 namespace GameDevProject_2021.GameObjects.Actors
 {
-    abstract class Actor : GameObject
+    abstract class Actor : GameObject, IMoveable
     {
         #region Var and Prop
         public float Speed { get; set; }
